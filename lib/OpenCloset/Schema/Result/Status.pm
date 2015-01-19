@@ -2,7 +2,7 @@ use utf8;
 package OpenCloset::Schema::Result::Status;
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
