@@ -1,4 +1,7 @@
 package OpenCloset::Schema::Base;
+# ABSTRACT: OpenCloset Database Schema Class
+
+our $VERSION = '0.001';
 
 use strict;
 use warnings;
@@ -31,3 +34,7 @@ use overload '""' => sub {
 };
 
 1;
+
+# COPYRIGHT
+
+__END__
