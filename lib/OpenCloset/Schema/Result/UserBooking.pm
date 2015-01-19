@@ -1,5 +1,8 @@
 use utf8;
 package OpenCloset::Schema::Result::UserBooking;
+# ABSTRACT: OpenCloset Database Schema Class
+
+our $VERSION = '0.001';
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
@@ -183,3 +186,7 @@ __PACKAGE__->belongs_to(
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 1;
+
+# COPYRIGHT
+
+__END__

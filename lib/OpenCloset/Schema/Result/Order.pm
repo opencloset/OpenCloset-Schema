@@ -1,5 +1,8 @@
 use utf8;
 package OpenCloset::Schema::Result::Order;
+# ABSTRACT: OpenCloset Database Schema Class
+
+our $VERSION = '0.001';
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
@@ -547,3 +550,7 @@ Composing rels: L</order_details> -> clothes
 __PACKAGE__->many_to_many("clothes", "order_details", "clothes");
 
 1;
+
+# COPYRIGHT
+
+__END__

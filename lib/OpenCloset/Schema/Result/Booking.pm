@@ -1,5 +1,8 @@
 use utf8;
 package OpenCloset::Schema::Result::Booking;
+# ABSTRACT: OpenCloset Database Schema Class
+
+our $VERSION = '0.001';
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
@@ -152,3 +155,7 @@ https://metacpan.org/pod/DBIx::Class::Manual::Cookbook#Using-SQL-functions-on-th
 __PACKAGE__->mk_group_accessors( column => 'user_count' );
 
 1;
+
+# COPYRIGHT
+
+__END__
