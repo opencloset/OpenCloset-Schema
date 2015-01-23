@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.002     2015-01-23 17:46:43+09:00 Asia/Seoul
     - Fix invalid upload uri of OpenCloset
     - Upload to opencloset's CPAN server at release time
     - Remove early-age removed UserBooking table module
