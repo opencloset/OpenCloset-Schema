@@ -2,17 +2,25 @@ use v5.18;
 use strict;
 use warnings;
 
-use OpenCloset::Util;
-
-my $CONF = OpenCloset::Util::load_config('app.conf');
+my $dsn  = $ENV{OPENCLOSET_DATABASE_DSN}  || "dbi:mysql:opencloset:127.0.0.1";
+my $name = $ENV{OPENCLOSET_DATABASE_NAME} || 'opencloset';
+my $user = $ENV{OPENCLOSET_DATABASE_USER} || 'opencloset';
+my $pass = $ENV{OPENCLOSET_DATABASE_PASS} // 'opencloset';
+my $db_opts = {
+    quote_char        => q{`},
+    mysql_enable_utf8 => 1,
+    on_connect_do     => 'SET NAMES utf8',
+    RaiseError        => 1,
+    AutoCommit        => 1,
+};
 
 {
     schema_class => "OpenCloset::Schema",
     connect_info => {
-        dsn  => $CONF->{database}{dsn},
-        user => $CONF->{database}{user},
-        pass => $CONF->{database}{pass},
-        %{ $CONF->{database}{opts} },
+        dsn  => $dsn,
+        user => $user,
+        pass => $pass,
+        %{$db_opts},
     },
     loader_options => {
         dump_directory            => 'lib',
