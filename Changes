@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add `order` foreign_key to `order_status_log`
 
 0.002     2015-01-23 17:46:43+09:00 Asia/Seoul
     - Fix invalid upload uri of OpenCloset
