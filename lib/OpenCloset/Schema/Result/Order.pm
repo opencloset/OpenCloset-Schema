@@ -424,6 +424,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 order_status_logs
+
+Type: has_many
+
+Related object: L<OpenCloset::Schema::Result::OrderStatusLog>
+
+=cut
+
+__PACKAGE__->has_many(
+  "order_status_logs",
+  "OpenCloset::Schema::Result::OrderStatusLog",
+  { "foreign.order_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 orders
 
 Type: has_many
@@ -515,8 +530,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-01-23 17:03:33
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:86sBWdeckIrQvP9JLmEUBg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-01-29 17:52:15
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:H8brJbcz8szH2rAfDCfZFQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
