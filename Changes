@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Update `status` foreign_key on `order_status_log`,
+      add update/delete cascade option
     - Add `order` foreign_key to `order_status_log`
 
 0.002     2015-01-23 17:46:43+09:00 Asia/Seoul

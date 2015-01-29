@@ -438,5 +438,5 @@ END$$
 
 DELIMITER ;
 
-ALTER TABLE `order_status_log` ADD FOREIGN KEY (`order_id`) REFERENCES `order` (`id`);
-ALTER TABLE `order_status_log` ADD FOREIGN KEY (`status_id`) REFERENCES `status` (`id`);
+ALTER TABLE `order_status_log` ADD FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `order_status_log` ADD FOREIGN KEY (`status_id`) REFERENCES `status` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

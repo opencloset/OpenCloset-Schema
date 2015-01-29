@@ -88,7 +88,7 @@ __PACKAGE__->belongs_to(
   "order",
   "OpenCloset::Schema::Result::Order",
   { id => "order_id" },
-  { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
+  { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 =head2 status
@@ -103,12 +103,12 @@ __PACKAGE__->belongs_to(
   "status",
   "OpenCloset::Schema::Result::Status",
   { id => "status_id" },
-  { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
+  { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-01-29 17:52:15
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:0VXL9jy7WMZctP7yQKoQ8g
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-01-29 18:20:19
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yvi4IXaI0V52tnERydulag
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
