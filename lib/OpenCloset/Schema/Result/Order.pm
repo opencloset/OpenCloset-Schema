@@ -550,6 +550,38 @@ Composing rels: L</order_details> -> clothes
 
 __PACKAGE__->many_to_many("clothes", "order_details", "clothes");
 
+=head2 tracking_logs
+
+주문서의 상태가 변경된 시점과, 변경전까지의 경과시간을 돌려줍니다.
+결과는 시간의 순서에 따라, 상태명(status), 시점(timestamp) 그리고 경과시간(delta)
+을 해쉬에 담은 배열이며 시점은 L<DateTime>, 경과시간은 L<DateTime::Duration> 객체입니다.
+만약 주문의 마지막 시점인 경우 경과시간은 undef 입니다.
+
+=cut
+
+sub tracking_logs {
+    my $self = shift;
+
+    my @status_log =
+      $self->order_status_logs( {}, { order_by => { -asc => 'timestamp' } } );
+
+    my @log;
+    for ( my $i = 0 ; $i < scalar @status_log ; $i++ ) {
+        my ( $x, $y ) = @status_log[ $i, $i + 1 ];
+        my $delta =
+          $y ? $y->timestamp->subtract_datetime( $x->timestamp ) : undef;
+
+        push @log,
+          {
+            status    => $x->status->name,
+            timestamp => $x->timestamp,
+            delta     => $delta
+          };
+    }
+
+    return @log;
+}
+
 1;
 
 # COPYRIGHT
