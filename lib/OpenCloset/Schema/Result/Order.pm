@@ -537,6 +537,7 @@ __PACKAGE__->belongs_to(
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
 # ABSTRACT: OpenCloset Database Schema Class
+use List::Util qw/reduce/;
 
 our $VERSION = '0.004';
 
@@ -581,6 +582,59 @@ sub tracking_logs {
 
     return @log;
 }
+
+=head2 tracking_nomalize
+
+주문서의 상태변화에 따른 경과시간을 정규화 합니다.
+상태의 이름을 좀 더 분석하기 용이한 형태로 변환한 뒤
+같은 상태의 경과시간은 합산합니다. 상태변화의 경과시점이
+합산되면, 더 이상 특정 시점과는 무관하기 때문에 결과는
+각각의 상태명을 키(key)로 하고 합산된 L<DateTime::Duration>을
+값으로 하는 해쉬입니다.
+
+상태명은 다음과 같이 변환되었습니다.
+
+  - 방문     => 대기
+  - 탈의XX   => 탈의
+  - 대여중   => 대여
+  - 결제대기 => 결제
+  - 방문예약 => 예약
+
+=cut
+
+sub tracking_normalize {
+    my $self = shift;
+    my %h;
+
+    foreach my $log ( $self->tracking_logs() ) {
+        use feature 'switch';
+        no warnings 'experimental';
+
+        my $status;
+        given ( $log->{status} ) {
+            when (/^방문$/)       { $status = '대기'; }
+            when (/^탈의\d+$/)    { $status = '탈의'; }
+            when (/^대여중$/)     { $status = '대여'; }
+            when (/^결제대기$/)   { $status = '결제'; }
+            when (/^방문예약$/)   { $status = '예약'; }
+            default               { $status = $log->{status}; }
+        }
+
+        push @{ $h{$status} }, $log->{delta} if $log->{delta};
+    }
+
+    return map {
+        $_ => reduce {
+            # DateTime::Duration은 base가 되는 시점없이는 초와 초를 분으로
+            # 변환하지 않기때문에 특정시점을 기준으로 계산해야 합니다.
+            my $dta = DateTime->now;
+            my $dtb = $dta->clone()->add( $a + $b );
+            $dtb - $dta
+        }
+        @{ $h{$_} }
+    } keys %h;
+}
+
 
 1;
 
