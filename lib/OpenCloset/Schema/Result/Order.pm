@@ -611,23 +611,23 @@ sub tracking_logs {
 
 sub tracking_normalize {
     my $self = shift;
-    my %h;
 
+    my %status;
     for my $log ( $self->tracking_logs() ) {
         next unless $log->{delta};
 
         use experimental qw( smartmatch );
 
-        my $status = $log->{status};
+        my $name = $log->{status};
         given ( $log->{status} ) {
-            $status = '대기' when '방문';
-            $status = '탈의' when /^탈의\d+$/;
-            $status = '대여' when '대여중';
-            $status = '결제' when '결제대기';
-            $status = '예약' when '방문예약';
+            $name = '대기' when '방문';
+            $name = '탈의' when /^탈의\d+$/;
+            $name = '대여' when '대여중';
+            $name = '결제' when '결제대기';
+            $name = '예약' when '방문예약';
         }
 
-        push @{ $h{$status} }, $log->{delta};
+        push @{ $status{$name} }, $log->{delta};
     }
 
     return map {
@@ -638,8 +638,8 @@ sub tracking_normalize {
             my $dtb = $dta->clone()->add( $a + $b );
             $dtb - $dta
         }
-        @{ $h{$_} }
-    } keys %h;
+        @{ $status{$_} }
+    } keys %status;
 }
 
 
