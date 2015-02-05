@@ -614,8 +614,7 @@ sub tracking_normalize {
     my %h;
 
     for my $log ( $self->tracking_logs() ) {
-        use feature 'switch';
-        no warnings 'experimental';
+        use experimental qw( smartmatch );
 
         my $status;
         given ( $log->{status} ) {
