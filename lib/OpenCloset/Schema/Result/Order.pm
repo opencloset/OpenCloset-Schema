@@ -568,24 +568,27 @@ use List::Util qw/reduce/;
 sub tracking_logs {
     my $self = shift;
 
-    my @status_log =
+    my @status_logs =
       $self->order_status_logs( {}, { order_by => { -asc => 'timestamp' } } );
 
-    my @log;
-    for ( my $i = 0; $i < @status_log; $i++ ) {
-        my ( $x, $y ) = @status_log[ $i, $i + 1 ];
-        my $delta =
-          $y ? $y->timestamp->subtract_datetime( $x->timestamp ) : undef;
+    my @logs;
+    for ( my $i = 0; $i < @status_logs; $i++ ) {
+        my $x = $status_logs[$i];
 
-        push @log,
-          {
+        my %log = (
             status    => $x->status->name,
             timestamp => $x->timestamp,
-            delta     => $delta
-          };
+            delta     => undef,
+        );
+
+        if ( ($i + 1) < @status_logs ) {
+            my $y = $status_logs[ $i + 1 ];
+            $log{delta} = $y->timestamp->subtract_datetime( $x->timestamp );
+        }
+        push @logs, \%log;
     }
 
-    return @log;
+    return @logs;
 }
 
 =method tracking_nomalize
