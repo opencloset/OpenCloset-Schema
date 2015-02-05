@@ -614,6 +614,8 @@ sub tracking_normalize {
     my %h;
 
     for my $log ( $self->tracking_logs() ) {
+        next unless $log->{delta};
+
         use experimental qw( smartmatch );
 
         my $status = $log->{status};
@@ -625,7 +627,7 @@ sub tracking_normalize {
             $status = '예약' when '방문예약';
         }
 
-        push @{ $h{$status} }, $log->{delta} if $log->{delta};
+        push @{ $h{$status} }, $log->{delta};
     }
 
     return map {
