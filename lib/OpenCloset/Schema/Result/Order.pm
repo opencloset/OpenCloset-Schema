@@ -572,7 +572,7 @@ sub tracking_logs {
       $self->order_status_logs( {}, { order_by => { -asc => 'timestamp' } } );
 
     my @log;
-    for ( my $i = 0 ; $i < scalar @status_log ; $i++ ) {
+    for ( my $i = 0; $i < @status_log; $i++ ) {
         my ( $x, $y ) = @status_log[ $i, $i + 1 ];
         my $delta =
           $y ? $y->timestamp->subtract_datetime( $x->timestamp ) : undef;
