@@ -618,12 +618,12 @@ sub tracking_normalize {
 
         my $status;
         given ( $log->{status} ) {
-            when (/^방문$/)       { $status = '대기'; }
-            when (/^탈의\d+$/)    { $status = '탈의'; }
-            when (/^대여중$/)     { $status = '대여'; }
-            when (/^결제대기$/)   { $status = '결제'; }
-            when (/^방문예약$/)   { $status = '예약'; }
-            default               { $status = $log->{status}; }
+            when ('방문')      { $status = '대기'; }
+            when (/^탈의\d+$/) { $status = '탈의'; }
+            when ('대여중')    { $status = '대여'; }
+            when ('결제대기')  { $status = '결제'; }
+            when ('방문예약')  { $status = '예약'; }
+            default            { $status = $log->{status}; }
         }
 
         push @{ $h{$status} }, $log->{delta} if $log->{delta};
