@@ -537,7 +537,6 @@ __PACKAGE__->belongs_to(
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
 # ABSTRACT: OpenCloset Database Schema Class
-use List::Util qw/reduce/;
 
 our $VERSION = '0.004';
 
@@ -551,7 +550,13 @@ Composing rels: L</order_details> -> clothes
 
 __PACKAGE__->many_to_many("clothes", "order_details", "clothes");
 
-=head2 tracking_logs
+#
+# Additional Methods
+#
+
+use List::Util qw/reduce/;
+
+=method tracking_logs
 
 주문서의 상태가 변경된 시점과, 변경전까지의 경과시간을 돌려줍니다.
 결과는 시간의 순서에 따라, 상태명(status), 시점(timestamp) 그리고 경과시간(delta)
@@ -583,7 +588,7 @@ sub tracking_logs {
     return @log;
 }
 
-=head2 tracking_nomalize
+=method tracking_nomalize
 
 주문서의 상태변화에 따른 경과시간을 정규화 합니다.
 상태의 이름을 좀 더 분석하기 용이한 형태로 변환한 뒤
@@ -594,11 +599,13 @@ sub tracking_logs {
 
 상태명은 다음과 같이 변환되었습니다.
 
-  - 방문     => 대기
-  - 탈의XX   => 탈의
-  - 대여중   => 대여
-  - 결제대기 => 결제
-  - 방문예약 => 예약
+=for :list
+
+* 방문     => 대기
+* 탈의XX   => 탈의
+* 대여중   => 대여
+* 결제대기 => 결제
+* 방문예약 => 예약
 
 =cut
 
