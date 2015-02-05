@@ -613,7 +613,7 @@ sub tracking_normalize {
     my $self = shift;
     my %h;
 
-    foreach my $log ( $self->tracking_logs() ) {
+    for my $log ( $self->tracking_logs() ) {
         use feature 'switch';
         no warnings 'experimental';
 
