@@ -548,103 +548,101 @@ Composing rels: L</order_details> -> clothes
 
 =cut
 
-__PACKAGE__->many_to_many("clothes", "order_details", "clothes");
+__PACKAGE__->many_to_many( "clothes", "order_details", "clothes" );
 
 #
 # Additional Methods
 #
 
-use List::Util qw/reduce/;
+sub _normalize_status_name {
+    my ( $self, $name ) = @_;
 
-=method tracking_logs
+    return unless $name;
 
-주문서의 상태가 변경된 시점과, 변경전까지의 경과시간을 돌려줍니다.
-결과는 시간의 순서에 따라, 상태명(status), 시점(timestamp) 그리고 경과시간(delta)
-을 해쉬에 담은 배열이며 시점은 L<DateTime>, 경과시간은 L<DateTime::Duration> 객체입니다.
-만약 주문의 마지막 시점인 경우 경과시간은 undef 입니다.
+    my $normalize = $name;
+    {
+        use experimental qw( switch );
+
+        given ($name) {
+            $normalize = '대기' when '방문';
+            $normalize = '탈의' when /^탈의\d+$/;
+            $normalize = '대여' when '대여중';
+            $normalize = '결제' when '결제대기';
+            $normalize = '예약' when '방문예약';
+        }
+    }
+
+    return $normalize;
+}
+
+=method analyze_order_status_logs
+
+주문서의 상태 로그를 분석해 각 단계별 로그 정보와
+정규화한 각 단계별 소요 시간을 반환합니다.
+
+    my $order = $schema->resultset('Order')->find(13);
+    my %result = $order->analyze_order_status_logs;
+    #
+    # check each logs
+    #
+    for my $log ( @{ $result{logs} } ) {
+        my $status           = $log->{status};           # status name
+        my $normalize_status = $log->{normalize_status}; # normalize status name
+        my $timestamp        = $log->{timestamp};        # DateTime object
+        my $delta            = $log->{delta};            # seconds
+                                                         # undef means last status
+    }
+    #
+    # check elapsed time
+    #
+    for my $normalize_status ( keys %{ $result{elapsed_time} } ) {
+        print "$normalize_status: $result{elapsed_time}{$normalize_status} sec\n";
+    }
 
 =cut
 
-sub tracking_logs {
+sub analyze_order_status_logs {
     my $self = shift;
 
     my @status_logs =
-      $self->order_status_logs( {}, { order_by => { -asc => 'timestamp' } } );
+        $self->order_status_logs( {}, { order_by => { -asc => 'timestamp' } } );
 
     my @logs;
+    my %elapsed_time;
     for ( my $i = 0; $i < @status_logs; $i++ ) {
-        my $x = $status_logs[$i];
+        #
+        # generate log
+        #
+        my $current = $status_logs[$i];
 
         my %log = (
-            status    => $x->status->name,
-            timestamp => $x->timestamp,
-            delta     => undef,
+            status           => $current->status->name,
+            normalize_status => $self->_normalize_status_name( $current->status->name ),
+            timestamp        => $current->timestamp,
+            delta            => undef,
         );
 
-        if ( ($i + 1) < @status_logs ) {
-            my $y = $status_logs[ $i + 1 ];
-            $log{delta} = $y->timestamp->subtract_datetime( $x->timestamp );
+        if ( ( $i + 1 ) < @status_logs ) {
+            my $next = $status_logs[ $i + 1 ];
+            $log{delta} = $next->timestamp->epoch - $current->timestamp->epoch;
         }
         push @logs, \%log;
+
+        #
+        # sum elapsed time for each normalized status
+        #
+        $elapsed_time{ $log{normalize_status} } = 0
+            unless $elapsed_time{ $log{normalize_status} };
+        $elapsed_time{ $log{normalize_status} } += $log{delta} if $log{delta};
     }
 
-    return @logs;
+    my %result = (
+        logs         => \@logs,
+        elapsed_time => \%elapsed_time,
+    );
+
+    return %result;
 }
-
-=method tracking_nomalize
-
-주문서의 상태변화에 따른 경과시간을 정규화 합니다.
-상태의 이름을 좀 더 분석하기 용이한 형태로 변환한 뒤
-같은 상태의 경과시간은 합산합니다. 상태변화의 경과시점이
-합산되면, 더 이상 특정 시점과는 무관하기 때문에 결과는
-각각의 상태명을 키(key)로 하고 합산된 L<DateTime::Duration>을
-값으로 하는 해쉬입니다.
-
-상태명은 다음과 같이 변환되었습니다.
-
-=for :list
-
-* 방문     => 대기
-* 탈의XX   => 탈의
-* 대여중   => 대여
-* 결제대기 => 결제
-* 방문예약 => 예약
-
-=cut
-
-sub tracking_normalize {
-    my $self = shift;
-
-    my %status;
-    for my $log ( $self->tracking_logs() ) {
-        next unless $log->{delta};
-
-        use experimental qw( smartmatch );
-
-        my $name = $log->{status};
-        given ( $log->{status} ) {
-            $name = '대기' when '방문';
-            $name = '탈의' when /^탈의\d+$/;
-            $name = '대여' when '대여중';
-            $name = '결제' when '결제대기';
-            $name = '예약' when '방문예약';
-        }
-
-        push @{ $status{$name} }, $log->{delta};
-    }
-
-    return map {
-        $_ => reduce {
-            # DateTime::Duration은 base가 되는 시점없이는 초와 초를 분으로
-            # 변환하지 않기때문에 특정시점을 기준으로 계산해야 합니다.
-            my $dta = DateTime->now;
-            my $dtb = $dta->clone()->add( $a + $b );
-            $dtb - $dta
-        }
-        @{ $status{$_} }
-    } keys %status;
-}
-
 
 1;
 
