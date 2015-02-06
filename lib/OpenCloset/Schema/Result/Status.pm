@@ -1,8 +1,10 @@
+#<<<
 use utf8;
 package OpenCloset::Schema::Result::Status;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
+
 
 =head1 NAME
 
@@ -13,17 +15,20 @@ OpenCloset::Schema::Result::Status
 use strict;
 use warnings;
 
+
 =head1 BASE CLASS: L<OpenCloset::Schema::Base>
 
 =cut
 
 use base 'OpenCloset::Schema::Base';
 
+
 =head1 TABLE: C<status>
 
 =cut
 
 __PACKAGE__->table("status");
+
 
 =head1 ACCESSORS
 
@@ -54,6 +59,7 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 64 },
 );
 
+
 =head1 PRIMARY KEY
 
 =over 4
@@ -65,6 +71,7 @@ __PACKAGE__->add_columns(
 =cut
 
 __PACKAGE__->set_primary_key("id");
+
 
 =head1 UNIQUE CONSTRAINTS
 
@@ -79,6 +86,7 @@ __PACKAGE__->set_primary_key("id");
 =cut
 
 __PACKAGE__->add_unique_constraint("name", ["name"]);
+
 
 =head1 RELATIONS
 
@@ -97,6 +105,7 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+
 =head2 order_details
 
 Type: has_many
@@ -111,6 +120,7 @@ __PACKAGE__->has_many(
   { "foreign.status_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
+
 
 =head2 order_status_logs
 
@@ -127,6 +137,7 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+
 =head2 orders
 
 Type: has_many
@@ -142,10 +153,10 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+#>>>
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-01-05 14:39:12
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hal2Tui8Ets0LPkE/ujaFA
-
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:BgD1Gol96AV/xjeRi++DBA
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

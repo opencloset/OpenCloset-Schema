@@ -1,8 +1,10 @@
+#<<<
 use utf8;
 package OpenCloset::Schema::Result::Order;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
+
 
 =head1 NAME
 
@@ -13,17 +15,20 @@ OpenCloset::Schema::Result::Order
 use strict;
 use warnings;
 
+
 =head1 BASE CLASS: L<OpenCloset::Schema::Base>
 
 =cut
 
 use base 'OpenCloset::Schema::Base';
 
+
 =head1 TABLE: C<order>
 
 =cut
 
 __PACKAGE__->table("order");
+
 
 =head1 ACCESSORS
 
@@ -375,6 +380,7 @@ __PACKAGE__->add_columns(
   },
 );
 
+
 =head1 PRIMARY KEY
 
 =over 4
@@ -386,6 +392,7 @@ __PACKAGE__->add_columns(
 =cut
 
 __PACKAGE__->set_primary_key("id");
+
 
 =head1 RELATIONS
 
@@ -409,6 +416,7 @@ __PACKAGE__->belongs_to(
   },
 );
 
+
 =head2 order_details
 
 Type: has_many
@@ -423,6 +431,7 @@ __PACKAGE__->has_many(
   { "foreign.order_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
+
 
 =head2 order_status_logs
 
@@ -439,6 +448,7 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+
 =head2 orders
 
 Type: has_many
@@ -453,6 +463,7 @@ __PACKAGE__->has_many(
   { "foreign.parent_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
+
 
 =head2 parent
 
@@ -474,6 +485,7 @@ __PACKAGE__->belongs_to(
   },
 );
 
+
 =head2 staff
 
 Type: belongs_to
@@ -493,6 +505,7 @@ __PACKAGE__->belongs_to(
     on_update     => "RESTRICT",
   },
 );
+
 
 =head2 status
 
@@ -514,6 +527,7 @@ __PACKAGE__->belongs_to(
   },
 );
 
+
 =head2 user
 
 Type: belongs_to
@@ -529,10 +543,10 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
 );
 
+#>>>
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-01-29 17:52:15
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:H8brJbcz8szH2rAfDCfZFQ
-
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:EEfQkysmIX5o1Ut9iGb7gQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

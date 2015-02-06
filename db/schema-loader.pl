@@ -40,6 +40,7 @@ my $db_opts = {
         result_base_class         => 'OpenCloset::Schema::Base',
         overwrite_modifications   => 1,
         datetime_undef_if_invalid => 1,
+        filter_generated_code     => sub { return "#<<<\n$_[2]\n#>>>"; },
         custom_column_info        => sub {
             my ( $table, $col_name, $col_info ) = @_;
 

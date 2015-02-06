@@ -1,8 +1,10 @@
+#<<<
 use utf8;
 package OpenCloset::Schema::Result::Tag;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
+
 
 =head1 NAME
 
@@ -13,17 +15,20 @@ OpenCloset::Schema::Result::Tag
 use strict;
 use warnings;
 
+
 =head1 BASE CLASS: L<OpenCloset::Schema::Base>
 
 =cut
 
 use base 'OpenCloset::Schema::Base';
 
+
 =head1 TABLE: C<tag>
 
 =cut
 
 __PACKAGE__->table("tag");
+
 
 =head1 ACCESSORS
 
@@ -54,6 +59,7 @@ __PACKAGE__->add_columns(
   { data_type => "char", is_nullable => 0, size => 128 },
 );
 
+
 =head1 PRIMARY KEY
 
 =over 4
@@ -65,6 +71,7 @@ __PACKAGE__->add_columns(
 =cut
 
 __PACKAGE__->set_primary_key("id");
+
 
 =head1 UNIQUE CONSTRAINTS
 
@@ -79,6 +86,7 @@ __PACKAGE__->set_primary_key("id");
 =cut
 
 __PACKAGE__->add_unique_constraint("name", ["name"]);
+
 
 =head1 RELATIONS
 
@@ -97,6 +105,7 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+
 =head2 clothes
 
 Type: many_to_many
@@ -107,10 +116,10 @@ Composing rels: L</clothes_tags> -> clothes
 
 __PACKAGE__->many_to_many("clothes", "clothes_tags", "clothes");
 
+#>>>
 
-# Created by DBIx::Class::Schema::Loader v0.07038 @ 2014-01-24 15:02:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7A/4MDnc9HYcI0mz4QZqVw
-
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:odMcdtpvVvmvdI8wmHyTTw
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
