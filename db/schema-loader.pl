@@ -1,4 +1,3 @@
-use v5.18;
 use strict;
 use warnings;
 
@@ -58,7 +57,8 @@ my $CONF = OpenCloset::Config::load;
         custom_column_info        => sub {
             my ( $table, $col_name, $col_info ) = @_;
 
-            no warnings 'experimental';
+            use experimental 'switch';
+
             given ($col_name) {
                 when ('create_date') {
                     return +{
