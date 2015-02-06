@@ -1,7 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
-    - Add analyze_order_status_log() method in order resultset
+    - Support perltidy, perlcritic and tidyall with dbicdump (#10)
+    - Add analyze_order_status_log() method in order resultset (#8)
 
 0.003     2015-01-29 18:37:11+09:00 Asia/Seoul
     - Add foreign key with cascade: order_status_log.order_id  -> order.id
