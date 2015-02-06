@@ -1,11 +1,11 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add analyze_order_status_log() method in order resultset
 
 0.003     2015-01-29 18:37:11+09:00 Asia/Seoul
-    - Update `status` foreign_key on `order_status_log`,
-      add update/delete cascade option
-    - Add `order` foreign_key to `order_status_log`
+    - Add foreign key with cascade: order_status_log.order_id  -> order.id
+    - Add foreign key with cascade: order_status_log.status_id -> status.id
 
 0.002     2015-01-23 17:46:43+09:00 Asia/Seoul
     - Fix invalid upload uri of OpenCloset
