@@ -1,3 +1,4 @@
+#<<<
 use utf8;
 package OpenCloset::Schema::Result::OrderStatusLog;
 
@@ -106,9 +107,10 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
+#>>>
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-01-29 18:20:19
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yvi4IXaI0V52tnERydulag
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TjPcAXerRo3+Gi6unCuKhA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

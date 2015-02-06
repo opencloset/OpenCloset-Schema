@@ -1,3 +1,4 @@
+#<<<
 use utf8;
 package OpenCloset::Schema::Result::Clothes;
 
@@ -350,9 +351,10 @@ Composing rels: L</clothes_tags> -> tag
 
 __PACKAGE__->many_to_many("tags", "clothes_tags", "tag");
 
+#>>>
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2014-11-28 15:23:18
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ybn3XBsVVgrXw+hSVDV0pA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/AlSUh2H4vJgpWXKKWXT8g
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

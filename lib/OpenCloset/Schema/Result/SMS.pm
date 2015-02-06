@@ -1,3 +1,4 @@
+#<<<
 use utf8;
 package OpenCloset::Schema::Result::SMS;
 
@@ -133,9 +134,10 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
+#>>>
 
-# Created by DBIx::Class::Schema::Loader v0.07038 @ 2014-01-24 15:02:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6usM2QJD0Vhc7gnnBnXf5g
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ysdG0HESA4WxG6ZrrR9JEQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

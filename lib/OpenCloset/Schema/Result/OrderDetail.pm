@@ -1,3 +1,4 @@
+#<<<
 use utf8;
 package OpenCloset::Schema::Result::OrderDetail;
 
@@ -190,9 +191,10 @@ __PACKAGE__->belongs_to(
   },
 );
 
+#>>>
 
-# Created by DBIx::Class::Schema::Loader v0.07038 @ 2014-01-24 15:02:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:paQexXCFv821+1oT2D0aMA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:R+In/kyXLLLKHjmO2enPrg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
