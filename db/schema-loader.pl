@@ -1,10 +1,12 @@
-use v5.18;
 use strict;
 use warnings;
 
-use OpenCloset::Util;
+use File::Which;
+use IPC::Open2;
 
-my $CONF = OpenCloset::Util::load_config('app.conf');
+use OpenCloset::Config;
+
+my $CONF = OpenCloset::Config::load;
 
 {
     schema_class => "OpenCloset::Schema",
@@ -32,10 +34,31 @@ my $CONF = OpenCloset::Util::load_config('app.conf');
         result_base_class         => 'OpenCloset::Schema::Base',
         overwrite_modifications   => 1,
         datetime_undef_if_invalid => 1,
+        filter_generated_code     => sub {
+            my ( $type, $class, $source ) = @_;
+
+            my $tidyall = File::Which::which('tidyall');
+            die "cannot find tidyall binary\n" unless $tidyall;
+
+            my $path = $class;
+            $path =~ s{::}{/};
+            $path = "lib/$path.pm";
+
+            my ( $stdout, $stdin );
+            my $pid = open2( $stdout, $stdin, 'tidyall', '-p', $path );
+            print $stdin $source;
+            close $stdin;
+            my $destination = do { local $/; <$stdout> };
+            close $stdout;
+            waitpid( $pid, 0 );
+
+            return $destination;
+        },
         custom_column_info        => sub {
             my ( $table, $col_name, $col_info ) = @_;
 
-            no warnings 'experimental';
+            use experimental 'switch';
+
             given ($col_name) {
                 when ('create_date') {
                     return +{

@@ -1,4 +1,5 @@
 use utf8;
+
 package OpenCloset::Schema::Result::Clothes;
 
 # Created by DBIx::Class::Schema::Loader
@@ -146,65 +147,65 @@ male/female/unisex
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "donation_id",
-  {
-    data_type => "integer",
-    default_value => 1,
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 1,
-  },
-  "status_id",
-  {
-    data_type => "integer",
-    default_value => 1,
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 1,
-  },
-  "group_id",
-  {
-    data_type => "integer",
-    default_value => 1,
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 1,
-  },
-  "code",
-  { data_type => "char", is_nullable => 0, size => 5 },
-  "bust",
-  { data_type => "integer", default_value => 0, is_nullable => 1 },
-  "waist",
-  { data_type => "integer", default_value => 0, is_nullable => 1 },
-  "hip",
-  { data_type => "integer", default_value => 0, is_nullable => 1 },
-  "belly",
-  { data_type => "integer", default_value => 0, is_nullable => 1 },
-  "arm",
-  { data_type => "integer", default_value => 0, is_nullable => 1 },
-  "thigh",
-  { data_type => "integer", default_value => 0, is_nullable => 1 },
-  "length",
-  { data_type => "integer", default_value => 0, is_nullable => 1 },
-  "color",
-  { data_type => "varchar", is_nullable => 1, size => 32 },
-  "gender",
-  { data_type => "varchar", is_nullable => 1, size => 6 },
-  "category",
-  { data_type => "varchar", is_nullable => 0, size => 32 },
-  "price",
-  { data_type => "integer", default_value => 0, is_nullable => 1 },
-  "comment",
-  { data_type => "text", is_nullable => 1 },
-  "compatible_code",
-  { data_type => "varchar", is_nullable => 1, size => 32 },
+    "id",
+    {
+        data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
+    "donation_id",
+    {
+        data_type      => "integer",
+        default_value  => 1,
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
+    "status_id",
+    {
+        data_type      => "integer",
+        default_value  => 1,
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
+    "group_id",
+    {
+        data_type      => "integer",
+        default_value  => 1,
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
+    "code",
+    { data_type => "char", is_nullable => 0, size => 5 },
+    "bust",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "waist",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "hip",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "belly",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "arm",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "thigh",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "length",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "color",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "gender",
+    { data_type => "varchar", is_nullable => 1, size => 6 },
+    "category",
+    { data_type => "varchar", is_nullable => 0, size => 32 },
+    "price",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "comment",
+    { data_type => "text", is_nullable => 1 },
+    "compatible_code",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
 );
 
 =head1 PRIMARY KEY
@@ -231,7 +232,7 @@ __PACKAGE__->set_primary_key("id");
 
 =cut
 
-__PACKAGE__->add_unique_constraint("code", ["code"]);
+__PACKAGE__->add_unique_constraint( "code", ["code"] );
 
 =head1 RELATIONS
 
@@ -244,10 +245,10 @@ Related object: L<OpenCloset::Schema::Result::ClothesTag>
 =cut
 
 __PACKAGE__->has_many(
-  "clothes_tags",
-  "OpenCloset::Schema::Result::ClothesTag",
-  { "foreign.clothes_code" => "self.code" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "clothes_tags",
+    "OpenCloset::Schema::Result::ClothesTag",
+    { "foreign.clothes_code" => "self.code" },
+    { cascade_copy           => 0, cascade_delete => 0 },
 );
 
 =head2 donation
@@ -259,15 +260,15 @@ Related object: L<OpenCloset::Schema::Result::Donation>
 =cut
 
 __PACKAGE__->belongs_to(
-  "donation",
-  "OpenCloset::Schema::Result::Donation",
-  { id => "donation_id" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "RESTRICT",
-  },
+    "donation",
+    "OpenCloset::Schema::Result::Donation",
+    { id => "donation_id" },
+    {
+        is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "CASCADE",
+        on_update     => "RESTRICT",
+    },
 );
 
 =head2 group
@@ -279,15 +280,15 @@ Related object: L<OpenCloset::Schema::Result::Group>
 =cut
 
 __PACKAGE__->belongs_to(
-  "group",
-  "OpenCloset::Schema::Result::Group",
-  { id => "group_id" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "RESTRICT",
-  },
+    "group",
+    "OpenCloset::Schema::Result::Group",
+    { id => "group_id" },
+    {
+        is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "CASCADE",
+        on_update     => "RESTRICT",
+    },
 );
 
 =head2 order_details
@@ -299,10 +300,10 @@ Related object: L<OpenCloset::Schema::Result::OrderDetail>
 =cut
 
 __PACKAGE__->has_many(
-  "order_details",
-  "OpenCloset::Schema::Result::OrderDetail",
-  { "foreign.clothes_code" => "self.code" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "order_details",
+    "OpenCloset::Schema::Result::OrderDetail",
+    { "foreign.clothes_code" => "self.code" },
+    { cascade_copy           => 0, cascade_delete => 0 },
 );
 
 =head2 satisfactions
@@ -314,10 +315,10 @@ Related object: L<OpenCloset::Schema::Result::Satisfaction>
 =cut
 
 __PACKAGE__->has_many(
-  "satisfactions",
-  "OpenCloset::Schema::Result::Satisfaction",
-  { "foreign.clothes_code" => "self.code" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "satisfactions",
+    "OpenCloset::Schema::Result::Satisfaction",
+    { "foreign.clothes_code" => "self.code" },
+    { cascade_copy           => 0, cascade_delete => 0 },
 );
 
 =head2 status
@@ -329,15 +330,15 @@ Related object: L<OpenCloset::Schema::Result::Status>
 =cut
 
 __PACKAGE__->belongs_to(
-  "status",
-  "OpenCloset::Schema::Result::Status",
-  { id => "status_id" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "RESTRICT",
-  },
+    "status",
+    "OpenCloset::Schema::Result::Status",
+    { id => "status_id" },
+    {
+        is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "CASCADE",
+        on_update     => "RESTRICT",
+    },
 );
 
 =head2 tags
@@ -348,18 +349,16 @@ Composing rels: L</clothes_tags> -> tag
 
 =cut
 
-__PACKAGE__->many_to_many("tags", "clothes_tags", "tag");
+__PACKAGE__->many_to_many( "tags", "clothes_tags", "tag" );
 
-
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2014-11-28 15:23:18
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ybn3XBsVVgrXw+hSVDV0pA
-
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:glCnUFHCQWiINNq2sjvSiQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 =head2 orders
 
@@ -369,7 +368,7 @@ Composing rels: L</order_details> -> order
 
 =cut
 
-__PACKAGE__->many_to_many("orders", "order_details", "order");
+__PACKAGE__->many_to_many( "orders", "order_details", "order" );
 
 1;
 

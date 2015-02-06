@@ -1,4 +1,5 @@
 use utf8;
+
 package OpenCloset::Schema::Result::Booking;
 
 # Created by DBIx::Class::Schema::Loader
@@ -58,24 +59,24 @@ male/female
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "date",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    inflate_datetime => 1,
-    is_nullable => 0,
-  },
-  "gender",
-  { data_type => "varchar", is_nullable => 0, size => 6 },
-  "slot",
-  { data_type => "integer", extra => { unsigned => 1 }, is_nullable => 0 },
+    "id",
+    {
+        data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
+    "date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 0,
+    },
+    "gender",
+    { data_type => "varchar", is_nullable => 0, size => 6 },
+    "slot",
+    { data_type => "integer", extra => { unsigned => 1 }, is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -104,7 +105,7 @@ __PACKAGE__->set_primary_key("id");
 
 =cut
 
-__PACKAGE__->add_unique_constraint("date", ["date", "gender"]);
+__PACKAGE__->add_unique_constraint( "date", [ "date", "gender" ] );
 
 =head1 RELATIONS
 
@@ -117,22 +118,20 @@ Related object: L<OpenCloset::Schema::Result::Order>
 =cut
 
 __PACKAGE__->has_many(
-  "orders",
-  "OpenCloset::Schema::Result::Order",
-  { "foreign.booking_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "orders",
+    "OpenCloset::Schema::Result::Order",
+    { "foreign.booking_id" => "self.id" },
+    { cascade_copy         => 0, cascade_delete => 0 },
 );
 
-
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2014-10-24 23:00:47
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7wVNRArL3G4qX4qQ13Za7A
-
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OV3wouLK8oQ1iHLTpByHkQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 =head2 users
 

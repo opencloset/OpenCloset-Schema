@@ -1,4 +1,5 @@
 use utf8;
+
 package OpenCloset::Schema::Result::Tag;
 
 # Created by DBIx::Class::Schema::Loader
@@ -43,15 +44,15 @@ __PACKAGE__->table("tag");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "name",
-  { data_type => "char", is_nullable => 0, size => 128 },
+    "id",
+    {
+        data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
+    "name",
+    { data_type => "char", is_nullable => 0, size => 128 },
 );
 
 =head1 PRIMARY KEY
@@ -78,7 +79,7 @@ __PACKAGE__->set_primary_key("id");
 
 =cut
 
-__PACKAGE__->add_unique_constraint("name", ["name"]);
+__PACKAGE__->add_unique_constraint( "name", ["name"] );
 
 =head1 RELATIONS
 
@@ -91,10 +92,8 @@ Related object: L<OpenCloset::Schema::Result::ClothesTag>
 =cut
 
 __PACKAGE__->has_many(
-  "clothes_tags",
-  "OpenCloset::Schema::Result::ClothesTag",
-  { "foreign.tag_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "clothes_tags", "OpenCloset::Schema::Result::ClothesTag",
+    { "foreign.tag_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
 );
 
 =head2 clothes
@@ -105,18 +104,16 @@ Composing rels: L</clothes_tags> -> clothes
 
 =cut
 
-__PACKAGE__->many_to_many("clothes", "clothes_tags", "clothes");
+__PACKAGE__->many_to_many( "clothes", "clothes_tags", "clothes" );
 
-
-# Created by DBIx::Class::Schema::Loader v0.07038 @ 2014-01-24 15:02:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7A/4MDnc9HYcI0mz4QZqVw
-
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:o9bcV+t/X3jj9WWeeHB3Jg
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 1;
 

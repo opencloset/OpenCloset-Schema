@@ -1,4 +1,5 @@
 use utf8;
+
 package OpenCloset::Schema::Result::Group;
 
 # Created by DBIx::Class::Schema::Loader
@@ -37,13 +38,13 @@ __PACKAGE__->table("group");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
+    "id",
+    {
+        data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
 );
 
 =head1 PRIMARY KEY
@@ -69,22 +70,20 @@ Related object: L<OpenCloset::Schema::Result::Clothes>
 =cut
 
 __PACKAGE__->has_many(
-  "clothes",
-  "OpenCloset::Schema::Result::Clothes",
-  { "foreign.group_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "clothes",
+    "OpenCloset::Schema::Result::Clothes",
+    { "foreign.group_id" => "self.id" },
+    { cascade_copy       => 0, cascade_delete => 0 },
 );
 
-
-# Created by DBIx::Class::Schema::Loader v0.07038 @ 2014-01-24 15:02:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bWTM0Ng/JwlEnn4HfS7Nsg
-
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:u/bWUzfgSPH9RZl9Fr8N1w
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 1;
 

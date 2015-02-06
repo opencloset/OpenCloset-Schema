@@ -1,4 +1,5 @@
 use utf8;
+
 package OpenCloset::Schema::Result::OrderStatusLog;
 
 # Created by DBIx::Class::Schema::Loader
@@ -31,6 +32,7 @@ __PACKAGE__->table("order_status_log");
 
   data_type: 'integer'
   extra: {unsigned => 1}
+  is_foreign_key: 1
   is_nullable: 0
 
 =head2 status_id
@@ -50,25 +52,45 @@ __PACKAGE__->table("order_status_log");
 =cut
 
 __PACKAGE__->add_columns(
-  "order_id",
-  { data_type => "integer", extra => { unsigned => 1 }, is_nullable => 0 },
-  "status_id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 0,
-  },
-  "timestamp",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    inflate_datetime => 1,
-    is_nullable => 0,
-  },
+    "order_id",
+    {
+        data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 0,
+    },
+    "status_id",
+    {
+        data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 0,
+    },
+    "timestamp",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 0,
+    },
 );
 
 =head1 RELATIONS
+
+=head2 order
+
+Type: belongs_to
+
+Related object: L<OpenCloset::Schema::Result::Order>
+
+=cut
+
+__PACKAGE__->belongs_to(
+    "order",
+    "OpenCloset::Schema::Result::Order",
+    { id            => "order_id" },
+    { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
+);
 
 =head2 status
 
@@ -79,22 +101,20 @@ Related object: L<OpenCloset::Schema::Result::Status>
 =cut
 
 __PACKAGE__->belongs_to(
-  "status",
-  "OpenCloset::Schema::Result::Status",
-  { id => "status_id" },
-  { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
+    "status",
+    "OpenCloset::Schema::Result::Status",
+    { id            => "status_id" },
+    { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
-
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-01-23 17:03:33
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Q8v2P4Z3x8U/HPfk5Xb3JQ
-
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:56
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:GyqcGP9T4QDe0jQCTSFpWQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 1;
 
