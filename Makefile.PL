@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use 5.010;
+use 5.012;
 
 use ExtUtils::MakeMaker 6.17;
 
@@ -18,7 +18,7 @@ my %WriteMakefileArgs = (
   "DISTNAME" => "OpenCloset-Schema",
   "EXE_FILES" => [],
   "LICENSE" => "perl",
-  "MIN_PERL_VERSION" => "5.010",
+  "MIN_PERL_VERSION" => "5.012",
   "NAME" => "OpenCloset::Schema",
   "PREREQ_PM" => {
     "DBIx::Class::Core" => 0,
@@ -27,6 +27,7 @@ my %WriteMakefileArgs = (
     "DBIx::Class::Schema" => 0,
     "DBIx::Class::TimeStamp" => 0,
     "base" => 0,
+    "experimental" => 0,
     "overload" => 0,
     "strict" => 0,
     "utf8" => 0,
@@ -54,6 +55,7 @@ my %FallbackPrereqs = (
   "File::Spec" => 0,
   "Test::More" => 0,
   "base" => 0,
+  "experimental" => 0,
   "overload" => 0,
   "strict" => 0,
   "utf8" => 0,

@@ -4,8 +4,9 @@ requires "DBIx::Class::InflateColumn::DateTime" => "0";
 requires "DBIx::Class::Schema" => "0";
 requires "DBIx::Class::TimeStamp" => "0";
 requires "base" => "0";
+requires "experimental" => "0";
 requires "overload" => "0";
-requires "perl" => "5.010";
+requires "perl" => "5.012";
 requires "strict" => "0";
 requires "utf8" => "0";
 requires "warnings" => "0";
@@ -14,7 +15,7 @@ on 'test' => sub {
   requires "ExtUtils::MakeMaker" => "0";
   requires "File::Spec" => "0";
   requires "Test::More" => "0";
-  requires "perl" => "5.010";
+  requires "perl" => "5.012";
 };
 
 on 'test' => sub {
@@ -23,7 +24,7 @@ on 'test' => sub {
 
 on 'configure' => sub {
   requires "ExtUtils::MakeMaker" => "6.17";
-  requires "perl" => "5.010";
+  requires "perl" => "5.012";
 };
 
 on 'develop' => sub {
@@ -34,6 +35,7 @@ on 'develop' => sub {
   requires "File::Temp" => "0";
   requires "IO::Handle" => "0";
   requires "IPC::Open3" => "0";
+  requires "OpenCloset::Config" => "0.001";
   requires "Pod::Coverage::TrustPod" => "0";
   requires "Test::CPAN::Meta" => "0";
   requires "Test::More" => "0";
