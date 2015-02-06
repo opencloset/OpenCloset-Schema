@@ -1,10 +1,9 @@
-#<<<
 use utf8;
+
 package OpenCloset::Schema::Result::OrderStatusLog;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
-
 
 =head1 NAME
 
@@ -15,20 +14,17 @@ OpenCloset::Schema::Result::OrderStatusLog
 use strict;
 use warnings;
 
-
 =head1 BASE CLASS: L<OpenCloset::Schema::Base>
 
 =cut
 
 use base 'OpenCloset::Schema::Base';
 
-
 =head1 TABLE: C<order_status_log>
 
 =cut
 
 __PACKAGE__->table("order_status_log");
-
 
 =head1 ACCESSORS
 
@@ -56,29 +52,28 @@ __PACKAGE__->table("order_status_log");
 =cut
 
 __PACKAGE__->add_columns(
-  "order_id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 0,
-  },
-  "status_id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 0,
-  },
-  "timestamp",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    inflate_datetime => 1,
-    is_nullable => 0,
-  },
+    "order_id",
+    {
+        data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 0,
+    },
+    "status_id",
+    {
+        data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 0,
+    },
+    "timestamp",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 0,
+    },
 );
-
 
 =head1 RELATIONS
 
@@ -91,12 +86,11 @@ Related object: L<OpenCloset::Schema::Result::Order>
 =cut
 
 __PACKAGE__->belongs_to(
-  "order",
-  "OpenCloset::Schema::Result::Order",
-  { id => "order_id" },
-  { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
+    "order",
+    "OpenCloset::Schema::Result::Order",
+    { id            => "order_id" },
+    { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
-
 
 =head2 status
 
@@ -107,16 +101,14 @@ Related object: L<OpenCloset::Schema::Result::Status>
 =cut
 
 __PACKAGE__->belongs_to(
-  "status",
-  "OpenCloset::Schema::Result::Status",
-  { id => "status_id" },
-  { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
+    "status",
+    "OpenCloset::Schema::Result::Status",
+    { id            => "status_id" },
+    { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
-#>>>
-
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TjPcAXerRo3+Gi6unCuKhA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:56
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:GyqcGP9T4QDe0jQCTSFpWQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

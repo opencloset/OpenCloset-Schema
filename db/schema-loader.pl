@@ -2,6 +2,9 @@ use v5.18;
 use strict;
 use warnings;
 
+use File::Which;
+use IPC::Open2;
+
 my $dsn  = $ENV{OPENCLOSET_DATABASE_DSN}  || "dbi:mysql:opencloset:127.0.0.1";
 my $name = $ENV{OPENCLOSET_DATABASE_NAME} || 'opencloset';
 my $user = $ENV{OPENCLOSET_DATABASE_USER} || 'opencloset';
@@ -40,7 +43,26 @@ my $db_opts = {
         result_base_class         => 'OpenCloset::Schema::Base',
         overwrite_modifications   => 1,
         datetime_undef_if_invalid => 1,
-        filter_generated_code     => sub { return "#<<<\n$_[2]\n#>>>"; },
+        filter_generated_code     => sub {
+            my ( $type, $class, $source ) = @_;
+
+            my $tidyall = File::Which::which('tidyall');
+            die "cannot find tidyall binary\n" unless $tidyall;
+
+            my $path = $class;
+            $path =~ s{::}{/};
+            $path = "lib/$path.pm";
+
+            my ( $stdout, $stdin );
+            my $pid = open2( $stdout, $stdin, 'tidyall', '-p', $path );
+            print $stdin $source;
+            close $stdin;
+            my $destination = do { local $/; <$stdout> };
+            close $stdout;
+            waitpid( $pid, 0 );
+
+            return $destination;
+        },
         custom_column_info        => sub {
             my ( $table, $col_name, $col_info ) = @_;
 

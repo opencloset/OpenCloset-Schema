@@ -1,10 +1,9 @@
-#<<<
 use utf8;
+
 package OpenCloset::Schema::Result::Group;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
-
 
 =head1 NAME
 
@@ -15,20 +14,17 @@ OpenCloset::Schema::Result::Group
 use strict;
 use warnings;
 
-
 =head1 BASE CLASS: L<OpenCloset::Schema::Base>
 
 =cut
 
 use base 'OpenCloset::Schema::Base';
 
-
 =head1 TABLE: C<group>
 
 =cut
 
 __PACKAGE__->table("group");
-
 
 =head1 ACCESSORS
 
@@ -42,15 +38,14 @@ __PACKAGE__->table("group");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
+    "id",
+    {
+        data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
 );
-
 
 =head1 PRIMARY KEY
 
@@ -64,7 +59,6 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
-
 =head1 RELATIONS
 
 =head2 clothes
@@ -76,16 +70,14 @@ Related object: L<OpenCloset::Schema::Result::Clothes>
 =cut
 
 __PACKAGE__->has_many(
-  "clothes",
-  "OpenCloset::Schema::Result::Clothes",
-  { "foreign.group_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "clothes",
+    "OpenCloset::Schema::Result::Clothes",
+    { "foreign.group_id" => "self.id" },
+    { cascade_copy       => 0, cascade_delete => 0 },
 );
 
-#>>>
-
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:urQ3m+fJ+U6QtldkG9YR8Q
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:u/bWUzfgSPH9RZl9Fr8N1w
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

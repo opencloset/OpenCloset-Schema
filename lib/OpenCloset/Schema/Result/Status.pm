@@ -1,10 +1,9 @@
-#<<<
 use utf8;
+
 package OpenCloset::Schema::Result::Status;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
-
 
 =head1 NAME
 
@@ -15,20 +14,17 @@ OpenCloset::Schema::Result::Status
 use strict;
 use warnings;
 
-
 =head1 BASE CLASS: L<OpenCloset::Schema::Base>
 
 =cut
 
 use base 'OpenCloset::Schema::Base';
 
-
 =head1 TABLE: C<status>
 
 =cut
 
 __PACKAGE__->table("status");
-
 
 =head1 ACCESSORS
 
@@ -48,17 +44,16 @@ __PACKAGE__->table("status");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "name",
-  { data_type => "varchar", is_nullable => 0, size => 64 },
+    "id",
+    {
+        data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
+    "name",
+    { data_type => "varchar", is_nullable => 0, size => 64 },
 );
-
 
 =head1 PRIMARY KEY
 
@@ -72,7 +67,6 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
-
 =head1 UNIQUE CONSTRAINTS
 
 =head2 C<name>
@@ -85,8 +79,7 @@ __PACKAGE__->set_primary_key("id");
 
 =cut
 
-__PACKAGE__->add_unique_constraint("name", ["name"]);
-
+__PACKAGE__->add_unique_constraint( "name", ["name"] );
 
 =head1 RELATIONS
 
@@ -99,12 +92,11 @@ Related object: L<OpenCloset::Schema::Result::Clothes>
 =cut
 
 __PACKAGE__->has_many(
-  "clothes",
-  "OpenCloset::Schema::Result::Clothes",
-  { "foreign.status_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "clothes",
+    "OpenCloset::Schema::Result::Clothes",
+    { "foreign.status_id" => "self.id" },
+    { cascade_copy        => 0, cascade_delete => 0 },
 );
-
 
 =head2 order_details
 
@@ -115,12 +107,9 @@ Related object: L<OpenCloset::Schema::Result::OrderDetail>
 =cut
 
 __PACKAGE__->has_many(
-  "order_details",
-  "OpenCloset::Schema::Result::OrderDetail",
-  { "foreign.status_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "order_details", "OpenCloset::Schema::Result::OrderDetail",
+    { "foreign.status_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
 );
-
 
 =head2 order_status_logs
 
@@ -131,12 +120,9 @@ Related object: L<OpenCloset::Schema::Result::OrderStatusLog>
 =cut
 
 __PACKAGE__->has_many(
-  "order_status_logs",
-  "OpenCloset::Schema::Result::OrderStatusLog",
-  { "foreign.status_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "order_status_logs", "OpenCloset::Schema::Result::OrderStatusLog",
+    { "foreign.status_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
 );
-
 
 =head2 orders
 
@@ -147,16 +133,14 @@ Related object: L<OpenCloset::Schema::Result::Order>
 =cut
 
 __PACKAGE__->has_many(
-  "orders",
-  "OpenCloset::Schema::Result::Order",
-  { "foreign.status_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "orders",
+    "OpenCloset::Schema::Result::Order",
+    { "foreign.status_id" => "self.id" },
+    { cascade_copy        => 0, cascade_delete => 0 },
 );
 
-#>>>
-
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:BgD1Gol96AV/xjeRi++DBA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:s75/3rB1hoH+Z3n+wpdPVQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

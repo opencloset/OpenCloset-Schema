@@ -1,10 +1,9 @@
-#<<<
 use utf8;
+
 package OpenCloset::Schema::Result::Order;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
-
 
 =head1 NAME
 
@@ -15,20 +14,17 @@ OpenCloset::Schema::Result::Order
 use strict;
 use warnings;
 
-
 =head1 BASE CLASS: L<OpenCloset::Schema::Base>
 
 =cut
 
 use base 'OpenCloset::Schema::Base';
 
-
 =head1 TABLE: C<order>
 
 =cut
 
 __PACKAGE__->table("order");
-
 
 =head1 ACCESSORS
 
@@ -242,144 +238,143 @@ __PACKAGE__->table("order");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "user_id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 0,
-  },
-  "status_id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 1,
-  },
-  "staff_id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 1,
-  },
-  "parent_id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 1,
-  },
-  "booking_id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 1,
-  },
-  "additional_day",
-  {
-    data_type => "integer",
-    default_value => 0,
-    extra => { unsigned => 1 },
-    is_nullable => 1,
-  },
-  "rental_date",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    inflate_datetime => 1,
-    is_nullable => 1,
-  },
-  "target_date",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    inflate_datetime => 1,
-    is_nullable => 1,
-  },
-  "user_target_date",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    inflate_datetime => 1,
-    is_nullable => 1,
-  },
-  "return_date",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    inflate_datetime => 1,
-    is_nullable => 1,
-  },
-  "return_method",
-  { data_type => "varchar", is_nullable => 1, size => 32 },
-  "price_pay_with",
-  { data_type => "varchar", is_nullable => 1, size => 32 },
-  "late_fee_pay_with",
-  { data_type => "varchar", is_nullable => 1, size => 32 },
-  "compensation_pay_with",
-  { data_type => "varchar", is_nullable => 1, size => 32 },
-  "desc",
-  { data_type => "text", is_nullable => 1 },
-  "purpose",
-  { data_type => "varchar", is_nullable => 1, size => 128 },
-  "purpose2",
-  { data_type => "text", is_nullable => 1 },
-  "pre_category",
-  { data_type => "varchar", is_nullable => 1, size => 128 },
-  "pre_color",
-  { data_type => "varchar", is_nullable => 1, size => 32 },
-  "height",
-  { data_type => "integer", is_nullable => 1 },
-  "weight",
-  { data_type => "integer", is_nullable => 1 },
-  "bust",
-  { data_type => "integer", is_nullable => 1 },
-  "waist",
-  { data_type => "integer", is_nullable => 1 },
-  "hip",
-  { data_type => "integer", is_nullable => 1 },
-  "belly",
-  { data_type => "integer", is_nullable => 1 },
-  "thigh",
-  { data_type => "integer", is_nullable => 1 },
-  "arm",
-  { data_type => "integer", is_nullable => 1 },
-  "leg",
-  { data_type => "integer", is_nullable => 1 },
-  "knee",
-  { data_type => "integer", is_nullable => 1 },
-  "foot",
-  { data_type => "integer", is_nullable => 1 },
-  "bestfit",
-  { data_type => "tinyint", default_value => 0, is_nullable => 1 },
-  "create_date",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    inflate_datetime => 1,
-    is_nullable => 1,
-    set_on_create => 1,
-  },
-  "update_date",
-  {
-    data_type                 => "datetime",
-    datetime_undef_if_invalid => 1,
-    inflate_datetime          => 1,
-    is_nullable               => 1,
-    set_on_create             => 1,
-    set_on_update             => 1,
-  },
+    "id",
+    {
+        data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
+    "user_id",
+    {
+        data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 0,
+    },
+    "status_id",
+    {
+        data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
+    "staff_id",
+    {
+        data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
+    "parent_id",
+    {
+        data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
+    "booking_id",
+    {
+        data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
+    "additional_day",
+    {
+        data_type     => "integer",
+        default_value => 0,
+        extra         => { unsigned => 1 },
+        is_nullable   => 1,
+    },
+    "rental_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+    },
+    "target_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+    },
+    "user_target_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+    },
+    "return_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+    },
+    "return_method",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "price_pay_with",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "late_fee_pay_with",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "compensation_pay_with",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "desc",
+    { data_type => "text", is_nullable => 1 },
+    "purpose",
+    { data_type => "varchar", is_nullable => 1, size => 128 },
+    "purpose2",
+    { data_type => "text", is_nullable => 1 },
+    "pre_category",
+    { data_type => "varchar", is_nullable => 1, size => 128 },
+    "pre_color",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "height",
+    { data_type => "integer", is_nullable => 1 },
+    "weight",
+    { data_type => "integer", is_nullable => 1 },
+    "bust",
+    { data_type => "integer", is_nullable => 1 },
+    "waist",
+    { data_type => "integer", is_nullable => 1 },
+    "hip",
+    { data_type => "integer", is_nullable => 1 },
+    "belly",
+    { data_type => "integer", is_nullable => 1 },
+    "thigh",
+    { data_type => "integer", is_nullable => 1 },
+    "arm",
+    { data_type => "integer", is_nullable => 1 },
+    "leg",
+    { data_type => "integer", is_nullable => 1 },
+    "knee",
+    { data_type => "integer", is_nullable => 1 },
+    "foot",
+    { data_type => "integer", is_nullable => 1 },
+    "bestfit",
+    { data_type => "tinyint", default_value => 0, is_nullable => 1 },
+    "create_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+        set_on_create             => 1,
+    },
+    "update_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+        set_on_create             => 1,
+        set_on_update             => 1,
+    },
 );
-
 
 =head1 PRIMARY KEY
 
@@ -393,7 +388,6 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
-
 =head1 RELATIONS
 
 =head2 booking
@@ -405,17 +399,16 @@ Related object: L<OpenCloset::Schema::Result::Booking>
 =cut
 
 __PACKAGE__->belongs_to(
-  "booking",
-  "OpenCloset::Schema::Result::Booking",
-  { id => "booking_id" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "RESTRICT",
-  },
+    "booking",
+    "OpenCloset::Schema::Result::Booking",
+    { id => "booking_id" },
+    {
+        is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "CASCADE",
+        on_update     => "RESTRICT",
+    },
 );
-
 
 =head2 order_details
 
@@ -426,12 +419,9 @@ Related object: L<OpenCloset::Schema::Result::OrderDetail>
 =cut
 
 __PACKAGE__->has_many(
-  "order_details",
-  "OpenCloset::Schema::Result::OrderDetail",
-  { "foreign.order_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "order_details", "OpenCloset::Schema::Result::OrderDetail",
+    { "foreign.order_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
 );
-
 
 =head2 order_status_logs
 
@@ -442,12 +432,9 @@ Related object: L<OpenCloset::Schema::Result::OrderStatusLog>
 =cut
 
 __PACKAGE__->has_many(
-  "order_status_logs",
-  "OpenCloset::Schema::Result::OrderStatusLog",
-  { "foreign.order_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "order_status_logs", "OpenCloset::Schema::Result::OrderStatusLog",
+    { "foreign.order_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
 );
-
 
 =head2 orders
 
@@ -458,12 +445,11 @@ Related object: L<OpenCloset::Schema::Result::Order>
 =cut
 
 __PACKAGE__->has_many(
-  "orders",
-  "OpenCloset::Schema::Result::Order",
-  { "foreign.parent_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "orders",
+    "OpenCloset::Schema::Result::Order",
+    { "foreign.parent_id" => "self.id" },
+    { cascade_copy        => 0, cascade_delete => 0 },
 );
-
 
 =head2 parent
 
@@ -474,17 +460,16 @@ Related object: L<OpenCloset::Schema::Result::Order>
 =cut
 
 __PACKAGE__->belongs_to(
-  "parent",
-  "OpenCloset::Schema::Result::Order",
-  { id => "parent_id" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "RESTRICT",
-  },
+    "parent",
+    "OpenCloset::Schema::Result::Order",
+    { id => "parent_id" },
+    {
+        is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "CASCADE",
+        on_update     => "RESTRICT",
+    },
 );
-
 
 =head2 staff
 
@@ -495,17 +480,16 @@ Related object: L<OpenCloset::Schema::Result::User>
 =cut
 
 __PACKAGE__->belongs_to(
-  "staff",
-  "OpenCloset::Schema::Result::User",
-  { id => "staff_id" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "RESTRICT",
-  },
+    "staff",
+    "OpenCloset::Schema::Result::User",
+    { id => "staff_id" },
+    {
+        is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "CASCADE",
+        on_update     => "RESTRICT",
+    },
 );
-
 
 =head2 status
 
@@ -516,17 +500,16 @@ Related object: L<OpenCloset::Schema::Result::Status>
 =cut
 
 __PACKAGE__->belongs_to(
-  "status",
-  "OpenCloset::Schema::Result::Status",
-  { id => "status_id" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "RESTRICT",
-  },
+    "status",
+    "OpenCloset::Schema::Result::Status",
+    { id => "status_id" },
+    {
+        is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "CASCADE",
+        on_update     => "RESTRICT",
+    },
 );
-
 
 =head2 user
 
@@ -537,16 +520,14 @@ Related object: L<OpenCloset::Schema::Result::User>
 =cut
 
 __PACKAGE__->belongs_to(
-  "user",
-  "OpenCloset::Schema::Result::User",
-  { id => "user_id" },
-  { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
+    "user",
+    "OpenCloset::Schema::Result::User",
+    { id            => "user_id" },
+    { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
 );
 
-#>>>
-
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:EEfQkysmIX5o1Ut9iGb7gQ
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:56
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7eIHlC/E66DxWvMmOUnAtQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

@@ -1,10 +1,9 @@
-#<<<
 use utf8;
+
 package OpenCloset::Schema::Result::User;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
-
 
 =head1 NAME
 
@@ -15,20 +14,17 @@ OpenCloset::Schema::Result::User
 use strict;
 use warnings;
 
-
 =head1 BASE CLASS: L<OpenCloset::Schema::Base>
 
 =cut
 
 use base 'OpenCloset::Schema::Base';
 
-
 =head1 TABLE: C<user>
 
 =cut
 
 __PACKAGE__->table("user");
-
 
 =head1 ACCESSORS
 
@@ -88,48 +84,47 @@ first 40 length for digest, after 10 length for salt(random)
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "name",
-  { data_type => "varchar", is_nullable => 0, size => 32 },
-  "email",
-  { data_type => "varchar", is_nullable => 1, size => 128 },
-  "password",
-  {
-    data_type           => "char",
-    encode_args         => { algorithm => "SHA-1", format => "hex", salt_length => 10 },
-    encode_check_method => "check_password",
-    encode_class        => "Digest",
-    encode_column       => 1,
-    is_nullable         => 1,
-    size                => 50,
-  },
-  "expires",
-  { data_type => "integer", is_nullable => 1 },
-  "create_date",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    inflate_datetime => 1,
-    is_nullable => 1,
-    set_on_create => 1,
-  },
-  "update_date",
-  {
-    data_type                 => "datetime",
-    datetime_undef_if_invalid => 1,
-    inflate_datetime          => 1,
-    is_nullable               => 1,
-    set_on_create             => 1,
-    set_on_update             => 1,
-  },
+    "id",
+    {
+        data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
+    "name",
+    { data_type => "varchar", is_nullable => 0, size => 32 },
+    "email",
+    { data_type => "varchar", is_nullable => 1, size => 128 },
+    "password",
+    {
+        data_type           => "char",
+        encode_args         => { algorithm => "SHA-1", format => "hex", salt_length => 10 },
+        encode_check_method => "check_password",
+        encode_class        => "Digest",
+        encode_column       => 1,
+        is_nullable         => 1,
+        size                => 50,
+    },
+    "expires",
+    { data_type => "integer", is_nullable => 1 },
+    "create_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+        set_on_create             => 1,
+    },
+    "update_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+        set_on_create             => 1,
+        set_on_update             => 1,
+    },
 );
-
 
 =head1 PRIMARY KEY
 
@@ -143,7 +138,6 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
-
 =head1 UNIQUE CONSTRAINTS
 
 =head2 C<email>
@@ -156,8 +150,7 @@ __PACKAGE__->set_primary_key("id");
 
 =cut
 
-__PACKAGE__->add_unique_constraint("email", ["email"]);
-
+__PACKAGE__->add_unique_constraint( "email", ["email"] );
 
 =head1 RELATIONS
 
@@ -170,12 +163,11 @@ Related object: L<OpenCloset::Schema::Result::Donation>
 =cut
 
 __PACKAGE__->has_many(
-  "donations",
-  "OpenCloset::Schema::Result::Donation",
-  { "foreign.user_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "donations",
+    "OpenCloset::Schema::Result::Donation",
+    { "foreign.user_id" => "self.id" },
+    { cascade_copy      => 0, cascade_delete => 0 },
 );
-
 
 =head2 order_staffs
 
@@ -186,12 +178,11 @@ Related object: L<OpenCloset::Schema::Result::Order>
 =cut
 
 __PACKAGE__->has_many(
-  "order_staffs",
-  "OpenCloset::Schema::Result::Order",
-  { "foreign.staff_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "order_staffs",
+    "OpenCloset::Schema::Result::Order",
+    { "foreign.staff_id" => "self.id" },
+    { cascade_copy       => 0, cascade_delete => 0 },
 );
-
 
 =head2 orders
 
@@ -202,12 +193,11 @@ Related object: L<OpenCloset::Schema::Result::Order>
 =cut
 
 __PACKAGE__->has_many(
-  "orders",
-  "OpenCloset::Schema::Result::Order",
-  { "foreign.user_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "orders",
+    "OpenCloset::Schema::Result::Order",
+    { "foreign.user_id" => "self.id" },
+    { cascade_copy      => 0, cascade_delete => 0 },
 );
-
 
 =head2 satisfactions
 
@@ -218,12 +208,9 @@ Related object: L<OpenCloset::Schema::Result::Satisfaction>
 =cut
 
 __PACKAGE__->has_many(
-  "satisfactions",
-  "OpenCloset::Schema::Result::Satisfaction",
-  { "foreign.user_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "satisfactions", "OpenCloset::Schema::Result::Satisfaction",
+    { "foreign.user_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
 );
-
 
 =head2 user_info
 
@@ -234,16 +221,14 @@ Related object: L<OpenCloset::Schema::Result::UserInfo>
 =cut
 
 __PACKAGE__->might_have(
-  "user_info",
-  "OpenCloset::Schema::Result::UserInfo",
-  { "foreign.user_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "user_info",
+    "OpenCloset::Schema::Result::UserInfo",
+    { "foreign.user_id" => "self.id" },
+    { cascade_copy      => 0, cascade_delete => 0 },
 );
 
-#>>>
-
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:mfDmD7O195FZeI/jqWSNoQ
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6cJpk2AcVc7S6vxVht03Ag
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

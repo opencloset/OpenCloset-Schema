@@ -1,10 +1,9 @@
-#<<<
 use utf8;
+
 package OpenCloset::Schema::Result::SMS;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
-
 
 =head1 NAME
 
@@ -15,20 +14,17 @@ OpenCloset::Schema::Result::SMS
 use strict;
 use warnings;
 
-
 =head1 BASE CLASS: L<OpenCloset::Schema::Base>
 
 =cut
 
 use base 'OpenCloset::Schema::Base';
 
-
 =head1 TABLE: C<sms>
 
 =cut
 
 __PACKAGE__->table("sms");
-
 
 =head1 ACCESSORS
 
@@ -87,45 +83,44 @@ __PACKAGE__->table("sms");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "from",
-  { data_type => "varchar", is_nullable => 0, size => 12 },
-  "to",
-  { data_type => "varchar", is_nullable => 0, size => 12 },
-  "text",
-  { data_type => "varchar", is_nullable => 0, size => 256 },
-  "ret",
-  { data_type => "integer", is_nullable => 1 },
-  "status",
-  {
-    data_type => "varchar",
-    default_value => "pending",
-    is_nullable => 1,
-    size => 7,
-  },
-  "sent_date",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    inflate_datetime => 1,
-    is_nullable => 1,
-  },
-  "create_date",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    inflate_datetime => 1,
-    is_nullable => 1,
-    set_on_create => 1,
-  },
+    "id",
+    {
+        data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
+    "from",
+    { data_type => "varchar", is_nullable => 0, size => 12 },
+    "to",
+    { data_type => "varchar", is_nullable => 0, size => 12 },
+    "text",
+    { data_type => "varchar", is_nullable => 0, size => 256 },
+    "ret",
+    { data_type => "integer", is_nullable => 1 },
+    "status",
+    {
+        data_type     => "varchar",
+        default_value => "pending",
+        is_nullable   => 1,
+        size          => 7,
+    },
+    "sent_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+    },
+    "create_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+        set_on_create             => 1,
+    },
 );
-
 
 =head1 PRIMARY KEY
 
@@ -139,10 +134,8 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
-#>>>
-
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ysdG0HESA4WxG6ZrrR9JEQ
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+Awn15kcC/UlOw8JiMpSig
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
