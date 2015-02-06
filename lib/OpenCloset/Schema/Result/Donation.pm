@@ -5,6 +5,7 @@ package OpenCloset::Schema::Result::Donation;
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
+
 =head1 NAME
 
 OpenCloset::Schema::Result::Donation
@@ -14,17 +15,20 @@ OpenCloset::Schema::Result::Donation
 use strict;
 use warnings;
 
+
 =head1 BASE CLASS: L<OpenCloset::Schema::Base>
 
 =cut
 
 use base 'OpenCloset::Schema::Base';
 
+
 =head1 TABLE: C<donation>
 
 =cut
 
 __PACKAGE__->table("donation");
+
 
 =head1 ACCESSORS
 
@@ -84,6 +88,7 @@ __PACKAGE__->add_columns(
   },
 );
 
+
 =head1 PRIMARY KEY
 
 =over 4
@@ -95,6 +100,7 @@ __PACKAGE__->add_columns(
 =cut
 
 __PACKAGE__->set_primary_key("id");
+
 
 =head1 RELATIONS
 
@@ -112,6 +118,7 @@ __PACKAGE__->has_many(
   { "foreign.donation_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
+
 
 =head2 user
 
@@ -132,7 +139,6 @@ __PACKAGE__->belongs_to(
 
 # Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:n58eJbY+RMMq+fBPYcw9zA
-
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

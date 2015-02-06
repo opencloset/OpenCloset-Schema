@@ -5,6 +5,7 @@ package OpenCloset::Schema::Result::Clothes;
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
+
 =head1 NAME
 
 OpenCloset::Schema::Result::Clothes
@@ -14,17 +15,20 @@ OpenCloset::Schema::Result::Clothes
 use strict;
 use warnings;
 
+
 =head1 BASE CLASS: L<OpenCloset::Schema::Base>
 
 =cut
 
 use base 'OpenCloset::Schema::Base';
 
+
 =head1 TABLE: C<clothes>
 
 =cut
 
 __PACKAGE__->table("clothes");
+
 
 =head1 ACCESSORS
 
@@ -208,6 +212,7 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 32 },
 );
 
+
 =head1 PRIMARY KEY
 
 =over 4
@@ -219,6 +224,7 @@ __PACKAGE__->add_columns(
 =cut
 
 __PACKAGE__->set_primary_key("id");
+
 
 =head1 UNIQUE CONSTRAINTS
 
@@ -233,6 +239,7 @@ __PACKAGE__->set_primary_key("id");
 =cut
 
 __PACKAGE__->add_unique_constraint("code", ["code"]);
+
 
 =head1 RELATIONS
 
@@ -250,6 +257,7 @@ __PACKAGE__->has_many(
   { "foreign.clothes_code" => "self.code" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
+
 
 =head2 donation
 
@@ -271,6 +279,7 @@ __PACKAGE__->belongs_to(
   },
 );
 
+
 =head2 group
 
 Type: belongs_to
@@ -291,6 +300,7 @@ __PACKAGE__->belongs_to(
   },
 );
 
+
 =head2 order_details
 
 Type: has_many
@@ -306,6 +316,7 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+
 =head2 satisfactions
 
 Type: has_many
@@ -320,6 +331,7 @@ __PACKAGE__->has_many(
   { "foreign.clothes_code" => "self.code" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
+
 
 =head2 status
 
@@ -341,6 +353,7 @@ __PACKAGE__->belongs_to(
   },
 );
 
+
 =head2 tags
 
 Type: many_to_many
@@ -356,7 +369,6 @@ __PACKAGE__->many_to_many("tags", "clothes_tags", "tag");
 # Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/AlSUh2H4vJgpWXKKWXT8g
 
-
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
 # ABSTRACT: OpenCloset Database Schema Class
@@ -371,7 +383,7 @@ Composing rels: L</order_details> -> order
 
 =cut
 
-__PACKAGE__->many_to_many("orders", "order_details", "order");
+__PACKAGE__->many_to_many( "orders", "order_details", "order" );
 
 1;
 

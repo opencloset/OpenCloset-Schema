@@ -5,6 +5,7 @@ package OpenCloset::Schema::Result::SMS;
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
+
 =head1 NAME
 
 OpenCloset::Schema::Result::SMS
@@ -14,17 +15,20 @@ OpenCloset::Schema::Result::SMS
 use strict;
 use warnings;
 
+
 =head1 BASE CLASS: L<OpenCloset::Schema::Base>
 
 =cut
 
 use base 'OpenCloset::Schema::Base';
 
+
 =head1 TABLE: C<sms>
 
 =cut
 
 __PACKAGE__->table("sms");
+
 
 =head1 ACCESSORS
 
@@ -122,6 +126,7 @@ __PACKAGE__->add_columns(
   },
 );
 
+
 =head1 PRIMARY KEY
 
 =over 4
@@ -138,7 +143,6 @@ __PACKAGE__->set_primary_key("id");
 
 # Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 13:10:46
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ysdG0HESA4WxG6ZrrR9JEQ
-
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
