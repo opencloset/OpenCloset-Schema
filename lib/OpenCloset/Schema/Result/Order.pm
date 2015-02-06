@@ -548,7 +548,101 @@ Composing rels: L</order_details> -> clothes
 
 =cut
 
-__PACKAGE__->many_to_many("clothes", "order_details", "clothes");
+__PACKAGE__->many_to_many( "clothes", "order_details", "clothes" );
+
+#
+# Additional Methods
+#
+
+sub _normalize_status_name {
+    my ( $self, $name ) = @_;
+
+    return unless $name;
+
+    my $normalize = $name;
+    {
+        use experimental qw( switch );
+
+        given ($name) {
+            $normalize = '대기' when '방문';
+            $normalize = '탈의' when /^탈의\d+$/;
+            $normalize = '대여' when '대여중';
+            $normalize = '결제' when '결제대기';
+            $normalize = '예약' when '방문예약';
+        }
+    }
+
+    return $normalize;
+}
+
+=method analyze_order_status_logs
+
+주문서의 상태 로그를 분석해 각 단계별 로그 정보와
+정규화한 각 단계별 소요 시간을 반환합니다.
+
+    my $order = $schema->resultset('Order')->find(13);
+    my %result = $order->analyze_order_status_logs;
+    #
+    # check each logs
+    #
+    for my $log ( @{ $result{logs} } ) {
+        my $status           = $log->{status};           # status name
+        my $normalize_status = $log->{normalize_status}; # normalize status name
+        my $timestamp        = $log->{timestamp};        # DateTime object
+        my $delta            = $log->{delta};            # seconds
+                                                         # undef means last status
+    }
+    #
+    # check elapsed time
+    #
+    for my $normalize_status ( keys %{ $result{elapsed_time} } ) {
+        print "$normalize_status: $result{elapsed_time}{$normalize_status} sec\n";
+    }
+
+=cut
+
+sub analyze_order_status_logs {
+    my $self = shift;
+
+    my @status_logs =
+        $self->order_status_logs( {}, { order_by => { -asc => 'timestamp' } } );
+
+    my @logs;
+    my %elapsed_time;
+    for ( my $i = 0; $i < @status_logs; $i++ ) {
+        #
+        # generate log
+        #
+        my $current = $status_logs[$i];
+
+        my %log = (
+            status           => $current->status->name,
+            normalize_status => $self->_normalize_status_name( $current->status->name ),
+            timestamp        => $current->timestamp,
+            delta            => undef,
+        );
+
+        if ( ( $i + 1 ) < @status_logs ) {
+            my $next = $status_logs[ $i + 1 ];
+            $log{delta} = $next->timestamp->epoch - $current->timestamp->epoch;
+        }
+        push @logs, \%log;
+
+        #
+        # sum elapsed time for each normalized status
+        #
+        $elapsed_time{ $log{normalize_status} } = 0
+            unless $elapsed_time{ $log{normalize_status} };
+        $elapsed_time{ $log{normalize_status} } += $log{delta} if $log{delta};
+    }
+
+    my %result = (
+        logs         => \@logs,
+        elapsed_time => \%elapsed_time,
+    );
+
+    return %result;
+}
 
 1;
 
