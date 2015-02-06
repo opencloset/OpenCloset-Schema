@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.004     2015-02-06 23:08:14+09:00 Asia/Seoul
     - Use OpenCloset::Config when loading config file (#6)
     - Support perltidy, perlcritic and tidyall with dbicdump (#10)
     - Add analyze_order_status_log() method in order resultset (#8)
