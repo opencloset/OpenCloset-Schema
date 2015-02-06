@@ -5,25 +5,17 @@ use warnings;
 use File::Which;
 use IPC::Open2;
 
-my $dsn  = $ENV{OPENCLOSET_DATABASE_DSN}  || "dbi:mysql:opencloset:127.0.0.1";
-my $name = $ENV{OPENCLOSET_DATABASE_NAME} || 'opencloset';
-my $user = $ENV{OPENCLOSET_DATABASE_USER} || 'opencloset';
-my $pass = $ENV{OPENCLOSET_DATABASE_PASS} // 'opencloset';
-my $db_opts = {
-    quote_char        => q{`},
-    mysql_enable_utf8 => 1,
-    on_connect_do     => 'SET NAMES utf8',
-    RaiseError        => 1,
-    AutoCommit        => 1,
-};
+use OpenCloset::Config;
+
+my $CONF = OpenCloset::Config::load;
 
 {
     schema_class => "OpenCloset::Schema",
     connect_info => {
-        dsn  => $dsn,
-        user => $user,
-        pass => $pass,
-        %{$db_opts},
+        dsn  => $CONF->{database}{dsn},
+        user => $CONF->{database}{user},
+        pass => $CONF->{database}{pass},
+        %{ $CONF->{database}{opts} },
     },
     loader_options => {
         dump_directory            => 'lib',
