@@ -134,6 +134,11 @@ __PACKAGE__->table("order");
   data_type: 'text'
   is_nullable: 1
 
+=head2 message
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 purpose
 
   data_type: 'varchar'
@@ -324,6 +329,8 @@ __PACKAGE__->add_columns(
     "compensation_pay_with",
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "desc",
+    { data_type => "text", is_nullable => 1 },
+    "message",
     { data_type => "text", is_nullable => 1 },
     "purpose",
     { data_type => "varchar", is_nullable => 1, size => 128 },
@@ -526,8 +533,8 @@ __PACKAGE__->belongs_to(
     { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
 );
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:56
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7eIHlC/E66DxWvMmOUnAtQ
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-08 17:30:31
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+Jvopj5jgfGKdxMP18JnQg
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
