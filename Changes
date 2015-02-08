@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add column: order.message (#12)
 
 0.004     2015-02-06 23:08:14+09:00 Asia/Seoul
     - Use OpenCloset::Config when loading config file (#6)
