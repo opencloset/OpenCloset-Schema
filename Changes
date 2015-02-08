@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.005     2015-02-08 17:37:00+09:00 Asia/Seoul
     - Add column: order.message (#12)
 
 0.004     2015-02-06 23:08:14+09:00 Asia/Seoul
