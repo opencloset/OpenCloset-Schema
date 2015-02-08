@@ -328,7 +328,7 @@ CREATE TABLE `order` (
   `late_fee_pay_with`     VARCHAR(32) DEFAULT NULL,
   `compensation_pay_with` VARCHAR(32) DEFAULT NULL,
   `desc`                  TEXT DEFAULT NULL,
-
+  `message`               TEXT DEFAULT NULL,
 
   -- guest info
   `purpose`               VARCHAR(128) DEFAULT NULL,
