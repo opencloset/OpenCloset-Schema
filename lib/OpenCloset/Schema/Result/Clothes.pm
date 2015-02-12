@@ -83,6 +83,12 @@ __PACKAGE__->table("clothes");
   default_value: 0
   is_nullable: 1
 
+=head2 topbelly
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
 =head2 belly
 
   data_type: 'integer'
@@ -185,6 +191,8 @@ __PACKAGE__->add_columns(
     "waist",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "hip",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "topbelly",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "belly",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
@@ -351,8 +359,9 @@ Composing rels: L</clothes_tags> -> tag
 
 __PACKAGE__->many_to_many( "tags", "clothes_tags", "tag" );
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:glCnUFHCQWiINNq2sjvSiQ
+
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-13 05:33:40
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZV0rYgFKTaBp2E9PnBfnlA
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

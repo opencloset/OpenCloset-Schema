@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add user_info.topbelly, clothes.topbelly and order.topbelly (#16)
 
 0.006     2015-02-12 16:57:08+09:00 Asia/Seoul
     - Modify sms.text column type to support LMS (#14)
