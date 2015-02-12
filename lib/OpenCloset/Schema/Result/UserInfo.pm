@@ -131,6 +131,11 @@ male/female
   data_type: 'integer'
   is_nullable: 1
 
+=head2 topbelly
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =head2 belly
 
   data_type: 'integer'
@@ -235,6 +240,8 @@ __PACKAGE__->add_columns(
     { data_type => "integer", is_nullable => 1 },
     "hip",
     { data_type => "integer", is_nullable => 1 },
+    "topbelly",
+    { data_type => "integer", is_nullable => 1 },
     "belly",
     { data_type => "integer", is_nullable => 1 },
     "thigh",
@@ -314,8 +321,9 @@ __PACKAGE__->belongs_to(
     { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
 );
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4nlx3gUtMmisBLQZR4ZoIw
+
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-13 05:33:42
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:IdAAW68F2wFzB+yBeA3lkg
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

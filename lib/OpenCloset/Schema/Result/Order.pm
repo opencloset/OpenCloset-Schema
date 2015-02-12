@@ -187,6 +187,11 @@ __PACKAGE__->table("order");
   data_type: 'integer'
   is_nullable: 1
 
+=head2 topbelly
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =head2 belly
 
   data_type: 'integer'
@@ -349,6 +354,8 @@ __PACKAGE__->add_columns(
     "waist",
     { data_type => "integer", is_nullable => 1 },
     "hip",
+    { data_type => "integer", is_nullable => 1 },
+    "topbelly",
     { data_type => "integer", is_nullable => 1 },
     "belly",
     { data_type => "integer", is_nullable => 1 },
@@ -533,8 +540,9 @@ __PACKAGE__->belongs_to(
     { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
 );
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-08 17:30:31
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+Jvopj5jgfGKdxMP18JnQg
+
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-13 05:33:41
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4y8LtvN3kqtaic9jyvveVQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

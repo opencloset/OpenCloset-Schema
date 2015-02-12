@@ -64,7 +64,8 @@ CREATE TABLE `user_info` (
   `bust`        INT DEFAULT NULL, -- 가슴   둘레(cm)
   `waist`       INT DEFAULT NULL, -- 허리   둘레(cm)
   `hip`         INT DEFAULT NULL, -- 엉덩이 둘레(cm)
-  `belly`       INT DEFAULT NULL, -- 배     둘레(cm)
+  `topbelly`    INT DEFAULT NULL, -- 윗배   둘레(cm)
+  `belly`       INT DEFAULT NULL, -- 배꼽   둘레(cm)
   `thigh`       INT DEFAULT NULL, -- 허벅지 둘레(cm)
   `arm`         INT DEFAULT NULL, -- 팔     길이(cm)
   `leg`         INT DEFAULT NULL, -- 다리   길이(cm)
@@ -202,7 +203,8 @@ CREATE TABLE `clothes` (
   `bust`        INT         DEFAULT 0, -- 가슴   둘레(cm)
   `waist`       INT         DEFAULT 0, -- 허리   둘레(cm)
   `hip`         INT         DEFAULT 0, -- 엉덩이 둘레(cm)
-  `belly`       INT         DEFAULT 0, -- 배     둘레(cm)
+  `topbelly`    INT         DEFAULT 0, -- 윗배   둘레(cm)
+  `belly`       INT         DEFAULT 0, -- 배꼽   둘레(cm)
   `arm`         INT         DEFAULT 0, -- 팔     길이(cm)
   `thigh`       INT         DEFAULT 0, -- 허벅지 둘레(cm)
   `length`      INT         DEFAULT 0, -- 기장(cm) 또는 발 크기(mm)
@@ -219,6 +221,7 @@ CREATE TABLE `clothes` (
   INDEX (`bust`),
   INDEX (`waist`),
   INDEX (`hip`),
+  INDEX (`topbelly`),
   INDEX (`belly`),
   INDEX (`arm`),
   INDEX (`thigh`),
@@ -340,7 +343,8 @@ CREATE TABLE `order` (
   `bust`                  INT DEFAULT NULL, -- 가슴   둘레(cm)
   `waist`                 INT DEFAULT NULL, -- 허리   둘레(cm)
   `hip`                   INT DEFAULT NULL, -- 엉덩이 둘레(cm)
-  `belly`                 INT DEFAULT NULL, -- 배     둘레(cm)
+  `topbelly`              INT DEFAULT NULL, -- 윗배   둘레(cm)
+  `belly`                 INT DEFAULT NULL, -- 배꼽   둘레(cm)
   `thigh`                 INT DEFAULT NULL, -- 허벅지 둘레(cm)
   `arm`                   INT DEFAULT NULL, -- 팔     길이(cm)
   `leg`                   INT DEFAULT NULL, -- 다리   길이(cm)
