@@ -390,7 +390,7 @@ CREATE TABLE `sms` (
 
   `from`        VARCHAR(12)  NOT NULL,
   `to`          VARCHAR(12)  NOT NULL,
-  `text`        VARCHAR(256) NOT NULL,
+  `text`        TEXT         NOT NULL,
 
   `ret`         INT          DEFAULT NULL,
   `status`      VARCHAR(7)   DEFAULT 'pending',
