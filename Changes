@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add user_info.wearon_date & order.wearon_date (#18)
 
 0.007     2015-02-13 06:01:33+09:00 Asia/Seoul
     - Add user_info.topbelly, clothes.topbelly and order.topbelly (#16)

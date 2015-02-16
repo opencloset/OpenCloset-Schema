@@ -76,6 +76,7 @@ CREATE TABLE `user_info` (
   -- etc
   --
   `staff`        BOOLEAN DEFAULT 0,
+  `wearon_date`  DATETIME DEFAULT NULL,
   `purpose`      VARCHAR(128) DEFAULT NULL,
   `purpose2`     TEXT DEFAULT NULL,
   `pre_category` VARCHAR(128) DEFAULT NULL,
@@ -323,6 +324,7 @@ CREATE TABLE `order` (
 
   `additional_day`        INT UNSIGNED DEFAULT 0,
   `rental_date`           DATETIME DEFAULT NULL,
+  `wearon_date`           DATETIME DEFAULT NULL,
   `target_date`           DATETIME DEFAULT NULL,
   `user_target_date`      DATETIME DEFAULT NULL,
   `return_date`           DATETIME DEFAULT NULL,
