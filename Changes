@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Order.analyze_order_status_logs(): prefetch status for speed (#20)
 
 0.008     2015-02-16 17:12:36+09:00 Asia/Seoul
     - Add user_info.wearon_date & order.wearon_date (#18)
@@ -17,7 +18,7 @@ Revision history for {{ $dist->name }}
 0.004     2015-02-06 23:08:14+09:00 Asia/Seoul
     - Use OpenCloset::Config when loading config file (#6)
     - Support perltidy, perlcritic and tidyall with dbicdump (#10)
-    - Add analyze_order_status_log() method in order resultset (#8)
+    - Add analyze_order_status_logs() method in order resultset (#8)
 
 0.003     2015-01-29 18:37:11+09:00 Asia/Seoul
     - Add foreign key with cascade: order_status_log.order_id  -> order.id
