@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.009     2015-02-23 16:05:33+09:00 Asia/Seoul
     - Order.analyze_order_status_logs(): prefetch status for speed (#20)
 
 0.008     2015-02-16 17:12:36+09:00 Asia/Seoul
