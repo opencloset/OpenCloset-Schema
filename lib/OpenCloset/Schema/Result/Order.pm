@@ -627,8 +627,13 @@ sub _normalize_status_name {
 sub analyze_order_status_logs {
     my $self = shift;
 
-    my @status_logs =
-        $self->order_status_logs( {}, { order_by => { -asc => 'timestamp' } } );
+    my @status_logs = $self->order_status_logs(
+        {},
+        {
+            order_by => { -asc => 'timestamp' },
+            prefetch => 'status',
+        },
+    );
 
     my @logs;
     my %elapsed_time;
