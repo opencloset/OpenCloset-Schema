@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add '사이즈없음' status (#23)
 
 0.009     2015-02-23 16:05:33+09:00 Asia/Seoul
     - Order.analyze_order_status_logs(): prefetch status for speed (#20)
