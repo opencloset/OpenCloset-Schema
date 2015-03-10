@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.010     2015-03-10 16:37:21+09:00 Asia/Seoul
     - Add '사이즈없음' status (#23)
 
 0.009     2015-02-23 16:05:33+09:00 Asia/Seoul
