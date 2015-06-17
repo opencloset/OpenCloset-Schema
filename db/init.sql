@@ -401,6 +401,7 @@ CREATE TABLE `sms` (
 
   `ret`         INT          DEFAULT NULL,
   `status`      VARCHAR(7)   DEFAULT 'pending',
+  `method`      VARCHAR(128) DEFAULT NULL,
   `sent_date`   DATETIME     DEFAULT NULL,
   `create_date` DATETIME     DEFAULT NULL,
 
