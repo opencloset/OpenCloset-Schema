@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.011     2015-06-17 22:44:29+09:00 Asia/Seoul
     - Add sms.detail to save result of sms sending (#24)
     - Add sms.method to support various sms sending module (#24)
 
