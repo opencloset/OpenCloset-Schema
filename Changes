@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.012     2015-06-18 00:55:33+09:00 Asia/Seoul
     - Fix initializing database query: sms.detail (#24)
 
 0.011     2015-06-17 22:44:29+09:00 Asia/Seoul
