@@ -70,6 +70,11 @@ __PACKAGE__->table("sms");
   is_nullable: 1
   size: 128
 
+=head2 detail
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 sent_date
 
   data_type: 'datetime'
@@ -112,6 +117,8 @@ __PACKAGE__->add_columns(
     },
     "method",
     { data_type => "varchar", is_nullable => 1, size => 128 },
+    "detail",
+    { data_type => "text", is_nullable => 1 },
     "sent_date",
     {
         data_type                 => "datetime",
@@ -142,8 +149,8 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("id");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-06-17 20:39:42
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:eskbnWJ/eHW9TNqtcWgLgg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-06-17 21:53:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:9kR3GYsSdfKk5pSv8Yuqhg
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
