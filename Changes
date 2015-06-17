@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Fix initializing database query: sms.detail (#24)
 
 0.011     2015-06-17 22:44:29+09:00 Asia/Seoul
     - Add sms.detail to save result of sms sending (#24)
