@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add sms.detail to save result of sms sending (#24)
+    - Add sms.method to support various sms sending module (#24)
 
 0.010     2015-03-10 16:37:21+09:00 Asia/Seoul
     - Add '사이즈없음' status (#23)
