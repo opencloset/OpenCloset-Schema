@@ -106,6 +106,32 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
+=head1 UNIQUE CONSTRAINTS
+
+=head2 C<email>
+
+=over 4
+
+=item * L</email>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint( "email", ["email"] );
+
+=head2 C<phone>
+
+=over 4
+
+=item * L</phone>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint( "phone", ["phone"] );
+
 =head1 RELATIONS
 
 =head2 volunteer_works
@@ -124,8 +150,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-22 10:51:39
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:FTIMFFk7O0xn7N4i3WRD2A
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-22 11:09:58
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:DNtgW6nXlOMOJZc9d4VeOQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
