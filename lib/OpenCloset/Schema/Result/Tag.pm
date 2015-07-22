@@ -106,8 +106,9 @@ Composing rels: L</clothes_tags> -> clothes
 
 __PACKAGE__->many_to_many( "clothes", "clothes_tags", "clothes" );
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:o9bcV+t/X3jj9WWeeHB3Jg
+
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-22 10:51:38
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:63W4MwOdu1Pxsdnomp9FXg
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

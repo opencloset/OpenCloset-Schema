@@ -227,8 +227,9 @@ __PACKAGE__->might_have(
     { cascade_copy      => 0, cascade_delete => 0 },
 );
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6cJpk2AcVc7S6vxVht03Ag
+
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-22 10:51:38
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:VB2d1WirShBkNEtDjOz9Dg
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

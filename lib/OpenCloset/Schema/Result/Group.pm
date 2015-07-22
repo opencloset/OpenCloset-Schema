@@ -76,8 +76,9 @@ __PACKAGE__->has_many(
     { cascade_copy       => 0, cascade_delete => 0 },
 );
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:u/bWUzfgSPH9RZl9Fr8N1w
+
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-22 10:51:36
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:aNGGJV2n/z8FdMjWKvge8w
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

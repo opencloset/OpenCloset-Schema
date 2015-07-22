@@ -554,8 +554,9 @@ __PACKAGE__->belongs_to(
     { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
 );
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-16 17:02:36
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dj4u0fmmAjLd8kpgj4pSiw
+
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-22 10:51:36
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OBBTu9+wK4LfcGv5SD+QQQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
