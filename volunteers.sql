@@ -1,3 +1,5 @@
+SET NAMES utf8;
+
 DROP TABLE IF EXISTS `volunteer_work`;
 DROP TABLE IF EXISTS `volunteer`;
 
@@ -26,9 +28,10 @@ CREATE TABLE `volunteer_work` (
   `comment`            TEXT         DEFAULT NULL,
 
   `done`               INT          DEFAULT 0 COMMENT '0: false, 1: true',
+  `authcode`           VARCHAR(32)  DEFAULT NULL,
 
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_volunteer_work1` FOREIGN KEY (`volunteer_id`) REFERENCES `volunteer` (`id`) ON DELETE CASCADE
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 평가와 방명록 table?
