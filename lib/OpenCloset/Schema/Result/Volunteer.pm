@@ -67,6 +67,14 @@ regex: 01d{8,9}
   inflate_datetime: 1
   is_nullable: 1
 
+=head2 create_date
+
+  data_type: 'datetime'
+  datetime_undef_if_invalid: 1
+  inflate_datetime: 1
+  is_nullable: 1
+  set_on_create: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -91,6 +99,14 @@ __PACKAGE__->add_columns(
         datetime_undef_if_invalid => 1,
         inflate_datetime          => 1,
         is_nullable               => 1,
+    },
+    "create_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+        set_on_create             => 1,
     },
 );
 
@@ -150,8 +166,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-22 11:09:58
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:DNtgW6nXlOMOJZc9d4VeOQ
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-23 18:25:53
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wo+a0oAivdqTTDJMqtvwoA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

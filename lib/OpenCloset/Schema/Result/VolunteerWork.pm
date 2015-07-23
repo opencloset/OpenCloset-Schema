@@ -96,6 +96,14 @@ __PACKAGE__->table("volunteer_work");
   is_nullable: 1
   size: 32
 
+=head2 create_date
+
+  data_type: 'datetime'
+  datetime_undef_if_invalid: 1
+  inflate_datetime: 1
+  is_nullable: 1
+  set_on_create: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -141,6 +149,14 @@ __PACKAGE__->add_columns(
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "authcode",
     { data_type => "varchar", is_nullable => 1, size => 32 },
+    "create_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+        set_on_create             => 1,
+    },
 );
 
 =head1 PRIMARY KEY
@@ -173,8 +189,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-23 15:23:05
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:f0y2RKChfCfSttWtq6RqEQ
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-23 18:25:53
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Z1YfETAYQZYJs4W/1ufgMA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

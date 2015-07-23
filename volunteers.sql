@@ -10,6 +10,8 @@ CREATE TABLE `volunteer` (
   `phone`              VARCHAR(16)  DEFAULT NULL COMMENT 'regex: 01\d{8,9}',
   `address`            TEXT         DEFAULT NULL,
   `birth_date`         DATETIME     DEFAULT NULL,
+  `create_date`        DATETIME     DEFAULT NULL,
+
   PRIMARY KEY (`id`),
   UNIQUE  KEY (`email`),
   UNIQUE  KEY (`phone`)
@@ -29,6 +31,8 @@ CREATE TABLE `volunteer_work` (
 
   `done`               INT          DEFAULT 0 COMMENT '0: false, 1: true',
   `authcode`           VARCHAR(32)  DEFAULT NULL,
+
+  `create_date`        DATETIME     DEFAULT NULL,
 
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_volunteer_work1` FOREIGN KEY (`volunteer_id`) REFERENCES `volunteer` (`id`) ON DELETE CASCADE
