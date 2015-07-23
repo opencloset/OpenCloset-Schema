@@ -82,13 +82,14 @@ __PACKAGE__->table("volunteer_work");
   data_type: 'text'
   is_nullable: 1
 
-=head2 done
+=head2 status
 
-  data_type: 'integer'
-  default_value: 0
+  data_type: 'varchar'
+  default_value: 'reported'
   is_nullable: 1
+  size: 32
 
-0: false, 1: true
+reported | approved | done
 
 =head2 authcode
 
@@ -145,8 +146,13 @@ __PACKAGE__->add_columns(
     { data_type => "text", is_nullable => 1 },
     "comment",
     { data_type => "text", is_nullable => 1 },
-    "done",
-    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "status",
+    {
+        data_type     => "varchar",
+        default_value => "reported",
+        is_nullable   => 1,
+        size          => 32,
+    },
     "authcode",
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "create_date",
@@ -189,8 +195,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-23 18:25:53
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Z1YfETAYQZYJs4W/1ufgMA
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-23 18:29:00
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rzcNjLSwiD3pvVcqCNbh0A
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
