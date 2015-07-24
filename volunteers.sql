@@ -29,7 +29,7 @@ CREATE TABLE `volunteer_work` (
   `activity`           TEXT         DEFAULT NULL,
   `comment`            TEXT         DEFAULT NULL,
 
-  `status`             VARCHAR(32)  DEFAULT 'reported' COMMENT 'reported | approved | done',
+  `status`             VARCHAR(32)  DEFAULT 'reported' COMMENT 'reported | approved | done | canceld',
   `authcode`           VARCHAR(32)  DEFAULT NULL,
 
   `create_date`        DATETIME     DEFAULT NULL,
