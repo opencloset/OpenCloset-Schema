@@ -1,13 +1,13 @@
 use utf8;
 
-package OpenCloset::Schema::Result::VolunteerWork;
+package OpenCloset::Schema::Result::VolunteerGuestbook;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-OpenCloset::Schema::Result::VolunteerWork
+OpenCloset::Schema::Result::VolunteerGuestbook
 
 =cut
 
@@ -20,11 +20,11 @@ use warnings;
 
 use base 'OpenCloset::Schema::Base';
 
-=head1 TABLE: C<volunteer_work>
+=head1 TABLE: C<volunteer_guestbook>
 
 =cut
 
-__PACKAGE__->table("volunteer_work");
+__PACKAGE__->table("volunteer_guestbook");
 
 =head1 ACCESSORS
 
@@ -42,37 +42,42 @@ __PACKAGE__->table("volunteer_work");
   is_foreign_key: 1
   is_nullable: 0
 
-=head2 activity_from_date
-
-  data_type: 'datetime'
-  datetime_undef_if_invalid: 1
-  inflate_datetime: 1
-  is_nullable: 0
-
-=head2 activity_to_date
-
-  data_type: 'datetime'
-  datetime_undef_if_invalid: 1
-  inflate_datetime: 1
-  is_nullable: 0
-
-=head2 period
+=head2 name
 
   data_type: 'varchar'
   is_nullable: 1
   size: 32
 
-=head2 reason
+=head2 age_group
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 32
 
-=head2 path
+=head2 gender
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 32
+
+=head2 job
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
+=head2 impression
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
 
 =head2 activity
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 want_to_do
 
   data_type: 'text'
   is_nullable: 1
@@ -81,21 +86,6 @@ __PACKAGE__->table("volunteer_work");
 
   data_type: 'text'
   is_nullable: 1
-
-=head2 status
-
-  data_type: 'varchar'
-  default_value: 'reported'
-  is_nullable: 1
-  size: 32
-
-reported | approved | done | canceled
-
-=head2 authcode
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 32
 
 =head2 create_date
 
@@ -122,39 +112,22 @@ __PACKAGE__->add_columns(
         is_foreign_key => 1,
         is_nullable    => 0,
     },
-    "activity_from_date",
-    {
-        data_type                 => "datetime",
-        datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
-        is_nullable               => 0,
-    },
-    "activity_to_date",
-    {
-        data_type                 => "datetime",
-        datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
-        is_nullable               => 0,
-    },
-    "period",
+    "name",
     { data_type => "varchar", is_nullable => 1, size => 32 },
-    "reason",
-    { data_type => "text", is_nullable => 1 },
-    "path",
-    { data_type => "text", is_nullable => 1 },
+    "age_group",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "gender",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "job",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "impression",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
     "activity",
+    { data_type => "text", is_nullable => 1 },
+    "want_to_do",
     { data_type => "text", is_nullable => 1 },
     "comment",
     { data_type => "text", is_nullable => 1 },
-    "status",
-    {
-        data_type     => "varchar",
-        default_value => "reported",
-        is_nullable   => 1,
-        size          => 32,
-    },
-    "authcode",
-    { data_type => "varchar", is_nullable => 1, size => 32 },
     "create_date",
     {
         data_type                 => "datetime",
@@ -196,7 +169,7 @@ __PACKAGE__->belongs_to(
 
 
 # Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-31 10:36:27
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:XO0ftPtT15IeOqamS6jI+w
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ByPcVn5wwrrCJlQa+HAS/A
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -150,6 +150,21 @@ __PACKAGE__->add_unique_constraint( "phone", ["phone"] );
 
 =head1 RELATIONS
 
+=head2 volunteer_guestbooks
+
+Type: has_many
+
+Related object: L<OpenCloset::Schema::Result::VolunteerGuestbook>
+
+=cut
+
+__PACKAGE__->has_many(
+    "volunteer_guestbooks",
+    "OpenCloset::Schema::Result::VolunteerGuestbook",
+    { "foreign.volunteer_id" => "self.id" },
+    { cascade_copy           => 0, cascade_delete => 0 },
+);
+
 =head2 volunteer_works
 
 Type: has_many
@@ -166,8 +181,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-23 18:25:53
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wo+a0oAivdqTTDJMqtvwoA
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-31 10:36:27
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TDGK9dCUPo1B7+odW9UNUA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -1,5 +1,6 @@
 SET NAMES utf8;
 
+DROP TABLE IF EXISTS `volunteer_guestbook`;
 DROP TABLE IF EXISTS `volunteer_work`;
 DROP TABLE IF EXISTS `volunteer`;
 
@@ -38,4 +39,21 @@ CREATE TABLE `volunteer_work` (
   CONSTRAINT `fk_volunteer_work1` FOREIGN KEY (`volunteer_id`) REFERENCES `volunteer` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 평가와 방명록 table?
+CREATE TABLE `volunteer_guestbook` (
+  `id`                 INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `volunteer_id`       INT UNSIGNED NOT NULL,
+
+  `name`               VARCHAR(32)  DEFAULT NULL,
+  `age_group`          VARCHAR(32)  DEFAULT NULL,
+  `gender`             VARCHAR(32)  DEFAULT NULL,
+  `job`                VARCHAR(32)  DEFAULT NULL,
+  `impression`         VARCHAR(32)  DEFAULT NULL,
+  `activity`           TEXT         DEFAULT NULL,
+  `want_to_do`         TEXT         DEFAULT NULL,
+  `comment`            TEXT         DEFAULT NULL,
+
+  `create_date`        DATETIME     DEFAULT NULL,
+
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_volunteer_guestbook1` FOREIGN KEY (`volunteer_id`) REFERENCES `volunteer` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
