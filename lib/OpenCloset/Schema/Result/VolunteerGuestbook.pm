@@ -35,7 +35,7 @@ __PACKAGE__->table("volunteer_guestbook");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 volunteer_id
+=head2 volunteer_work_id
 
   data_type: 'integer'
   extra: {unsigned => 1}
@@ -105,7 +105,7 @@ __PACKAGE__->add_columns(
         is_auto_increment => 1,
         is_nullable       => 0,
     },
-    "volunteer_id",
+    "volunteer_work_id",
     {
         data_type      => "integer",
         extra          => { unsigned => 1 },
@@ -152,24 +152,24 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
-=head2 volunteer
+=head2 volunteer_work
 
 Type: belongs_to
 
-Related object: L<OpenCloset::Schema::Result::Volunteer>
+Related object: L<OpenCloset::Schema::Result::VolunteerWork>
 
 =cut
 
 __PACKAGE__->belongs_to(
-    "volunteer",
-    "OpenCloset::Schema::Result::Volunteer",
-    { id            => "volunteer_id" },
+    "volunteer_work",
+    "OpenCloset::Schema::Result::VolunteerWork",
+    { id            => "volunteer_work_id" },
     { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-31 10:36:27
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ByPcVn5wwrrCJlQa+HAS/A
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-31 11:36:13
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:k1Bgl9Yurg3/yaxQGNvr0g
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

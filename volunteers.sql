@@ -41,7 +41,7 @@ CREATE TABLE `volunteer_work` (
 
 CREATE TABLE `volunteer_guestbook` (
   `id`                 INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `volunteer_id`       INT UNSIGNED NOT NULL,
+  `volunteer_work_id`  INT UNSIGNED NOT NULL,
 
   `name`               VARCHAR(32)  DEFAULT NULL,
   `age_group`          VARCHAR(32)  DEFAULT NULL,
@@ -55,5 +55,5 @@ CREATE TABLE `volunteer_guestbook` (
   `create_date`        DATETIME     DEFAULT NULL,
 
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_volunteer_guestbook1` FOREIGN KEY (`volunteer_id`) REFERENCES `volunteer` (`id`) ON DELETE CASCADE
+  CONSTRAINT `fk_volunteer_guestbook1` FOREIGN KEY (`volunteer_work_id`) REFERENCES `volunteer_work` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
