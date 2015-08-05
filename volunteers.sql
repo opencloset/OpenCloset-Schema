@@ -48,9 +48,12 @@ CREATE TABLE `volunteer_guestbook` (
   `gender`             VARCHAR(32)  DEFAULT NULL,
   `job`                VARCHAR(32)  DEFAULT NULL,
   `impression`         VARCHAR(32)  DEFAULT NULL,
+  `activity_hour`      VARCHAR(32)  DEFAULT NULL,
   `activity`           TEXT         DEFAULT NULL,
   `want_to_do`         TEXT         DEFAULT NULL,
   `comment`            TEXT         DEFAULT NULL,
+
+  `need_1365`          INT          DEFAULT 0,
 
   `create_date`        DATETIME     DEFAULT NULL,
 

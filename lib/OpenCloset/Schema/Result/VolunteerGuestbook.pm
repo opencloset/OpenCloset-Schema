@@ -72,6 +72,12 @@ __PACKAGE__->table("volunteer_guestbook");
   is_nullable: 1
   size: 32
 
+=head2 activity_hour
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
 =head2 activity
 
   data_type: 'text'
@@ -85,6 +91,12 @@ __PACKAGE__->table("volunteer_guestbook");
 =head2 comment
 
   data_type: 'text'
+  is_nullable: 1
+
+=head2 need_1365
+
+  data_type: 'integer'
+  default_value: 0
   is_nullable: 1
 
 =head2 create_date
@@ -122,12 +134,16 @@ __PACKAGE__->add_columns(
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "impression",
     { data_type => "varchar", is_nullable => 1, size => 32 },
+    "activity_hour",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
     "activity",
     { data_type => "text", is_nullable => 1 },
     "want_to_do",
     { data_type => "text", is_nullable => 1 },
     "comment",
     { data_type => "text", is_nullable => 1 },
+    "need_1365",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
     "create_date",
     {
         data_type                 => "datetime",
@@ -168,8 +184,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-31 11:36:13
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:k1Bgl9Yurg3/yaxQGNvr0g
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-05 16:55:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bIN3lmwZgz39knbNt5T50w
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
