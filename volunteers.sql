@@ -54,6 +54,7 @@ CREATE TABLE `volunteer_guestbook` (
   `comment`            TEXT         DEFAULT NULL,
 
   `need_1365`          INT          DEFAULT 0,
+  `done_1365`          INT          DEFAULT 0,
 
   `create_date`        DATETIME     DEFAULT NULL,
 
