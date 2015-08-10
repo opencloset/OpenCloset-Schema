@@ -32,6 +32,8 @@ CREATE TABLE `volunteer_work` (
 
   `status`             VARCHAR(32)  DEFAULT 'reported' COMMENT 'reported | approved | done | canceled',
   `authcode`           VARCHAR(32)  DEFAULT NULL,
+  `need_1365`          INT          DEFAULT 0,
+  `done_1365`          INT          DEFAULT 0,
 
   `create_date`        DATETIME     DEFAULT NULL,
 
@@ -52,9 +54,6 @@ CREATE TABLE `volunteer_guestbook` (
   `activity`           TEXT         DEFAULT NULL,
   `want_to_do`         TEXT         DEFAULT NULL,
   `comment`            TEXT         DEFAULT NULL,
-
-  `need_1365`          INT          DEFAULT 0,
-  `done_1365`          INT          DEFAULT 0,
 
   `create_date`        DATETIME     DEFAULT NULL,
 

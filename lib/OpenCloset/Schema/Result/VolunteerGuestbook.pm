@@ -93,18 +93,6 @@ __PACKAGE__->table("volunteer_guestbook");
   data_type: 'text'
   is_nullable: 1
 
-=head2 need_1365
-
-  data_type: 'integer'
-  default_value: 0
-  is_nullable: 1
-
-=head2 done_1365
-
-  data_type: 'integer'
-  default_value: 0
-  is_nullable: 1
-
 =head2 create_date
 
   data_type: 'datetime'
@@ -148,10 +136,6 @@ __PACKAGE__->add_columns(
     { data_type => "text", is_nullable => 1 },
     "comment",
     { data_type => "text", is_nullable => 1 },
-    "need_1365",
-    { data_type => "integer", default_value => 0, is_nullable => 1 },
-    "done_1365",
-    { data_type => "integer", default_value => 0, is_nullable => 1 },
     "create_date",
     {
         data_type                 => "datetime",
@@ -192,8 +176,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-10 15:41:46
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Dfaq7HEbLiQjrNM5y1/pRw
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-10 16:56:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:f5jGJR4ueUHlmVnqqyOg3g
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
