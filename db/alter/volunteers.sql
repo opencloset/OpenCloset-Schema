@@ -34,6 +34,7 @@ CREATE TABLE `volunteer_work` (
   `authcode`           VARCHAR(32)  DEFAULT NULL,
   `need_1365`          INT          DEFAULT 0,
   `done_1365`          INT          DEFAULT 0,
+  `talent`             TEXT         DEFAULT NULL,
 
   `create_date`        DATETIME     DEFAULT NULL,
 
