@@ -1,3 +1,4 @@
+#<<<
 use utf8;
 
 package OpenCloset::Schema::Result::VolunteerGuestbook;
@@ -175,9 +176,11 @@ __PACKAGE__->belongs_to(
     { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
 );
 
+#>>>
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-10 16:56:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:f5jGJR4ueUHlmVnqqyOg3g
+
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:43:01
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:GnzzVDi5GVjzJQyZVhReOw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

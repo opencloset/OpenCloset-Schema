@@ -1,3 +1,4 @@
+#<<<
 use utf8;
 
 package OpenCloset::Schema::Result::Volunteer;
@@ -165,9 +166,11 @@ __PACKAGE__->has_many(
     { cascade_copy           => 0, cascade_delete => 0 },
 );
 
+#>>>
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-31 11:36:13
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ev/J8EVhBFkXInXVrWAq/Q
+
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:43:01
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rofKlIrTw3s4BkVCFfVZXg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

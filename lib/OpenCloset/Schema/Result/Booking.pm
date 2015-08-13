@@ -1,3 +1,4 @@
+#<<<
 use utf8;
 
 package OpenCloset::Schema::Result::Booking;
@@ -124,9 +125,11 @@ __PACKAGE__->has_many(
     { cascade_copy         => 0, cascade_delete => 0 },
 );
 
+#>>>
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-22 10:51:35
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ciuju4OrTKZGiWbtSsGBtg
+
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:42:58
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dT/QG5IrnLhLpA5tBgGHYw
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

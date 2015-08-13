@@ -1,3 +1,4 @@
+#<<<
 use utf8;
 
 package OpenCloset::Schema::Result::Order;
@@ -554,9 +555,11 @@ __PACKAGE__->belongs_to(
     { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
 );
 
+#>>>
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-07-22 10:51:36
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OBBTu9+wK4LfcGv5SD+QQQ
+
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:42:59
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:fBTglERKHmpdPA86iGawwg
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
