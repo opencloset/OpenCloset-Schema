@@ -1,14 +1,14 @@
 #<<<
 use utf8;
 
-package OpenCloset::Schema::Result::SMS;
+package OpenCloset::Schema::Result::Volunteer;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-OpenCloset::Schema::Result::SMS
+OpenCloset::Schema::Result::Volunteer
 
 =cut
 
@@ -21,11 +21,11 @@ use warnings;
 
 use base 'OpenCloset::Schema::Base';
 
-=head1 TABLE: C<sms>
+=head1 TABLE: C<volunteer>
 
 =cut
 
-__PACKAGE__->table("sms");
+__PACKAGE__->table("volunteer");
 
 =head1 ACCESSORS
 
@@ -36,47 +36,32 @@ __PACKAGE__->table("sms");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 from
+=head2 name
 
   data_type: 'varchar'
   is_nullable: 0
-  size: 12
+  size: 32
 
-=head2 to
-
-  data_type: 'varchar'
-  is_nullable: 0
-  size: 12
-
-=head2 text
-
-  data_type: 'text'
-  is_nullable: 0
-
-=head2 ret
-
-  data_type: 'integer'
-  is_nullable: 1
-
-=head2 status
-
-  data_type: 'varchar'
-  default_value: 'pending'
-  is_nullable: 1
-  size: 7
-
-=head2 method
+=head2 email
 
   data_type: 'varchar'
   is_nullable: 1
   size: 128
 
-=head2 detail
+=head2 phone
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 16
+
+regex: 01d{8,9}
+
+=head2 address
 
   data_type: 'text'
   is_nullable: 1
 
-=head2 sent_date
+=head2 birth_date
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
@@ -101,26 +86,15 @@ __PACKAGE__->add_columns(
         is_auto_increment => 1,
         is_nullable       => 0,
     },
-    "from",
-    { data_type => "varchar", is_nullable => 0, size => 12 },
-    "to",
-    { data_type => "varchar", is_nullable => 0, size => 12 },
-    "text",
-    { data_type => "text", is_nullable => 0 },
-    "ret",
-    { data_type => "integer", is_nullable => 1 },
-    "status",
-    {
-        data_type     => "varchar",
-        default_value => "pending",
-        is_nullable   => 1,
-        size          => 7,
-    },
-    "method",
+    "name",
+    { data_type => "varchar", is_nullable => 0, size => 32 },
+    "email",
     { data_type => "varchar", is_nullable => 1, size => 128 },
-    "detail",
+    "phone",
+    { data_type => "varchar", is_nullable => 1, size => 16 },
+    "address",
     { data_type => "text", is_nullable => 1 },
-    "sent_date",
+    "birth_date",
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
@@ -149,11 +123,55 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
+=head1 UNIQUE CONSTRAINTS
+
+=head2 C<email>
+
+=over 4
+
+=item * L</email>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint( "email", ["email"] );
+
+=head2 C<phone>
+
+=over 4
+
+=item * L</phone>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint( "phone", ["phone"] );
+
+=head1 RELATIONS
+
+=head2 volunteer_works
+
+Type: has_many
+
+Related object: L<OpenCloset::Schema::Result::VolunteerWork>
+
+=cut
+
+__PACKAGE__->has_many(
+    "volunteer_works",
+    "OpenCloset::Schema::Result::VolunteerWork",
+    { "foreign.volunteer_id" => "self.id" },
+    { cascade_copy           => 0, cascade_delete => 0 },
+);
+
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:43:00
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qxKvVGIimPd2miAOOU8gWQ
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:43:01
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rofKlIrTw3s4BkVCFfVZXg
+
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

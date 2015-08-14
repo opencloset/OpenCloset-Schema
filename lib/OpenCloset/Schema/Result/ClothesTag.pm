@@ -1,3 +1,4 @@
+#<<<
 use utf8;
 
 package OpenCloset::Schema::Result::ClothesTag;
@@ -102,8 +103,11 @@ __PACKAGE__->belongs_to(
     { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
 );
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-02-06 19:37:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:jPyDhzInycHR0ufXePRong
+#>>>
+
+
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:42:58
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:KBJNW8BS2r4s5DRs9H7RTQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

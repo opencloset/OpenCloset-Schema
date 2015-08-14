@@ -12,7 +12,6 @@ my %WriteMakefileArgs = (
     "ExtUtils::MakeMaker" => "6.17"
   },
   "DISTNAME" => "OpenCloset-Schema",
-  "EXE_FILES" => [],
   "LICENSE" => "perl",
   "MIN_PERL_VERSION" => "5.012",
   "NAME" => "OpenCloset::Schema",
@@ -47,7 +46,7 @@ my %FallbackPrereqs = (
   "DBIx::Class::InflateColumn::DateTime" => 0,
   "DBIx::Class::Schema" => 0,
   "DBIx::Class::TimeStamp" => 0,
-  "ExtUtils::MakeMaker" => "6.17",
+  "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
   "Test::More" => 0,
   "base" => 0,
