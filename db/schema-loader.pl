@@ -41,7 +41,7 @@ my $CONF = OpenCloset::Config::load;
             die "cannot find tidyall binary\n" unless $tidyall;
 
             my $path = $class;
-            $path =~ s{::}{/};
+            $path =~ s{::}{/}g;
             $path = "lib/$path.pm";
 
             my ( $stdout, $stdin );
@@ -52,7 +52,7 @@ my $CONF = OpenCloset::Config::load;
             close $stdout;
             waitpid( $pid, 0 );
 
-            return $destination;
+            return "#<<<\n$destination\n#>>>\n";
         },
         custom_column_info        => sub {
             my ( $table, $col_name, $col_info ) = @_;

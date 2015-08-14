@@ -1,14 +1,14 @@
 #<<<
 use utf8;
 
-package OpenCloset::Schema::Result::Donation;
+package OpenCloset::Schema::Result::VolunteerGuestbook;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-OpenCloset::Schema::Result::Donation
+OpenCloset::Schema::Result::VolunteerGuestbook
 
 =cut
 
@@ -21,11 +21,11 @@ use warnings;
 
 use base 'OpenCloset::Schema::Base';
 
-=head1 TABLE: C<donation>
+=head1 TABLE: C<volunteer_guestbook>
 
 =cut
 
-__PACKAGE__->table("donation");
+__PACKAGE__->table("volunteer_guestbook");
 
 =head1 ACCESSORS
 
@@ -36,14 +36,60 @@ __PACKAGE__->table("donation");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 user_id
+=head2 volunteer_work_id
 
   data_type: 'integer'
   extra: {unsigned => 1}
   is_foreign_key: 1
   is_nullable: 0
 
-=head2 message
+=head2 name
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
+=head2 age_group
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
+=head2 gender
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
+=head2 job
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
+=head2 impression
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
+=head2 activity_hour
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
+=head2 activity
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 want_to_do
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 comment
 
   data_type: 'text'
   is_nullable: 1
@@ -66,14 +112,30 @@ __PACKAGE__->add_columns(
         is_auto_increment => 1,
         is_nullable       => 0,
     },
-    "user_id",
+    "volunteer_work_id",
     {
         data_type      => "integer",
         extra          => { unsigned => 1 },
         is_foreign_key => 1,
         is_nullable    => 0,
     },
-    "message",
+    "name",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "age_group",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "gender",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "job",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "impression",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "activity_hour",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "activity",
+    { data_type => "text", is_nullable => 1 },
+    "want_to_do",
+    { data_type => "text", is_nullable => 1 },
+    "comment",
     { data_type => "text", is_nullable => 1 },
     "create_date",
     {
@@ -99,41 +161,27 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
-=head2 clothes
-
-Type: has_many
-
-Related object: L<OpenCloset::Schema::Result::Clothes>
-
-=cut
-
-__PACKAGE__->has_many(
-    "clothes",
-    "OpenCloset::Schema::Result::Clothes",
-    { "foreign.donation_id" => "self.id" },
-    { cascade_copy          => 0, cascade_delete => 0 },
-);
-
-=head2 user
+=head2 volunteer_work
 
 Type: belongs_to
 
-Related object: L<OpenCloset::Schema::Result::User>
+Related object: L<OpenCloset::Schema::Result::VolunteerWork>
 
 =cut
 
 __PACKAGE__->belongs_to(
-    "user",
-    "OpenCloset::Schema::Result::User",
-    { id            => "user_id" },
+    "volunteer_work",
+    "OpenCloset::Schema::Result::VolunteerWork",
+    { id            => "volunteer_work_id" },
     { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
 );
 
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:42:58
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sJseW1DuWcQGq1tu7FFPag
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:43:01
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:GnzzVDi5GVjzJQyZVhReOw
+
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
