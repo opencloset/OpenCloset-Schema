@@ -1,6 +1,10 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add tables to support volunteer related features (#29)
+        - volunteer
+        - volunteer_work
+        - volunteer_guestbook
 
 0.012     2015-06-18 00:55:33+09:00 Asia/Seoul
     - Fix initializing database query: sms.detail (#24)
