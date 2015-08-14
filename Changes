@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.013     2015-08-15 00:46:07+09:00 Asia/Seoul
     - Add tables to support volunteer related features (#29)
         - volunteer
         - volunteer_work
