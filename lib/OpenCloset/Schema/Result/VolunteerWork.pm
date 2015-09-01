@@ -123,6 +123,12 @@ reported | approved | done | canceled
   is_nullable: 1
   set_on_create: 1
 
+=head2 job
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -187,6 +193,8 @@ __PACKAGE__->add_columns(
         is_nullable               => 1,
         set_on_create             => 1,
     },
+    "job",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
 );
 
 =head1 PRIMARY KEY
@@ -236,8 +244,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:43:01
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/1P31n9EUiIfwYsdXhQXuQ
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-09-01 18:36:02
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:63YFLtwIqYJ92epgp3LXIw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
