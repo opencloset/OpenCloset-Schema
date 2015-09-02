@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.015     2015-09-02 17:06:21+09:00 Asia/Seoul
     - Add column to save google event id for volunteer related features (#31)
         - add volunteer_work.event_id
 
