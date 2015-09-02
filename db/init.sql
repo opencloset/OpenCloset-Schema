@@ -491,6 +491,7 @@ CREATE TABLE `volunteer_work` (
   `need_1365`          INT          DEFAULT 0,
   `done_1365`          INT          DEFAULT 0,
   `talent`             TEXT         DEFAULT NULL,
+  `event_id`           VARCHAR(32)  DEFAULT NULL,
 
   `create_date`        DATETIME     DEFAULT NULL,
 

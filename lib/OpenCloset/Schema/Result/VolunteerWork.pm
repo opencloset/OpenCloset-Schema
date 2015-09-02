@@ -115,6 +115,12 @@ reported | approved | done | canceled
   data_type: 'text'
   is_nullable: 1
 
+=head2 event_id
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
 =head2 create_date
 
   data_type: 'datetime'
@@ -185,6 +191,8 @@ __PACKAGE__->add_columns(
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "talent",
     { data_type => "text", is_nullable => 1 },
+    "event_id",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
     "create_date",
     {
         data_type                 => "datetime",
@@ -244,8 +252,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-09-01 18:36:02
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:63YFLtwIqYJ92epgp3LXIw
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-09-02 15:35:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:eLCepMVR8oCffZSmaYDb7Q
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
