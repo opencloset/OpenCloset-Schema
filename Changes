@@ -1,6 +1,11 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Alter tables to support volunteer related features (#30)
+        - add volunteer.gender
+        - add volunteer_work.job
+        - drop volunteer_guestbook.gender
+        - drop volunteer_guestbook.job
 
 0.013     2015-08-15 00:46:07+09:00 Asia/Seoul
     - Add tables to support volunteer related features (#29)

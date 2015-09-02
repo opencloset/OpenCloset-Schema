@@ -457,6 +457,7 @@ ALTER TABLE `order_status_log` ADD FOREIGN KEY (`status_id`) REFERENCES `status`
 CREATE TABLE `volunteer` (
   `id`                 INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name`               VARCHAR(32)  NOT NULL,
+  `gender`             VARCHAR(32)  DEFAULT NULL,
   `email`              VARCHAR(128) DEFAULT NULL,
   `phone`              VARCHAR(16)  DEFAULT NULL COMMENT 'regex: 01\d{8,9}',
   `address`            TEXT         DEFAULT NULL,
@@ -481,6 +482,7 @@ CREATE TABLE `volunteer_work` (
   `period`             VARCHAR(32)  DEFAULT NULL,
   `reason`             TEXT         DEFAULT NULL,
   `path`               TEXT         DEFAULT NULL,
+  `job`                VARCHAR(32)  DEFAULT NULL,
   `activity`           TEXT         DEFAULT NULL,
   `comment`            TEXT         DEFAULT NULL,
 
@@ -506,8 +508,6 @@ CREATE TABLE `volunteer_guestbook` (
 
   `name`               VARCHAR(32)  DEFAULT NULL,
   `age_group`          VARCHAR(32)  DEFAULT NULL,
-  `gender`             VARCHAR(32)  DEFAULT NULL,
-  `job`                VARCHAR(32)  DEFAULT NULL,
   `impression`         VARCHAR(32)  DEFAULT NULL,
   `activity_hour`      VARCHAR(32)  DEFAULT NULL,
   `activity`           TEXT         DEFAULT NULL,
