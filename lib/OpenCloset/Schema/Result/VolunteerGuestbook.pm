@@ -55,18 +55,6 @@ __PACKAGE__->table("volunteer_guestbook");
   is_nullable: 1
   size: 32
 
-=head2 gender
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 32
-
-=head2 job
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 32
-
 =head2 impression
 
   data_type: 'varchar'
@@ -123,10 +111,6 @@ __PACKAGE__->add_columns(
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "age_group",
     { data_type => "varchar", is_nullable => 1, size => 32 },
-    "gender",
-    { data_type => "varchar", is_nullable => 1, size => 32 },
-    "job",
-    { data_type => "varchar", is_nullable => 1, size => 32 },
     "impression",
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "activity_hour",
@@ -179,8 +163,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:43:01
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:GnzzVDi5GVjzJQyZVhReOw
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-09-01 18:36:02
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:PmyUxxryFYPOAteRkiNKJQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
