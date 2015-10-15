@@ -71,6 +71,7 @@ CREATE TABLE `user_info` (
   `leg`         INT DEFAULT NULL, -- 다리   길이(cm)
   `knee`        INT DEFAULT NULL, -- 무릎   길이(cm)
   `foot`        INT DEFAULT NULL, -- 발     크기(mm)
+  `pants`       INT DEFAULT NULL, -- 바지   길이(cm)
 
   --
   -- etc
@@ -352,7 +353,8 @@ CREATE TABLE `order` (
   `arm`                   INT DEFAULT NULL, -- 팔     길이(cm)
   `leg`                   INT DEFAULT NULL, -- 다리   길이(cm)
   `knee`                  INT DEFAULT NULL, -- 무릎   길이(cm)
-  `foot`                  INT DEFAULT NULL, -- 발 크기(mm)
+  `foot`                  INT DEFAULT NULL, -- 발     크기(mm)
+  `pants`                 INT DEFAULT NULL, -- 바지   길이(cm)
   `bestfit`               BOOLEAN DEFAULT 0,
 
   `create_date`           DATETIME DEFAULT NULL,

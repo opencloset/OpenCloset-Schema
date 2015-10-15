@@ -42,6 +42,12 @@ __PACKAGE__->table("volunteer");
   is_nullable: 0
   size: 32
 
+=head2 gender
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
 =head2 email
 
   data_type: 'varchar'
@@ -76,12 +82,6 @@ regex: 01d{8,9}
   is_nullable: 1
   set_on_create: 1
 
-=head2 gender
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 32
-
 =cut
 
 __PACKAGE__->add_columns(
@@ -94,6 +94,8 @@ __PACKAGE__->add_columns(
     },
     "name",
     { data_type => "varchar", is_nullable => 0, size => 32 },
+    "gender",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
     "email",
     { data_type => "varchar", is_nullable => 1, size => 128 },
     "phone",
@@ -115,8 +117,6 @@ __PACKAGE__->add_columns(
         is_nullable               => 1,
         set_on_create             => 1,
     },
-    "gender",
-    { data_type => "varchar", is_nullable => 1, size => 32 },
 );
 
 =head1 PRIMARY KEY
@@ -177,8 +177,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-09-01 18:36:01
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:uWlMRI8zeaM5B2eaOSUQyg
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-10-15 19:08:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:vPwobkhF3XC8b8aULjRgkg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
