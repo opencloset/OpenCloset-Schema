@@ -180,6 +180,11 @@ __PACKAGE__->table("order");
   data_type: 'integer'
   is_nullable: 1
 
+=head2 neck
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =head2 bust
 
   data_type: 'integer'
@@ -226,6 +231,11 @@ __PACKAGE__->table("order");
   is_nullable: 1
 
 =head2 foot
+
+  data_type: 'integer'
+  is_nullable: 1
+
+=head2 pants
 
   data_type: 'integer'
   is_nullable: 1
@@ -364,6 +374,8 @@ __PACKAGE__->add_columns(
     { data_type => "integer", is_nullable => 1 },
     "weight",
     { data_type => "integer", is_nullable => 1 },
+    "neck",
+    { data_type => "integer", is_nullable => 1 },
     "bust",
     { data_type => "integer", is_nullable => 1 },
     "waist",
@@ -383,6 +395,8 @@ __PACKAGE__->add_columns(
     "knee",
     { data_type => "integer", is_nullable => 1 },
     "foot",
+    { data_type => "integer", is_nullable => 1 },
+    "pants",
     { data_type => "integer", is_nullable => 1 },
     "bestfit",
     { data_type => "tinyint", default_value => 0, is_nullable => 1 },
@@ -558,8 +572,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:42:59
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:fBTglERKHmpdPA86iGawwg
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-10-15 19:30:18
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rVPD/uFkUDqEhUFgpKCVfQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

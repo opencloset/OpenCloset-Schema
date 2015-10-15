@@ -117,6 +117,11 @@ male/female
   data_type: 'integer'
   is_nullable: 1
 
+=head2 neck
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =head2 bust
 
   data_type: 'integer'
@@ -163,6 +168,11 @@ male/female
   is_nullable: 1
 
 =head2 foot
+
+  data_type: 'integer'
+  is_nullable: 1
+
+=head2 pants
 
   data_type: 'integer'
   is_nullable: 1
@@ -242,6 +252,8 @@ __PACKAGE__->add_columns(
     { data_type => "integer", is_nullable => 1 },
     "weight",
     { data_type => "integer", is_nullable => 1 },
+    "neck",
+    { data_type => "integer", is_nullable => 1 },
     "bust",
     { data_type => "integer", is_nullable => 1 },
     "waist",
@@ -261,6 +273,8 @@ __PACKAGE__->add_columns(
     "knee",
     { data_type => "integer", is_nullable => 1 },
     "foot",
+    { data_type => "integer", is_nullable => 1 },
+    "pants",
     { data_type => "integer", is_nullable => 1 },
     "staff",
     { data_type => "tinyint", default_value => 0, is_nullable => 1 },
@@ -339,8 +353,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:43:01
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bxYWGKAQIO0dDMYLeHl++A
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-10-15 19:30:20
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:w/jY9eWlB7wGNNE7NxPj7A
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

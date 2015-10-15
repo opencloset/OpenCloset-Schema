@@ -61,6 +61,7 @@ CREATE TABLE `user_info` (
   --
   `height`      INT DEFAULT NULL, -- 키(cm)
   `weight`      INT DEFAULT NULL, -- 몸무게(kg)
+  `neck`        INT DEFAULT NULL, -- 목     둘레(cm)
   `bust`        INT DEFAULT NULL, -- 가슴   둘레(cm)
   `waist`       INT DEFAULT NULL, -- 허리   둘레(cm)
   `hip`         INT DEFAULT NULL, -- 엉덩이 둘레(cm)
@@ -71,6 +72,7 @@ CREATE TABLE `user_info` (
   `leg`         INT DEFAULT NULL, -- 다리   길이(cm)
   `knee`        INT DEFAULT NULL, -- 무릎   길이(cm)
   `foot`        INT DEFAULT NULL, -- 발     크기(mm)
+  `pants`       INT DEFAULT NULL, -- 바지   길이(cm)
 
   --
   -- etc
@@ -202,6 +204,7 @@ CREATE TABLE `clothes` (
   `group_id`    INT UNSIGNED DEFAULT 1,
 
   `code`        CHAR(5)     NOT NULL,  -- 바코드 품번
+  `neck`        INT         DEFAULT 0, -- 목     둘레(cm)
   `bust`        INT         DEFAULT 0, -- 가슴   둘레(cm)
   `waist`       INT         DEFAULT 0, -- 허리   둘레(cm)
   `hip`         INT         DEFAULT 0, -- 엉덩이 둘레(cm)
@@ -343,6 +346,7 @@ CREATE TABLE `order` (
   `pre_color`             VARCHAR(32)  DEFAULT NULL,
   `height`                INT DEFAULT NULL, -- 키(cm)
   `weight`                INT DEFAULT NULL, -- 몸무게(kg)
+  `neck`                  INT DEFAULT NULL, -- 목     둘레(cm)
   `bust`                  INT DEFAULT NULL, -- 가슴   둘레(cm)
   `waist`                 INT DEFAULT NULL, -- 허리   둘레(cm)
   `hip`                   INT DEFAULT NULL, -- 엉덩이 둘레(cm)
@@ -352,7 +356,8 @@ CREATE TABLE `order` (
   `arm`                   INT DEFAULT NULL, -- 팔     길이(cm)
   `leg`                   INT DEFAULT NULL, -- 다리   길이(cm)
   `knee`                  INT DEFAULT NULL, -- 무릎   길이(cm)
-  `foot`                  INT DEFAULT NULL, -- 발 크기(mm)
+  `foot`                  INT DEFAULT NULL, -- 발     크기(mm)
+  `pants`                 INT DEFAULT NULL, -- 바지   길이(cm)
   `bestfit`               BOOLEAN DEFAULT 0,
 
   `create_date`           DATETIME DEFAULT NULL,
