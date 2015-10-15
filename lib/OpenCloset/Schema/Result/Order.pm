@@ -230,6 +230,11 @@ __PACKAGE__->table("order");
   data_type: 'integer'
   is_nullable: 1
 
+=head2 pants
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =head2 bestfit
 
   data_type: 'tinyint'
@@ -383,6 +388,8 @@ __PACKAGE__->add_columns(
     "knee",
     { data_type => "integer", is_nullable => 1 },
     "foot",
+    { data_type => "integer", is_nullable => 1 },
+    "pants",
     { data_type => "integer", is_nullable => 1 },
     "bestfit",
     { data_type => "tinyint", default_value => 0, is_nullable => 1 },
@@ -558,8 +565,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:42:59
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:fBTglERKHmpdPA86iGawwg
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-10-15 19:08:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:959D93rjctGWAwZblT/PDA
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

@@ -73,6 +73,12 @@ __PACKAGE__->table("volunteer_work");
   data_type: 'text'
   is_nullable: 1
 
+=head2 job
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
 =head2 activity
 
   data_type: 'text'
@@ -129,12 +135,6 @@ reported | approved | done | canceled
   is_nullable: 1
   set_on_create: 1
 
-=head2 job
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 32
-
 =cut
 
 __PACKAGE__->add_columns(
@@ -172,6 +172,8 @@ __PACKAGE__->add_columns(
     { data_type => "text", is_nullable => 1 },
     "path",
     { data_type => "text", is_nullable => 1 },
+    "job",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
     "activity",
     { data_type => "text", is_nullable => 1 },
     "comment",
@@ -201,8 +203,6 @@ __PACKAGE__->add_columns(
         is_nullable               => 1,
         set_on_create             => 1,
     },
-    "job",
-    { data_type => "varchar", is_nullable => 1, size => 32 },
 );
 
 =head1 PRIMARY KEY
@@ -252,8 +252,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-09-02 15:35:37
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:eLCepMVR8oCffZSmaYDb7Q
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-10-15 19:08:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:IkA6rktvExrRCcYIY+4FyA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
