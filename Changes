@@ -1,6 +1,10 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add neck size to user_info, clothes & order (#32)
+        - add user_info.neck
+        - add clothes.neck
+        - add order.neck
     - Add user_info.pants & order.pants to save pants length (#22)
 
 0.015     2015-09-02 17:06:21+09:00 Asia/Seoul

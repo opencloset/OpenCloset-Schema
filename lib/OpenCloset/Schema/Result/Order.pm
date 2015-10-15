@@ -180,6 +180,11 @@ __PACKAGE__->table("order");
   data_type: 'integer'
   is_nullable: 1
 
+=head2 neck
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =head2 bust
 
   data_type: 'integer'
@@ -368,6 +373,8 @@ __PACKAGE__->add_columns(
     "height",
     { data_type => "integer", is_nullable => 1 },
     "weight",
+    { data_type => "integer", is_nullable => 1 },
+    "neck",
     { data_type => "integer", is_nullable => 1 },
     "bust",
     { data_type => "integer", is_nullable => 1 },
@@ -565,8 +572,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-10-15 19:08:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:959D93rjctGWAwZblT/PDA
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-10-15 19:30:18
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rVPD/uFkUDqEhUFgpKCVfQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

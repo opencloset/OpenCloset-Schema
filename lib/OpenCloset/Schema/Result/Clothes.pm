@@ -66,6 +66,12 @@ __PACKAGE__->table("clothes");
   is_nullable: 0
   size: 5
 
+=head2 neck
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
 =head2 bust
 
   data_type: 'integer'
@@ -187,6 +193,8 @@ __PACKAGE__->add_columns(
     },
     "code",
     { data_type => "char", is_nullable => 0, size => 5 },
+    "neck",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
     "bust",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "waist",
@@ -363,8 +371,8 @@ __PACKAGE__->many_to_many( "tags", "clothes_tags", "tag" );
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:42:58
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:vCdkB6KtO/TxOfLTDE/GSw
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-10-15 19:30:17
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6aNLwVLpqMVrau+M23tgzA
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

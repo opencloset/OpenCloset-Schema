@@ -61,6 +61,7 @@ CREATE TABLE `user_info` (
   --
   `height`      INT DEFAULT NULL, -- 키(cm)
   `weight`      INT DEFAULT NULL, -- 몸무게(kg)
+  `neck`        INT DEFAULT NULL, -- 목     둘레(cm)
   `bust`        INT DEFAULT NULL, -- 가슴   둘레(cm)
   `waist`       INT DEFAULT NULL, -- 허리   둘레(cm)
   `hip`         INT DEFAULT NULL, -- 엉덩이 둘레(cm)
@@ -203,6 +204,7 @@ CREATE TABLE `clothes` (
   `group_id`    INT UNSIGNED DEFAULT 1,
 
   `code`        CHAR(5)     NOT NULL,  -- 바코드 품번
+  `neck`        INT         DEFAULT 0, -- 목     둘레(cm)
   `bust`        INT         DEFAULT 0, -- 가슴   둘레(cm)
   `waist`       INT         DEFAULT 0, -- 허리   둘레(cm)
   `hip`         INT         DEFAULT 0, -- 엉덩이 둘레(cm)
@@ -344,6 +346,7 @@ CREATE TABLE `order` (
   `pre_color`             VARCHAR(32)  DEFAULT NULL,
   `height`                INT DEFAULT NULL, -- 키(cm)
   `weight`                INT DEFAULT NULL, -- 몸무게(kg)
+  `neck`                  INT DEFAULT NULL, -- 목     둘레(cm)
   `bust`                  INT DEFAULT NULL, -- 가슴   둘레(cm)
   `waist`                 INT DEFAULT NULL, -- 허리   둘레(cm)
   `hip`                   INT DEFAULT NULL, -- 엉덩이 둘레(cm)
