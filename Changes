@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add '포장완료' status
 
 0.016     2015-10-15 19:37:04+09:00 Asia/Seoul
     - Add neck size to user_info, clothes & order (#32)
