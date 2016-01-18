@@ -263,7 +263,7 @@ __PACKAGE__->table("order");
   set_on_create: 1
   set_on_update: 1
 
-=head2 is_wearing
+=head2 does_wear
 
   data_type: 'integer'
   is_nullable: 1
@@ -424,7 +424,7 @@ __PACKAGE__->add_columns(
         set_on_create             => 1,
         set_on_update             => 1,
     },
-    "is_wearing",
+    "does_wear",
     { data_type => "integer", is_nullable => 1 },
 );
 
@@ -581,8 +581,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-18 15:59:25
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wnEutX6uimTAjBCzh5TiOQ
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-18 17:50:34
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:nwDU173C/p8CDM3gnFTMuA
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

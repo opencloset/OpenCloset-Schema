@@ -364,7 +364,7 @@ CREATE TABLE `order` (
   `create_date`           DATETIME DEFAULT NULL,
   `update_date`           DATETIME DEFAULT NULL,
 
-  `is_wearing`            INT DEFAULT NULL COMMENT 'null and 0 is false, otherwise true',
+  `does_wear`             INT DEFAULT NULL COMMENT 'null and 0 is false, otherwise true',
 
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_order1` FOREIGN KEY (`user_id`)    REFERENCES `user`    (`id`) ON DELETE CASCADE,
