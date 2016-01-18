@@ -263,6 +263,13 @@ __PACKAGE__->table("order");
   set_on_create: 1
   set_on_update: 1
 
+=head2 is_wearing
+
+  data_type: 'integer'
+  is_nullable: 1
+
+null and 0 is false, otherwise true
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -417,6 +424,8 @@ __PACKAGE__->add_columns(
         set_on_create             => 1,
         set_on_update             => 1,
     },
+    "is_wearing",
+    { data_type => "integer", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -572,8 +581,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-10-15 19:30:18
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rVPD/uFkUDqEhUFgpKCVfQ
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-18 15:59:25
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wnEutX6uimTAjBCzh5TiOQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
