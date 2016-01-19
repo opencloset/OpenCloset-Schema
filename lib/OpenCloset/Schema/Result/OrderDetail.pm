@@ -80,13 +80,6 @@ __PACKAGE__->table("order_detail");
   default_value: 0
   is_nullable: 1
 
-=head2 pass
-
-  data_type: 'integer'
-  is_nullable: 1
-
-a flag represent get pass or not. null or 0 is false, otherwise true
-
 =head2 desc
 
   data_type: 'text'
@@ -126,8 +119,6 @@ __PACKAGE__->add_columns(
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "stage",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
-    "pass",
-    { data_type => "integer", is_nullable => 1 },
     "desc",
     { data_type => "text", is_nullable => 1 },
 );
@@ -204,8 +195,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-19 11:32:38
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rYtCugKOzdpU9d7yrgXR4w
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-19 12:13:41
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Q/8bDpmK+cogYLSYf0fZTQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
