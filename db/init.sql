@@ -388,6 +388,7 @@ CREATE TABLE `order_detail` (
   `price`        INT          DEFAULT 0,
   `final_price`  INT          DEFAULT 0,
   `stage`        INT          DEFAULT 0,
+  `pass`         INT          DEFAULT NULL COMMENT 'a flag represent get pass or not. null or 0 is false, otherwise true',
   `desc`         TEXT         DEFAULT NULL,
 
   PRIMARY KEY (`id`),
