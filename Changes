@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add column: order.does_wear (#38)
 
 0.017     2015-11-11 15:30:55+09:00 Asia/Seoul
     - Add '포장완료' status
