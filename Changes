@@ -2,7 +2,8 @@ Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
     - Add column: order.does_wear (#38)
-    - Add table: suit
+    - Add table: suit (#37)
+    - Add column: order.pass (#39)
 
 0.017     2015-11-11 15:30:55+09:00 Asia/Seoul
     - Add '포장완료' status
