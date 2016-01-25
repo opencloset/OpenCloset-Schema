@@ -337,6 +337,7 @@ CREATE TABLE `order` (
   `price_pay_with`        VARCHAR(32) DEFAULT NULL,
   `late_fee_pay_with`     VARCHAR(32) DEFAULT NULL,
   `compensation_pay_with` VARCHAR(32) DEFAULT NULL,
+  `pass`                  INT         DEFAULT NULL COMMENT 'a flag represent get pass or not. null or 0 is false, otherwise true',
   `desc`                  TEXT DEFAULT NULL,
   `message`               TEXT DEFAULT NULL,
 
