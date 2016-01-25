@@ -358,6 +358,36 @@ __PACKAGE__->belongs_to(
     },
 );
 
+=head2 suit_code_bottom
+
+Type: might_have
+
+Related object: L<OpenCloset::Schema::Result::Suit>
+
+=cut
+
+__PACKAGE__->might_have(
+    "suit_code_bottom",
+    "OpenCloset::Schema::Result::Suit",
+    { "foreign.code_bottom" => "self.code" },
+    { cascade_copy          => 0, cascade_delete => 0 },
+);
+
+=head2 suit_code_top
+
+Type: might_have
+
+Related object: L<OpenCloset::Schema::Result::Suit>
+
+=cut
+
+__PACKAGE__->might_have(
+    "suit_code_top",
+    "OpenCloset::Schema::Result::Suit",
+    { "foreign.code_top" => "self.code" },
+    { cascade_copy       => 0, cascade_delete => 0 },
+);
+
 =head2 tags
 
 Type: many_to_many
@@ -371,8 +401,8 @@ __PACKAGE__->many_to_many( "tags", "clothes_tags", "tag" );
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-10-15 19:30:17
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6aNLwVLpqMVrau+M23tgzA
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-13 15:42:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QpW6T00WjfosX9bJP90mrw
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
