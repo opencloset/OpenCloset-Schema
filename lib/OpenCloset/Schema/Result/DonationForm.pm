@@ -49,6 +49,13 @@ __PACKAGE__->table("donation_form");
 
 0 is false, otherwise true
 
+=head2 birth_date
+
+  data_type: 'datetime'
+  datetime_undef_if_invalid: 1
+  inflate_datetime: 1
+  is_nullable: 1
+
 =head2 gender
 
   data_type: 'integer'
@@ -135,6 +142,13 @@ __PACKAGE__->add_columns(
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "ever_sent",
     { data_type => "integer", is_nullable => 1 },
+    "birth_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+    },
     "gender",
     { data_type => "integer", is_nullable => 1 },
     "phone",
@@ -179,8 +193,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-25 18:37:11
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:VxqHUVRQPROmuBNixlCsTQ
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-26 15:19:18
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4Ujzo8Di+vUy1w3os62vCQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
