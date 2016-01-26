@@ -337,6 +337,7 @@ CREATE TABLE `order` (
   `price_pay_with`        VARCHAR(32) DEFAULT NULL,
   `late_fee_pay_with`     VARCHAR(32) DEFAULT NULL,
   `compensation_pay_with` VARCHAR(32) DEFAULT NULL,
+  `pass`                  INT         DEFAULT NULL COMMENT 'a flag represent get pass or not. null or 0 is false, otherwise true',
   `desc`                  TEXT DEFAULT NULL,
   `message`               TEXT DEFAULT NULL,
 
@@ -363,6 +364,8 @@ CREATE TABLE `order` (
 
   `create_date`           DATETIME DEFAULT NULL,
   `update_date`           DATETIME DEFAULT NULL,
+
+  `does_wear`             INT DEFAULT NULL COMMENT 'null and 0 is false, otherwise true',
 
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_order1` FOREIGN KEY (`user_id`)    REFERENCES `user`    (`id`) ON DELETE CASCADE,
@@ -525,4 +528,19 @@ CREATE TABLE `volunteer_guestbook` (
 
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_volunteer_guestbook1` FOREIGN KEY (`volunteer_work_id`) REFERENCES `volunteer_work` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- suit
+--
+
+CREATE TABLE `suit` (
+  `code_top`    CHAR(5) NOT NULL,
+  `code_bottom` CHAR(5) NOT NULL,
+
+  PRIMARY KEY (`code_top`),
+  UNIQUE KEY  (`code_bottom`),
+
+  CONSTRAINT `fk_suit1` FOREIGN KEY (`code_top`)    REFERENCES `clothes` (`code`) ON DELETE CASCADE,
+  CONSTRAINT `fk_suit2` FOREIGN KEY (`code_bottom`) REFERENCES `clothes` (`code`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

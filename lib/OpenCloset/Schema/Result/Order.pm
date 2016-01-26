@@ -137,6 +137,13 @@ __PACKAGE__->table("order");
   is_nullable: 1
   size: 32
 
+=head2 pass
+
+  data_type: 'integer'
+  is_nullable: 1
+
+a flag represent get pass or not. null or 0 is false, otherwise true
+
 =head2 desc
 
   data_type: 'text'
@@ -263,6 +270,13 @@ __PACKAGE__->table("order");
   set_on_create: 1
   set_on_update: 1
 
+=head2 does_wear
+
+  data_type: 'integer'
+  is_nullable: 1
+
+null and 0 is false, otherwise true
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -358,6 +372,8 @@ __PACKAGE__->add_columns(
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "compensation_pay_with",
     { data_type => "varchar", is_nullable => 1, size => 32 },
+    "pass",
+    { data_type => "integer", is_nullable => 1 },
     "desc",
     { data_type => "text", is_nullable => 1 },
     "message",
@@ -417,6 +433,8 @@ __PACKAGE__->add_columns(
         set_on_create             => 1,
         set_on_update             => 1,
     },
+    "does_wear",
+    { data_type => "integer", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -572,8 +590,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-10-15 19:30:18
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rVPD/uFkUDqEhUFgpKCVfQ
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-19 12:13:41
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hux8rhOXGje+21/lPkhnoA
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
