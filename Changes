@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.018     2016-01-26 18:39:17+09:00 Asia/Seoul
     - Add column: order.does_wear (#38)
     - Add table: suit (#37)
     - Add column: order.pass (#39)
