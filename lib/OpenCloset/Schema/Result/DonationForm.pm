@@ -121,12 +121,13 @@ format: 010xxxxxxxx
 
 accept | sent | return | done | cancel
 
-=head2 created_date
+=head2 create_date
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
   inflate_datetime: 1
   is_nullable: 1
+  set_on_create: 1
 
 =cut
 
@@ -169,12 +170,13 @@ __PACKAGE__->add_columns(
     { data_type => "text", is_nullable => 1 },
     "status",
     { data_type => "varchar", is_nullable => 1, size => 32 },
-    "created_date",
+    "create_date",
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
         inflate_datetime          => 1,
         is_nullable               => 1,
+        set_on_create             => 1,
     },
 );
 
@@ -193,8 +195,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-26 15:19:18
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4Ujzo8Di+vUy1w3os62vCQ
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-26 15:37:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JFnuQrjISNFk0MUaD9s1yA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
