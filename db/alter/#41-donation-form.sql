@@ -9,6 +9,7 @@ CREATE TABLE `donation_form` (
   `email`           VARCHAR(128) DEFAULT NULL,
   `address1`        TEXT         DEFAULT NULL COMMENT 'address',
   `address2`        TEXT         DEFAULT NULL COMMENT 'jibeon address',
+  `address3`        TEXT         DEFAULT NULL COMMENT 'extra address',
   `category`        VARCHAR(128) DEFAULT NULL,
   `quantity`        VARCHAR(32)  DEFAULT NULL,
   `terms`           INT(11)      DEFAULT NULL COMMENT '0 is false, otherwise true',

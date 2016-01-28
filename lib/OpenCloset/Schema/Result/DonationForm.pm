@@ -91,6 +91,13 @@ address
 
 jibeon address
 
+=head2 address3
+
+  data_type: 'text'
+  is_nullable: 1
+
+extra address
+
 =head2 category
 
   data_type: 'varchar'
@@ -169,6 +176,8 @@ __PACKAGE__->add_columns(
     { data_type => "text", is_nullable => 1 },
     "address2",
     { data_type => "text", is_nullable => 1 },
+    "address3",
+    { data_type => "text", is_nullable => 1 },
     "category",
     { data_type => "varchar", is_nullable => 1, size => 128 },
     "quantity",
@@ -206,8 +215,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-28 18:59:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:V/Lz6v9C4RCrE68SVhPESQ
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-28 19:01:13
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:og1f+dZCtQwx/USz5ljOCw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
