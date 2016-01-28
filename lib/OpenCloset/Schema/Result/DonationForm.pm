@@ -77,10 +77,19 @@ format: 010xxxxxxxx
   is_nullable: 1
   size: 128
 
-=head2 address
+=head2 address1
 
   data_type: 'text'
   is_nullable: 1
+
+address
+
+=head2 address2
+
+  data_type: 'text'
+  is_nullable: 1
+
+jibeon address
 
 =head2 category
 
@@ -156,7 +165,9 @@ __PACKAGE__->add_columns(
     { data_type => "char", is_nullable => 1, size => 11 },
     "email",
     { data_type => "varchar", is_nullable => 1, size => 128 },
-    "address",
+    "address1",
+    { data_type => "text", is_nullable => 1 },
+    "address2",
     { data_type => "text", is_nullable => 1 },
     "category",
     { data_type => "varchar", is_nullable => 1, size => 128 },
@@ -195,8 +206,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-26 15:37:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JFnuQrjISNFk0MUaD9s1yA
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-28 18:59:09
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:V/Lz6v9C4RCrE68SVhPESQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
