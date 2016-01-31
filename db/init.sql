@@ -567,6 +567,7 @@ CREATE TABLE `donation_form` (
   --                                                    접수 | 발송 | 반송 | 완료 | 취소
   `status`          VARCHAR(32)  DEFAULT NULL COMMENT 'accept | sent | return | done | cancel',
   `create_date`     DATETIME     DEFAULT NULL,
+  `update_date`     DATETIME     DEFAULT NULL,
 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

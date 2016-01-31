@@ -145,6 +145,15 @@ accept | sent | return | done | cancel
   is_nullable: 1
   set_on_create: 1
 
+=head2 update_date
+
+  data_type: 'datetime'
+  datetime_undef_if_invalid: 1
+  inflate_datetime: 1
+  is_nullable: 1
+  set_on_create: 1
+  set_on_update: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -198,6 +207,15 @@ __PACKAGE__->add_columns(
         is_nullable               => 1,
         set_on_create             => 1,
     },
+    "update_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+        set_on_create             => 1,
+        set_on_update             => 1,
+    },
 );
 
 =head1 PRIMARY KEY
@@ -215,8 +233,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-28 19:01:13
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:og1f+dZCtQwx/USz5ljOCw
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-31 18:19:20
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:O+JCogNhgOEFnGUvluNRcw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
