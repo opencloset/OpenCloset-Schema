@@ -18,6 +18,9 @@ CREATE TABLE `donation_form` (
 
   --                                                    접수 | 발송 | 반송 | 완료 | 취소
   `status`          VARCHAR(32)  DEFAULT NULL COMMENT 'accept | sent | return | done | cancel',
+  `parcel_service`  VARCHAR(32)  DEFAULT NULL,
+  `waybill`         VARCHAR(128) DEFAULT NULL,
+
   `create_date`     DATETIME     DEFAULT NULL,
   `update_date`     DATETIME     DEFAULT NULL,
 

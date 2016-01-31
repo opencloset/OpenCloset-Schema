@@ -137,6 +137,18 @@ extra address
 
 accept | sent | return | done | cancel
 
+=head2 parcel_service
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
+=head2 waybill
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 128
+
 =head2 create_date
 
   data_type: 'datetime'
@@ -199,6 +211,10 @@ __PACKAGE__->add_columns(
     { data_type => "text", is_nullable => 1 },
     "status",
     { data_type => "varchar", is_nullable => 1, size => 32 },
+    "parcel_service",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "waybill",
+    { data_type => "varchar", is_nullable => 1, size => 128 },
     "create_date",
     {
         data_type                 => "datetime",
@@ -233,8 +249,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-31 18:19:20
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:O+JCogNhgOEFnGUvluNRcw
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-31 18:50:40
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:p8bu8fA/znR8/dhf96myKg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
