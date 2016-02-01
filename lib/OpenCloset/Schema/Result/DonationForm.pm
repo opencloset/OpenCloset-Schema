@@ -135,7 +135,7 @@ extra address
   is_nullable: 1
   size: 32
 
-accept | sent | return | done | cancel
+accepted | waiting | delivering | delivered | returning | returned | cancel
 
 =head2 parcel_service
 
@@ -249,8 +249,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-31 18:50:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:p8bu8fA/znR8/dhf96myKg
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-01 14:52:05
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:pqVrXoL7C12ug+zQy8PZVw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

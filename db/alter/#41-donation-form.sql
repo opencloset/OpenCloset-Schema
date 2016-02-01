@@ -16,8 +16,8 @@ CREATE TABLE `donation_form` (
   `talent_donation` INT(11)      DEFAULT NULL COMMENT '0 is false, otherwise true',
   `talent`          TEXT         DEFAULT NULL,
 
-  --                                                    접수 | 발송 | 반송 | 완료 | 취소
-  `status`          VARCHAR(32)  DEFAULT NULL COMMENT 'accept | sent | return | done | cancel',
+  --                                                   접수     | 발송대기 | 배송중     | 발송완료  | 반송신청   | 반송완료 | 취소
+  `status`          VARCHAR(32)  DEFAULT NULL COMMENT 'accepted | waiting | delivering | delivered | returning | returned | cancel',
   `parcel_service`  VARCHAR(32)  DEFAULT NULL,
   `waybill`         VARCHAR(128) DEFAULT NULL,
 
