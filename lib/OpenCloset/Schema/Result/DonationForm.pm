@@ -42,7 +42,14 @@ __PACKAGE__->table("donation_form");
   is_nullable: 1
   size: 32
 
-=head2 ever_sent
+=head2 ever_donate
+
+  data_type: 'integer'
+  is_nullable: 1
+
+0 is false, otherwise true
+
+=head2 ever_use
 
   data_type: 'integer'
   is_nullable: 1
@@ -186,7 +193,9 @@ __PACKAGE__->add_columns(
     },
     "name",
     { data_type => "varchar", is_nullable => 1, size => 32 },
-    "ever_sent",
+    "ever_donate",
+    { data_type => "integer", is_nullable => 1 },
+    "ever_use",
     { data_type => "integer", is_nullable => 1 },
     "birth_date",
     {
@@ -259,8 +268,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-03 15:44:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Uea9ajV8zhZbpqSsRvQ5BA
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-03 19:11:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:kNlcXwdPtNycQ+iA1kMhHQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

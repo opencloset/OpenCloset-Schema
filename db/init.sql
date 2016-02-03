@@ -552,7 +552,8 @@ CREATE TABLE `suit` (
 CREATE TABLE `donation_form` (
   `id`              INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name`            VARCHAR(32)  DEFAULT NULL,
-  `ever_sent`       INT(11)      DEFAULT NULL COMMENT '0 is false, otherwise true',
+  `ever_donate`     INT(11)      DEFAULT NULL COMMENT '0 is false, otherwise true',
+  `ever_use`        INT(11)      DEFAULT NULL COMMENT '0 is false, otherwise true',
   `birth_date`      DATETIME     DEFAULT NULL,
   `gender`          INT(11)      DEFAULT NULL COMMENT '1: male, 2: female',
   `phone`           CHAR(11)     DEFAULT NULL COMMENT 'format: 010xxxxxxxx',
