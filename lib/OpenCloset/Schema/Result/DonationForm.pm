@@ -149,6 +149,14 @@ accepted | waiting | delivering | delivered | returning | returned | cancel
   is_nullable: 1
   size: 128
 
+=head2 sms_bitmask
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
+flag to show each sms sent or not
+
 =head2 create_date
 
   data_type: 'datetime'
@@ -215,6 +223,8 @@ __PACKAGE__->add_columns(
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "waybill",
     { data_type => "varchar", is_nullable => 1, size => 128 },
+    "sms_bitmask",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
     "create_date",
     {
         data_type                 => "datetime",
@@ -249,8 +259,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-01 14:52:05
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:pqVrXoL7C12ug+zQy8PZVw
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-03 15:44:09
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Uea9ajV8zhZbpqSsRvQ5BA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
