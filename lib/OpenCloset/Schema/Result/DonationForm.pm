@@ -164,6 +164,11 @@ accepted | waiting | delivering | delivered | returning | returned | cancel
 
 flag to show each sms sent or not
 
+=head2 comment
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 create_date
 
   data_type: 'datetime'
@@ -234,6 +239,8 @@ __PACKAGE__->add_columns(
     { data_type => "varchar", is_nullable => 1, size => 128 },
     "sms_bitmask",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "comment",
+    { data_type => "text", is_nullable => 1 },
     "create_date",
     {
         data_type                 => "datetime",
@@ -268,8 +275,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-03 19:11:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:kNlcXwdPtNycQ+iA1kMhHQ
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-11 15:29:50
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:MsVTv6FeUOWiRsVComnK+w
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
