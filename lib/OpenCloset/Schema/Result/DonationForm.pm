@@ -177,6 +177,13 @@ flag to show each sms sent or not
   is_nullable: 1
   set_on_create: 1
 
+=head2 return_date
+
+  data_type: 'datetime'
+  datetime_undef_if_invalid: 1
+  inflate_datetime: 1
+  is_nullable: 1
+
 =head2 update_date
 
   data_type: 'datetime'
@@ -249,6 +256,13 @@ __PACKAGE__->add_columns(
         is_nullable               => 1,
         set_on_create             => 1,
     },
+    "return_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+    },
     "update_date",
     {
         data_type                 => "datetime",
@@ -275,8 +289,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-11 15:29:50
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:MsVTv6FeUOWiRsVComnK+w
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-17 14:50:01
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZXKz75T8sUEgspD+e3d2+Q
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

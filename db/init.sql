@@ -573,6 +573,7 @@ CREATE TABLE `donation_form` (
   `comment`         TEXT         DEFAULT NULL,
 
   `create_date`     DATETIME     DEFAULT NULL,
+  `return_date`     DATETIME     DEFAULT NULL,
   `update_date`     DATETIME     DEFAULT NULL,
 
   PRIMARY KEY (`id`)
