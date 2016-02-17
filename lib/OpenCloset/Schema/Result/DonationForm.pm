@@ -156,6 +156,12 @@ accepted | waiting | delivering | delivered | returning | returned | cancel
   is_nullable: 1
   size: 128
 
+=head2 return_waybill
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 128
+
 =head2 sms_bitmask
 
   data_type: 'integer'
@@ -244,6 +250,8 @@ __PACKAGE__->add_columns(
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "waybill",
     { data_type => "varchar", is_nullable => 1, size => 128 },
+    "return_waybill",
+    { data_type => "varchar", is_nullable => 1, size => 128 },
     "sms_bitmask",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "comment",
@@ -289,8 +297,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-17 14:50:01
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZXKz75T8sUEgspD+e3d2+Q
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-17 17:30:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bKEQeCft6cInJhPMZM8E/w
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

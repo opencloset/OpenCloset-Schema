@@ -569,6 +569,7 @@ CREATE TABLE `donation_form` (
   `status`          VARCHAR(32)  DEFAULT NULL COMMENT 'accepted | waiting | delivering | delivered | returning | returned | cancel',
   `parcel_service`  VARCHAR(32)  DEFAULT NULL,
   `waybill`         VARCHAR(128) DEFAULT NULL,
+  `return_waybill`  VARCHAR(128) DEFAULT NULL,
   `sms_bitmask`     INT(11)      DEFAULT 0    COMMENT 'flag to show each sms sent or not',
   `comment`         TEXT         DEFAULT NULL,
 
