@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add table: donation_form (#41)
 
 0.018     2016-01-26 18:39:17+09:00 Asia/Seoul
     - Add column: order.does_wear (#38)
