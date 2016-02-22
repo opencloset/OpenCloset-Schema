@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.019     2016-02-22 18:09:19+09:00 Asia/Seoul
     - Add table: donation_form (#41)
 
 0.018     2016-01-26 18:39:17+09:00 Asia/Seoul
