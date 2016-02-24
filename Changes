@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add table: `order_size_log` (#45)
+	- Add trigger: `tracking_order_clothes_size_insert` (#45)
 
 0.019     2016-02-22 18:09:19+09:00 Asia/Seoul
     - Add table: donation_form (#41)
