@@ -73,6 +73,7 @@ CREATE TABLE `user_info` (
   `knee`        INT DEFAULT NULL, -- 무릎   길이(cm)
   `foot`        INT DEFAULT NULL, -- 발     크기(mm)
   `pants`       INT DEFAULT NULL, -- 바지   길이(cm)
+  `skirt`       INT DEFAULT NULL, -- 스커트 둘레(cm)
 
   --
   -- etc
@@ -360,6 +361,7 @@ CREATE TABLE `order` (
   `knee`                  INT DEFAULT NULL, -- 무릎   길이(cm)
   `foot`                  INT DEFAULT NULL, -- 발     크기(mm)
   `pants`                 INT DEFAULT NULL, -- 바지   길이(cm)
+  `skirt`                 INT DEFAULT NULL, -- 스커트 둘레(cm)
   `bestfit`               BOOLEAN DEFAULT 0,
 
   `create_date`           DATETIME DEFAULT NULL,
@@ -587,23 +589,23 @@ CREATE TABLE `donation_form` (
 DROP TABLE IF EXISTS `order_size_log`;
 
 CREATE TABLE `order_size_log` (
-  `order_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `clothes_code` char(5) NOT NULL DEFAULT '',
-  `timestamp` datetime NOT NULL,
-  `category` varchar(32) NOT NULL,
-  `color` varchar(32) DEFAULT NULL,
-  `gender` varchar(6) DEFAULT NULL COMMENT 'male/female/unisex',
-  `neck` int(11) DEFAULT '0',
-  `bust` int(11) DEFAULT '0',
-  `waist` int(11) DEFAULT '0',
-  `hip` int(11) DEFAULT '0',
-  `topbelly` int(11) DEFAULT '0',
-  `belly` int(11) DEFAULT '0',
-  `arm` int(11) DEFAULT '0',
-  `thigh` int(11) DEFAULT '0',
-  `length` int(11) DEFAULT '0',
-  `price` int(11) DEFAULT '0',
+  `order_id` INT(10) UNSIGNED NOT NULL,
+  `user_id` INT(10) UNSIGNED NOT NULL,
+  `clothes_code` CHAR(5) NOT NULL DEFAULT '',
+  `timestamp` DATETIME NOT NULL,
+  `category` VARCHAR(32) NOT NULL,
+  `color` VARCHAR(32) DEFAULT NULL,
+  `gender` VARCHAR(6) DEFAULT NULL COMMENT 'male/female/unisex',
+  `neck` INT(11) DEFAULT '0',
+  `bust` INT(11) DEFAULT '0',
+  `waist` INT(11) DEFAULT '0',
+  `hip` INT(11) DEFAULT '0',
+  `topbelly` INT(11) DEFAULT '0',
+  `belly` INT(11) DEFAULT '0',
+  `arm` INT(11) DEFAULT '0',
+  `thigh` INT(11) DEFAULT '0',
+  `length` INT(11) DEFAULT '0',
+  `price` INT(11) DEFAULT '0',
   KEY `order_id` (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

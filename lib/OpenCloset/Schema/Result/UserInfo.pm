@@ -177,6 +177,11 @@ male/female
   data_type: 'integer'
   is_nullable: 1
 
+=head2 skirt
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =head2 staff
 
   data_type: 'tinyint'
@@ -276,6 +281,8 @@ __PACKAGE__->add_columns(
     { data_type => "integer", is_nullable => 1 },
     "pants",
     { data_type => "integer", is_nullable => 1 },
+    "skirt",
+    { data_type => "integer", is_nullable => 1 },
     "staff",
     { data_type => "tinyint", default_value => 0, is_nullable => 1 },
     "wearon_date",
@@ -353,8 +360,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-10-15 19:30:20
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:w/jY9eWlB7wGNNE7NxPj7A
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-24 17:15:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:34q3LjgsbV/ukzW+5q1oNw
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

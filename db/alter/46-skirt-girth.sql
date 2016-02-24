@@ -1,0 +1,2 @@
+ALTER TABLE `order` ADD COLUMN `skirt` INT DEFAULT NULL AFTER `pants`;
+ALTER TABLE `user_info` ADD COLUMN `skirt` INT DEFAULT NULL AFTER `pants`;
