@@ -190,6 +190,6 @@ __PACKAGE__->add_columns(
 
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.020';
+our $VERSION = '0.021';
 
 1;
