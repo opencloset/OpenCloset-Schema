@@ -247,6 +247,11 @@ a flag represent get pass or not. null or 0 is false, otherwise true
   data_type: 'integer'
   is_nullable: 1
 
+=head2 skirt
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =head2 bestfit
 
   data_type: 'tinyint'
@@ -413,6 +418,8 @@ __PACKAGE__->add_columns(
     "foot",
     { data_type => "integer", is_nullable => 1 },
     "pants",
+    { data_type => "integer", is_nullable => 1 },
+    "skirt",
     { data_type => "integer", is_nullable => 1 },
     "bestfit",
     { data_type => "tinyint", default_value => 0, is_nullable => 1 },
@@ -590,8 +597,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-19 12:13:41
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hux8rhOXGje+21/lPkhnoA
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-24 17:15:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qh7OwkB1DIkgbZJVU5WJbA
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
