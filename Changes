@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add column: order.skirt, user_info.skirt (#46)
 
 0.020     2016-02-24 17:15:45+09:00 Asia/Seoul
     - Add table: `order_size_log` (#45)
