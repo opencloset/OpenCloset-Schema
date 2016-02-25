@@ -420,6 +420,51 @@ Composing rels: L</order_details> -> order
 
 __PACKAGE__->many_to_many( "orders", "order_details", "order" );
 
+sub rentable_duration {
+    my $self = shift;
+
+    my $start_dt =
+        DateTime->new( year => 2014, month => 12, day => 17, time_zone => 'Asia/Seoul' );
+    my $create_dt = $self->donation->create_date;
+    my $entry_dt  = $create_dt < $start_dt ? $start_dt : $create_dt;
+    my $now       = DateTime->now();
+
+    return $entry_dt->delta_days($now)->in_units('days');
+}
+
+sub rented_duration {
+    my $self = shift;
+
+    my @order_detail = $self->order_details(
+        {
+            'order.rental_date' => { '!=' => undef },
+            'order.return_date' => { '!=' => undef }
+        },
+        {
+            select   => [ 'order.rental_date', 'order.return_date' ],
+            prefetch => 'order'
+        }
+    );
+
+    my $sum;
+    foreach my $order_detail (@order_detail) {
+        my $rental_date = $order_detail->order->rental_date;
+        my $return_date = $order_detail->order->return_date;
+
+        my $delta = $return_date->delta_days($rental_date)->in_units('days');
+
+        $sum += $delta;
+    }
+
+    return $sum;
+}
+
+sub rent_ratio {
+    my $self = shift;
+
+    return $self->rented_duration() / $self->rentable_duration();
+}
+
 1;
 
 # COPYRIGHT
