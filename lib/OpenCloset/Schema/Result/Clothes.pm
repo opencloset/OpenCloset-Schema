@@ -420,6 +420,69 @@ Composing rels: L</order_details> -> order
 
 __PACKAGE__->many_to_many( "orders", "order_details", "order" );
 
+=method rentable_duration
+
+의류가 기증된 이후 오늘까지의 대여가능일을 돌려줍니다.만약 의류가 재고관리 시스템이 도입된시점(2014년 12월 17일)이전에 기증된 옷이라도 대여가능일은 2014년 12월 17일로 돌려줍니다.
+
+=cut
+
+sub rentable_duration {
+    my $self = shift;
+
+    my $start_dt =
+        DateTime->new( year => 2014, month => 12, day => 17, time_zone => 'Asia/Seoul' );
+    my $create_dt = $self->donation->create_date;
+    my $entry_dt  = $create_dt < $start_dt ? $start_dt : $create_dt;
+    my $now       = DateTime->now();
+
+    return $entry_dt->delta_days($now)->in_units('days');
+}
+
+=method rented_duration
+
+의류가 기증된 이후 총 대여된 날수를 돌려줍니다. 반납이 완료된 주문서만을 대상으로 합니다.
+
+=cut
+
+sub rented_duration {
+    my $self = shift;
+
+    my @order_detail = $self->order_details(
+        {
+            'order.rental_date' => { '!=' => undef },
+            'order.return_date' => { '!=' => undef }
+        },
+        {
+            select   => [ 'order.rental_date', 'order.return_date' ],
+            prefetch => 'order'
+        }
+    );
+
+    my $sum;
+    foreach my $order_detail (@order_detail) {
+        my $rental_date = $order_detail->order->rental_date;
+        my $return_date = $order_detail->order->return_date;
+
+        my $delta = $return_date->delta_days($rental_date)->in_units('days');
+
+        $sum += $delta;
+    }
+
+    return $sum;
+}
+
+=method rent_ratio
+
+대여가능일과 대여일의 비율을 돌려숩니다.
+
+=cut
+
+sub rent_ratio {
+    my $self = shift;
+
+    return $self->rented_duration() / $self->rentable_duration();
+}
+
 1;
 
 # COPYRIGHT
