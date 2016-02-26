@@ -420,6 +420,12 @@ Composing rels: L</order_details> -> order
 
 __PACKAGE__->many_to_many( "orders", "order_details", "order" );
 
+=method rentable_duration
+
+의류가 기증된 이후 오늘까지의 대여가능일을 돌려줍니다.만약 의류가 재고관리 시스템이 도입된시점(2014년 12월 17일)이전에 기증된 옷이라도 대여가능일은 2014년 12월 17일로 돌려줍니다.
+
+=cut
+
 sub rentable_duration {
     my $self = shift;
 
@@ -431,6 +437,12 @@ sub rentable_duration {
 
     return $entry_dt->delta_days($now)->in_units('days');
 }
+
+=method rented_duration
+
+의류가 기증된 이후 총 대여된 날수를 돌려줍니다. 반납이 완료된 주문서만을 대상으로 합니다.
+
+=cut
 
 sub rented_duration {
     my $self = shift;
@@ -458,6 +470,12 @@ sub rented_duration {
 
     return $sum;
 }
+
+=method rent_ratio
+
+대여가능일과 대여일의 비율을 돌려숩니다.
+
+=cut
 
 sub rent_ratio {
     my $self = shift;
