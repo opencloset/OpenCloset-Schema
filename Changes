@@ -1,6 +1,10 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+   - Add functions to Clothes object
+    - rentable_duration
+    - rented_duration
+    - rent_ratio
 
 0.021     2016-02-24 18:42:59+09:00 Asia/Seoul
     - Add column: order.skirt, user_info.skirt (#46)
