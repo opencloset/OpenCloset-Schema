@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.022     2016-02-26 16:03:52+09:00 Asia/Seoul
    - Add functions to Clothes object
     - rentable_duration
     - rented_duration
