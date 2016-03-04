@@ -335,6 +335,7 @@ CREATE TABLE `order` (
   `user_target_date`      DATETIME DEFAULT NULL,
   `return_date`           DATETIME DEFAULT NULL,
   `return_method`         VARCHAR(32) DEFAULT NULL,
+  `return_memo`           TEXT DEFAULT NULL,
   `price_pay_with`        VARCHAR(32) DEFAULT NULL,
   `late_fee_pay_with`     VARCHAR(32) DEFAULT NULL,
   `compensation_pay_with` VARCHAR(32) DEFAULT NULL,
