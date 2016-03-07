@@ -119,6 +119,11 @@ __PACKAGE__->table("order");
   is_nullable: 1
   size: 32
 
+=head2 return_memo
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 price_pay_with
 
   data_type: 'varchar'
@@ -371,6 +376,8 @@ __PACKAGE__->add_columns(
     },
     "return_method",
     { data_type => "varchar", is_nullable => 1, size => 32 },
+    "return_memo",
+    { data_type => "text", is_nullable => 1 },
     "price_pay_with",
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "late_fee_pay_with",
@@ -597,8 +604,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-24 17:15:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qh7OwkB1DIkgbZJVU5WJbA
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-03-04 15:36:19
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qtWaBqeLmaDtw/Z6KCjmIQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
