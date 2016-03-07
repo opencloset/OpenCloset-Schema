@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.023     2016-03-07 14:16:38+09:00 Asia/Seoul
     - Add column: order.return_memo (#50)
 
 0.022     2016-02-26 16:03:52+09:00 Asia/Seoul

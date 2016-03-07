@@ -4,7 +4,7 @@ package OpenCloset::Schema::Base;
 use strict;
 use warnings;
 
-our $VERSION = '0.023';
+our $VERSION = '0.024';
 
 use base 'DBIx::Class::Core';
 
