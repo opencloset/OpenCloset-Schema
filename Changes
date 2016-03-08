@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.024     2016-03-08 13:49:27+09:00 Asia/Seoul
     - Prevent zero division error at `clothes.rent_ratio` function (#48)
 
 0.023     2016-03-07 14:16:38+09:00 Asia/Seoul
