@@ -458,7 +458,7 @@ sub rented_duration {
         }
     );
 
-    my $sum;
+    my $sum = 0;
     foreach my $order_detail (@order_detail) {
         my $rental_date = $order_detail->order->rental_date;
         my $return_date = $order_detail->order->return_date;
@@ -480,7 +480,10 @@ sub rented_duration {
 sub rent_ratio {
     my $self = shift;
 
-    return $self->rented_duration() / $self->rentable_duration();
+    my $rentable = $self->rentable_duration();
+    return 0 unless $rentable;
+
+    return $self->rented_duration() / $rentable;
 }
 
 1;
