@@ -114,6 +114,19 @@ __PACKAGE__->has_many(
     { cascade_copy          => 0, cascade_delete => 0 },
 );
 
+=head2 donation_forms
+
+Type: has_many
+
+Related object: L<OpenCloset::Schema::Result::DonationForm>
+
+=cut
+
+__PACKAGE__->has_many(
+    "donation_forms", "OpenCloset::Schema::Result::DonationForm",
+    { "foreign.donation_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 user
 
 Type: belongs_to
@@ -132,8 +145,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:42:58
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sJseW1DuWcQGq1tu7FFPag
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-04-01 15:13:11
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:jlWrjy7dBcwApLAEnw2Itw
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

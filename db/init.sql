@@ -583,6 +583,7 @@ CREATE TABLE `suit` (
 
 CREATE TABLE `donation_form` (
   `id`              INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `donation_id`     INT UNSIGNED DEFAULT NULL,
   `name`            VARCHAR(32)  DEFAULT NULL,
   `ever_donate`     INT(11)      DEFAULT NULL COMMENT '0 is false, otherwise true',
   `ever_use`        INT(11)      DEFAULT NULL COMMENT '0 is false, otherwise true',
@@ -609,7 +610,8 @@ CREATE TABLE `donation_form` (
   `return_date`     DATETIME     DEFAULT NULL,
   `update_date`     DATETIME     DEFAULT NULL,
 
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_donation_form1` FOREIGN KEY (`donation_id`) REFERENCES `donation` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
