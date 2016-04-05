@@ -18,3 +18,8 @@ INSERT INTO `clothes_code` (`category`, `code`) VALUES
   ("shirt", "0S2EX"),
   ("tie", "0T1DA"),
   ("waistcoat", "0W01D");
+
+INSERT INTO `status` (`name`) VALUES
+  ("재활용(옷캔)"),
+  ("재활용(비백)"),
+  ("사용못함");
