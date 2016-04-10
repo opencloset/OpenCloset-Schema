@@ -164,6 +164,9 @@ INSERT INTO `status` (`id`, `name`)
     (42, '환불'),
     (43, '사이즈없음'),
     (44, '포장완료')
+    (45, '재활용(옷캔)'),
+    (46, '재활용(비백)'),
+    (47, '사용못함')
     ;
 
 --
@@ -583,6 +586,7 @@ CREATE TABLE `suit` (
 
 CREATE TABLE `donation_form` (
   `id`              INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `donation_id`     INT UNSIGNED DEFAULT NULL,
   `name`            VARCHAR(32)  DEFAULT NULL,
   `ever_donate`     INT(11)      DEFAULT NULL COMMENT '0 is false, otherwise true',
   `ever_use`        INT(11)      DEFAULT NULL COMMENT '0 is false, otherwise true',
@@ -609,7 +613,8 @@ CREATE TABLE `donation_form` (
   `return_date`     DATETIME     DEFAULT NULL,
   `update_date`     DATETIME     DEFAULT NULL,
 
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_donation_form1` FOREIGN KEY (`donation_id`) REFERENCES `donation` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -672,3 +677,15 @@ INSERT INTO `order_size_log`
 ) $$
 
 DELIMITER ;
+
+--
+-- clothes_code
+--
+
+DROP TABLE IF EXISTS `clothes_code`;
+
+CREATE TABLE `clothes_code` (
+  `category` VARCHAR(32) NOT NULL,
+  `code`     CHAR(5)     NOT NULL,
+  PRIMARY KEY (`category`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

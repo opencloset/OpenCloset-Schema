@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add table: clothes_code (#55)
+    - Add column: donation_form.donation_id (#41)
 
 0.025     2016-03-15 17:56:26+09:00 Asia/Seoul
     - Add table: coupon (#52)
