@@ -120,6 +120,12 @@ __PACKAGE__->table("clothes");
   default_value: 0
   is_nullable: 1
 
+=head2 cuff
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
 =head2 color
 
   data_type: 'varchar'
@@ -210,6 +216,8 @@ __PACKAGE__->add_columns(
     "thigh",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "length",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "cuff",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "color",
     { data_type => "varchar", is_nullable => 1, size => 32 },
@@ -401,8 +409,8 @@ __PACKAGE__->many_to_many( "tags", "clothes_tags", "tag" );
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-13 15:42:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QpW6T00WjfosX9bJP90mrw
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-04-11 15:08:05
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NDkxh/MlfxZrhd0U9bgoPQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
