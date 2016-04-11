@@ -129,6 +129,12 @@ male/female/unisex
   default_value: 0
   is_nullable: 1
 
+=head2 cuff
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
 =head2 price
 
   data_type: 'integer'
@@ -175,6 +181,8 @@ __PACKAGE__->add_columns(
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "length",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "cuff",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
     "price",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
 );
@@ -182,8 +190,8 @@ __PACKAGE__->add_columns(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-02-24 16:23:33
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rIWkGG6lrNjAQ+idWSQEIg
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-04-11 15:41:03
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UZ39mFp5LeAVuw/v6ynJxg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
