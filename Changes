@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.028     2016-04-20 18:48:41+09:00 Asia/Seoul
     - Modify column: clothes.cuff - int to decimal(3,2) (#59)
 
 0.027     2016-04-11 16:07:51+09:00 Asia/Seoul
