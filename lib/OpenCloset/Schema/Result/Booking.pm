@@ -135,7 +135,7 @@ __PACKAGE__->has_many(
 
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.029';
+our $VERSION = '0.030';
 
 =head2 users
 
