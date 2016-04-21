@@ -125,7 +125,7 @@ __PACKAGE__->table("clothes");
   data_type: 'decimal'
   default_value: 0.00
   is_nullable: 1
-  size: [3,2]
+  size: [5,2]
 
 =head2 color
 
@@ -223,7 +223,7 @@ __PACKAGE__->add_columns(
         data_type     => "decimal",
         default_value => "0.00",
         is_nullable   => 1,
-        size          => [ 3, 2 ],
+        size          => [ 5, 2 ],
     },
     "color",
     { data_type => "varchar", is_nullable => 1, size => 32 },
@@ -415,8 +415,8 @@ __PACKAGE__->many_to_many( "tags", "clothes_tags", "tag" );
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-04-20 18:43:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:T89ShQt6rzplXSLC8B6GZQ
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-04-21 14:05:40
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hug4//X5vULTkf1o6vLYeA
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
