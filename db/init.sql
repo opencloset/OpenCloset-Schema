@@ -218,7 +218,7 @@ CREATE TABLE `clothes` (
   `arm`         INT         DEFAULT 0, -- 팔     길이(cm)
   `thigh`       INT         DEFAULT 0, -- 허벅지 둘레(cm)
   `length`      INT         DEFAULT 0, -- 기장(cm) 또는 발 크기(mm)
-  `cuff`      DECIMAL(3, 2) DEFAULT 0.00, -- 밑단둘레(cm) 또는 소매둘레(mm)
+  `cuff`       DECIMAL(5,2) DEFAULT 0.00, -- 밑단둘레(cm) 또는 소매둘레(mm)
   `color`       VARCHAR(32) DEFAULT NULL,
   `gender`      VARCHAR(6)  DEFAULT NULL COMMENT 'male/female/unisex',
   `category`    VARCHAR(32) NOT NULL,  -- 종류
