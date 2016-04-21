@@ -131,9 +131,10 @@ male/female/unisex
 
 =head2 cuff
 
-  data_type: 'integer'
-  default_value: 0
+  data_type: 'decimal'
+  default_value: 0.00
   is_nullable: 1
+  size: [5,2]
 
 =head2 price
 
@@ -182,7 +183,12 @@ __PACKAGE__->add_columns(
     "length",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "cuff",
-    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    {
+        data_type     => "decimal",
+        default_value => "0.00",
+        is_nullable   => 1,
+        size          => [ 5, 2 ],
+    },
     "price",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
 );
@@ -190,8 +196,8 @@ __PACKAGE__->add_columns(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-04-11 15:41:03
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UZ39mFp5LeAVuw/v6ynJxg
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-04-21 14:05:42
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:LRAYo8epKaXHnj4i5OiNFw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
