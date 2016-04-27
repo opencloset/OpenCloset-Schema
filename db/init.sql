@@ -427,6 +427,8 @@ CREATE TABLE `order_detail` (
   `final_price`  INT          DEFAULT 0,
   `stage`        INT          DEFAULT 0,
   `desc`         TEXT         DEFAULT NULL,
+  `pay_with`     VARCHAR(32)  DEFAULT NULL,
+  `create_date`  DATETIME     DEFAULT NULL,
 
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_order_detail1` FOREIGN KEY (`order_id`)     REFERENCES `order`   (`id`)   ON DELETE CASCADE,

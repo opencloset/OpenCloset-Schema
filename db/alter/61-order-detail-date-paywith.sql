@@ -1,0 +1,3 @@
+ALTER TABLE `order_detail`
+  ADD COLUMN `pay_with` VARCHAR(32) DEFAULT NULL,
+  ADD COLUMN `create_date` DATETIME DEFAULT NULL;
