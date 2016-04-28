@@ -85,6 +85,20 @@ __PACKAGE__->table("order_detail");
   data_type: 'text'
   is_nullable: 1
 
+=head2 pay_with
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
+=head2 create_date
+
+  data_type: 'datetime'
+  datetime_undef_if_invalid: 1
+  inflate_datetime: 1
+  is_nullable: 1
+  set_on_create: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -121,6 +135,16 @@ __PACKAGE__->add_columns(
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "desc",
     { data_type => "text", is_nullable => 1 },
+    "pay_with",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
+    "create_date",
+    {
+        data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        inflate_datetime          => 1,
+        is_nullable               => 1,
+        set_on_create             => 1,
+    },
 );
 
 =head1 PRIMARY KEY
@@ -195,8 +219,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-01-19 12:13:41
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Q/8bDpmK+cogYLSYf0fZTQ
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-04-27 15:53:19
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NcNY1dRLU0nD7SezZVqgHw
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

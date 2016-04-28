@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add column: order_detail.create_date (#61)
+    - Add column: order_detail.pay_with (#61)
 
 0.029     2016-04-21 14:22:40+09:00 Asia/Seoul
     - Modify column: clothes.cuff - decimal(3,2) to decimal(5,2) (#59)
