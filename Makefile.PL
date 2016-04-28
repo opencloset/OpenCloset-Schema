@@ -16,10 +16,12 @@ my %WriteMakefileArgs = (
   "MIN_PERL_VERSION" => "5.012",
   "NAME" => "OpenCloset::Schema",
   "PREREQ_PM" => {
+    "Code::TidyAll" => 0,
     "DBIx::Class::Core" => 0,
     "DBIx::Class::EncodedColumn" => 0,
     "DBIx::Class::InflateColumn::DateTime" => 0,
     "DBIx::Class::Schema" => 0,
+    "DBIx::Class::Schema::Loader" => 0,
     "DBIx::Class::TimeStamp" => 0,
     "base" => 0,
     "experimental" => 0,
@@ -33,7 +35,7 @@ my %WriteMakefileArgs = (
     "File::Spec" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "0.030",
+  "VERSION" => "0.031",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -41,10 +43,12 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "Code::TidyAll" => 0,
   "DBIx::Class::Core" => 0,
   "DBIx::Class::EncodedColumn" => 0,
   "DBIx::Class::InflateColumn::DateTime" => 0,
   "DBIx::Class::Schema" => 0,
+  "DBIx::Class::Schema::Loader" => 0,
   "DBIx::Class::TimeStamp" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,

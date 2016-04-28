@@ -1,7 +1,9 @@
+requires "Code::TidyAll" => "0";
 requires "DBIx::Class::Core" => "0";
 requires "DBIx::Class::EncodedColumn" => "0";
 requires "DBIx::Class::InflateColumn::DateTime" => "0";
 requires "DBIx::Class::Schema" => "0";
+requires "DBIx::Class::Schema::Loader" => "0";
 requires "DBIx::Class::TimeStamp" => "0";
 requires "base" => "0";
 requires "experimental" => "0";
@@ -27,6 +29,10 @@ on 'configure' => sub {
   requires "perl" => "5.012";
 };
 
+on 'configure' => sub {
+  suggests "JSON::PP" => "2.27300";
+};
+
 on 'develop' => sub {
   requires "Dist::Zilla" => "5";
   requires "Dist::Zilla::Plugin::Prereqs" => "0";
@@ -46,5 +52,6 @@ on 'develop' => sub {
   requires "Test::Pod::Coverage" => "1.08";
   requires "Test::Spelling" => "0.12";
   requires "Test::Version" => "1";
+  requires "blib" => "1.01";
   requires "perl" => "5.006";
 };
