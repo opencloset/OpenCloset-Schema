@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add table: repair_clothes (#63)
 
 0.030     2016-04-28 15:59:37+09:00 Asia/Seoul
     - Add column: order_detail.create_date (#61)
