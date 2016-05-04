@@ -704,7 +704,7 @@ CREATE TABLE `repair_clothes` (
 
   `alteration_at` VARCHAR(128) DEFAULT NULL,
   `cost`          INT DEFAULT 0,
-  `done`          INT DEFAULT NULL COMMENT 'null and 0 is false, otherwise true',
+  `done`          INT DEFAULT NULL COMMENT '1: 치수변경, 2: 수선완료',
 
   `assign_date`   DATETIME DEFAULT NULL COMMENT '수선맡긴날',
   `pickup_date`   DATETIME DEFAULT NULL COMMENT '수거일',
