@@ -11,6 +11,7 @@ use base 'DBIx::Class::Core';
 __PACKAGE__->load_components(
     qw(
         EncodedColumn
+        FilterColumn
         InflateColumn::DateTime
         TimeStamp
         )
