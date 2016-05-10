@@ -515,6 +515,21 @@ sub rent_ratio {
     return $self->rented_duration() / $rentable;
 }
 
+__PACKAGE__->inflate_column(
+    cuff => {
+        inflate => sub {
+            my $value = shift;
+            return unless $value;
+            sprintf( '%.2f', $value * 100 / 254 ); # cm -> inch
+        },
+        deflate => sub {
+            my $value = shift;
+            return unless $value;
+            sprintf( '%.2f', $value * 2.54 );      # inch -> cm
+        },
+    }
+);
+
 1;
 
 # COPYRIGHT
