@@ -522,8 +522,8 @@ __PACKAGE__->filter_column(
     }
 );
 
-sub to_cm   { sprintf( '%.2f', $_[1] * 2.54 ) }
-sub from_cm { sprintf( '%.2f', $_[1] * 100 / 254 ) }
+sub to_cm   { $_[1] ? sprintf( '%.2f', $_[1] * 2.54 )      : undef }
+sub from_cm { $_[1] ? sprintf( '%.2f', $_[1] * 100 / 254 ) : undef }
 
 1;
 
