@@ -60,7 +60,12 @@ __PACKAGE__->table("repair_clothes");
   data_type: 'integer'
   is_nullable: 1
 
-null and 0 is false, otherwise true
+1: ????, 2: ????
+
+=head2 comment
+
+  data_type: 'text'
+  is_nullable: 1
 
 =head2 assign_date
 
@@ -115,6 +120,8 @@ __PACKAGE__->add_columns(
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "done",
     { data_type => "integer", is_nullable => 1 },
+    "comment",
+    { data_type => "text", is_nullable => 1 },
     "assign_date",
     {
         data_type                 => "datetime",
@@ -194,8 +201,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-04-29 15:55:31
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:aJ9zV2pwxJ9M/OgfJikGmw
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-05-10 14:51:21
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/HTUd6iGvK2RJYaVz5o3HQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
