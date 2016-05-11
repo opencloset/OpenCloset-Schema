@@ -522,6 +522,16 @@ __PACKAGE__->filter_column(
     }
 );
 
+=method to_cm
+
+cm to inch
+
+=method from_cm
+
+inch to cm
+
+=cut
+
 sub to_cm   { $_[1] ? sprintf( '%.2f', $_[1] * 2.54 )      : undef }
 sub from_cm { $_[1] ? sprintf( '%.2f', $_[1] * 100 / 254 ) : undef }
 
