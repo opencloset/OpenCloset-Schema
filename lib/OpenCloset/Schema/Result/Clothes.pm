@@ -535,6 +535,40 @@ inch to cm
 sub to_cm   { $_[1] ? sprintf( '%.2f', $_[1] * 2.54 )      : undef }
 sub from_cm { $_[1] ? sprintf( '%.2f', $_[1] * 100 / 254 ) : undef }
 
+=method top
+
+셋트의류일 경우에 상의에 대한 shortcut
+
+=cut
+
+sub top {
+    my $self     = shift;
+    my $category = $self->category;
+
+    return $self if $category eq 'jacket';
+    return unless "pants skirt" =~ m/\b$category\b/;
+
+    my $suit = $self->suit_code_bottom;
+    return $suit->code_top;
+}
+
+=method bottom
+
+셋트의류일 경우에 하의에 대한 shortcut
+
+=cut
+
+sub bottom {
+    my $self     = shift;
+    my $category = $self->category;
+
+    return $self if "pants skirt" =~ m/\b$category\b/;
+    return if $category ne 'jacket';
+
+    my $suit = $self->suit_code_top;
+    return $suit->code_bottom;
+}
+
 1;
 
 # COPYRIGHT
