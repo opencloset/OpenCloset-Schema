@@ -549,6 +549,7 @@ sub top {
     return unless "pants skirt" =~ m/\b$category\b/;
 
     my $suit = $self->suit_code_bottom;
+    return unless $suit;
     return $suit->code_top;
 }
 
@@ -566,6 +567,7 @@ sub bottom {
     return if $category ne 'jacket';
 
     my $suit = $self->suit_code_top;
+    return unless $suit;
     return $suit->code_bottom;
 }
 
