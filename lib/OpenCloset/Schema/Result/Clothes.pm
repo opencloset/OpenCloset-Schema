@@ -337,6 +337,21 @@ __PACKAGE__->has_many(
     { cascade_copy           => 0, cascade_delete => 0 },
 );
 
+=head2 repair_clothes
+
+Type: might_have
+
+Related object: L<OpenCloset::Schema::Result::RepairClothes>
+
+=cut
+
+__PACKAGE__->might_have(
+    "repair_clothes",
+    "OpenCloset::Schema::Result::RepairClothes",
+    { "foreign.clothes_code" => "self.code" },
+    { cascade_copy           => 0, cascade_delete => 0 },
+);
+
 =head2 satisfactions
 
 Type: has_many
@@ -415,8 +430,8 @@ __PACKAGE__->many_to_many( "tags", "clothes_tags", "tag" );
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-04-21 14:05:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hug4//X5vULTkf1o6vLYeA
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-04-29 16:04:15
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2B1wmXZKMeyTHXU4FVYaBQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
@@ -498,6 +513,62 @@ sub rent_ratio {
     return 0 unless $rentable;
 
     return $self->rented_duration() / $rentable;
+}
+
+__PACKAGE__->filter_column(
+    cuff => {
+        filter_to_storage   => 'to_cm',
+        filter_from_storage => 'from_cm',
+    }
+);
+
+=method to_cm
+
+cm to inch
+
+=method from_cm
+
+inch to cm
+
+=cut
+
+sub to_cm   { $_[1] ? sprintf( '%.2f', $_[1] * 2.54 )      : undef }
+sub from_cm { $_[1] ? sprintf( '%.2f', $_[1] * 100 / 254 ) : undef }
+
+=method top
+
+셋트의류일 경우에 상의에 대한 shortcut
+
+=cut
+
+sub top {
+    my $self     = shift;
+    my $category = $self->category;
+
+    return $self if $category eq 'jacket';
+    return unless "pants skirt" =~ m/\b$category\b/;
+
+    my $suit = $self->suit_code_bottom;
+    return unless $suit;
+    return $suit->code_top;
+}
+
+=method bottom
+
+셋트의류일 경우에 하의에 대한 shortcut
+
+=cut
+
+sub bottom {
+    my $self     = shift;
+    my $category = $self->category;
+
+    return $self if "pants skirt" =~ m/\b$category\b/;
+    return if $category ne 'jacket';
+
+    my $suit = $self->suit_code_top;
+    return unless $suit;
+    return $suit->code_bottom;
 }
 
 1;
