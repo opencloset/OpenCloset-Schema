@@ -21,6 +21,18 @@ use warnings;
 
 use base 'OpenCloset::Schema::Base';
 
+=head1 COMPONENTS LOADED
+
+=over 4
+
+=item * L<DBIx::Class::EncodedColumn>
+
+=back
+
+=cut
+
+__PACKAGE__->load_components("EncodedColumn");
+
 =head1 TABLE: C<user>
 
 =cut
@@ -231,8 +243,8 @@ __PACKAGE__->might_have(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:43:00
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:REg9xSnn40mLs8Vf2UIguQ
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-05-14 03:11:18
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NEAQkGvAg7PAQaRalz6UPQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

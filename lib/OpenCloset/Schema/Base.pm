@@ -13,14 +13,7 @@ use base 'DBIx::Class::Core';
 ### https://metacpan.org/pod/distribution/DBIx-Class/lib/DBIx/Class/Manual/Component.pod#USING
 ### The order in which is you load the components may be very important, depending on the component. If you are not sure, then read the docs for the components you are using and see if they mention anything about the order in which you should load them.
 
-__PACKAGE__->load_components(
-    qw(
-        EncodedColumn
-        InflateColumn::DateTime
-        TimeStamp
-        FilterColumn
-        )
-);
+__PACKAGE__->load_components(qw/InflateColumn::DateTime TimeStamp/);
 
 use overload '""' => sub {
     my $self = shift;

@@ -36,6 +36,7 @@ my $CONF = OpenCloset::Config::load;
         relationships             => 1,
         col_collision_map         => 'column_%s',
         result_base_class         => 'OpenCloset::Schema::Base',
+        result_components_map     => { User => [qw/EncodedColumn/] },
         overwrite_modifications   => 1,
         datetime_undef_if_invalid => 1,
         filter_generated_code     => sub {
