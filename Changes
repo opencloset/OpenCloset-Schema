@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+   - Fixed set_on_create error (#68)
 
 0.031     2016-05-12 12:31:12+09:00 Asia/Seoul
     - Add table: repair_clothes (#63)
