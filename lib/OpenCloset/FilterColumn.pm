@@ -9,26 +9,7 @@ our $VERSION = '0.033';
 use base qw(DBIx::Class);
 use SQL::Abstract 'is_literal_value';
 
-=head1 NAME
-
-=head1 SYNOPSIS
-
-    __PACKAGE__->filter_column( money => {
-        filter_to_storage => 'to_pennies',
-        filter_from_storage => 'from_pennies',
-    });
-
-    sub to_pennies   { $_[1] * 100 }
-
-    sub from_pennies { $_[1] / 100 }
-
-    1;
-
-=cut
-
-=head1 METHODS
-
-=head2 register_column
+=method register_column
 
 =cut
 
@@ -47,7 +28,7 @@ sub register_column {
     );
 }
 
-=head2 filter_column
+=method filter_column
 
 =cut
 
@@ -78,7 +59,7 @@ sub filter_column {
     return 1;
 }
 
-=head2 _column_from_storage
+=method _column_from_storage
 
 =cut
 
@@ -97,7 +78,7 @@ sub _column_from_storage {
     return defined $filter ? $self->$filter($value) : $value;
 }
 
-=head2 _column_to_storage
+=method _column_to_storage
 
 =cut
 
@@ -116,7 +97,7 @@ sub _column_to_storage {
     return defined $unfilter ? $self->$unfilter($value) : $value;
 }
 
-=head2 get_filtered_column
+=method get_filtered_column
 
 =cut
 
@@ -134,7 +115,7 @@ sub get_filtered_column {
     return $self->{_filtered_column}{$col} = $self->_column_from_storage( $col, $val );
 }
 
-=head2 get_column
+=method get_column
 
 =cut
 
@@ -149,7 +130,7 @@ sub get_column {
     return $self->next::method($col);
 }
 
-=head2 get_columns
+=method get_columns
 
 =cut
 
@@ -164,7 +145,7 @@ sub get_columns {
     $self->next::method(@_);
 }
 
-=head2 store_column
+=method store_column
 
 =cut
 
@@ -177,7 +158,7 @@ sub store_column {
     $self->next::method(@_);
 }
 
-=head2 has_column_loaded
+=method has_column_loaded
 
 =cut
 
@@ -187,7 +168,7 @@ sub has_column_loaded {
     return $self->next::method($col);
 }
 
-=head2 set_filtered_column
+=method set_filtered_column
 
 =cut
 
@@ -210,7 +191,7 @@ sub set_filtered_column {
     return $self->{_filtered_column}{$col} = $filtered;
 }
 
-=head2 update
+=method update
 
 =cut
 
@@ -233,7 +214,7 @@ sub update {
     return $self->next::method( $data, @rest );
 }
 
-=head2 new
+=method new
 
 =cut
 
@@ -257,11 +238,11 @@ sub new {
     return $obj;
 }
 
-=head2 to_cm
+=method to_cm
 
 cm to inch
 
-=head2 from_cm
+=method from_cm
 
 inch to cm
 
