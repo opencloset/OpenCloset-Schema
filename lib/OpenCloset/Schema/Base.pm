@@ -8,12 +8,17 @@ our $VERSION = '0.032';
 
 use base 'DBIx::Class::Core';
 
+### *WARN* FilterColumn 을 TimeStamp 위에 두면 안됨
+###
+### https://metacpan.org/pod/distribution/DBIx-Class/lib/DBIx/Class/Manual/Component.pod#USING
+### The order in which is you load the components may be very important, depending on the component. If you are not sure, then read the docs for the components you are using and see if they mention anything about the order in which you should load them.
+
 __PACKAGE__->load_components(
     qw(
         EncodedColumn
-        FilterColumn
         InflateColumn::DateTime
         TimeStamp
+        FilterColumn
         )
 );
 
