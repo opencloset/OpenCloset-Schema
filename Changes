@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.033     2016-05-14 05:44:33+09:00 Asia/Seoul
     - Use alternative DBIx::Class::FilterColumn for clothes.cuff (#70)
     - Simplify load_components
 
