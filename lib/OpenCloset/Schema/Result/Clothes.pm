@@ -515,26 +515,6 @@ sub rent_ratio {
     return $self->rented_duration() / $rentable;
 }
 
-__PACKAGE__->filter_column(
-    cuff => {
-        filter_to_storage   => 'to_cm',
-        filter_from_storage => 'from_cm',
-    }
-);
-
-=method to_cm
-
-cm to inch
-
-=method from_cm
-
-inch to cm
-
-=cut
-
-sub to_cm   { $_[1] ? sprintf( '%.2f', $_[1] * 2.54 )      : undef }
-sub from_cm { $_[1] ? sprintf( '%.2f', $_[1] * 100 / 254 ) : undef }
-
 =method top
 
 셋트의류일 경우에 상의에 대한 shortcut
