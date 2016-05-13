@@ -1,6 +1,10 @@
 package OpenCloset::FilterColumn;
+# ABSTRACT: OpenCloset Database Schema Class
+
 use strict;
 use warnings;
+
+our $VERSION = '0.033';
 
 use base qw(DBIx::Class);
 use SQL::Abstract 'is_literal_value';
@@ -74,6 +78,10 @@ sub filter_column {
     return 1;
 }
 
+=head2 _column_from_storage
+
+=cut
+
 sub _column_from_storage {
     my ( $self, $col, $value ) = @_;
 
@@ -88,6 +96,10 @@ sub _column_from_storage {
 
     return defined $filter ? $self->$filter($value) : $value;
 }
+
+=head2 _column_to_storage
+
+=cut
 
 sub _column_to_storage {
     my ( $self, $col, $value ) = @_;
@@ -104,6 +116,10 @@ sub _column_to_storage {
     return defined $unfilter ? $self->$unfilter($value) : $value;
 }
 
+=head2 _column_to_storage
+
+=cut
+
 sub get_filtered_column {
     my ( $self, $col ) = @_;
 
@@ -118,6 +134,10 @@ sub get_filtered_column {
     return $self->{_filtered_column}{$col} = $self->_column_from_storage( $col, $val );
 }
 
+=head2 get_column
+
+=cut
+
 sub get_column {
     my ( $self, $col ) = @_;
 
@@ -128,6 +148,10 @@ sub get_column {
 
     return $self->next::method($col);
 }
+
+=head2 get_columns
+
+=cut
 
 sub get_columns {
     my $self = shift;
@@ -140,6 +164,10 @@ sub get_columns {
     $self->next::method(@_);
 }
 
+=head2 store_column
+
+=cut
+
 sub store_column {
     my ( $self, $col ) = ( shift, @_ );
 
@@ -149,11 +177,19 @@ sub store_column {
     $self->next::method(@_);
 }
 
+=head2 has_colum_loaded
+
+=cut
+
 sub has_column_loaded {
     my ( $self, $col ) = @_;
     return 1 if exists $self->{_filtered_column}{$col};
     return $self->next::method($col);
 }
+
+=head2 set_filtered_column
+
+=cut
 
 sub set_filtered_column {
     my ( $self, $col, $filtered ) = @_;
@@ -174,6 +210,10 @@ sub set_filtered_column {
     return $self->{_filtered_column}{$col} = $filtered;
 }
 
+=head2 update
+
+=cut
+
 sub update {
     my ( $self, $data, @rest ) = @_;
 
@@ -192,6 +232,10 @@ sub update {
 
     return $self->next::method( $data, @rest );
 }
+
+=head2 new
+
+=cut
 
 sub new {
     my ( $class, $data, @rest ) = @_;
@@ -227,3 +271,7 @@ sub to_cm   { $_[1] ? sprintf( '%.2f', $_[1] * 2.54 )      : undef }
 sub from_cm { $_[1] ? sprintf( '%.2f', $_[1] * 100 / 254 ) : undef }
 
 1;
+
+# COPYRIGHT
+
+__END__
