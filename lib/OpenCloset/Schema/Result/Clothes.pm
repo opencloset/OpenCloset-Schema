@@ -21,6 +21,18 @@ use warnings;
 
 use base 'OpenCloset::Schema::Base';
 
+=head1 COMPONENTS LOADED
+
+=over 4
+
+=item * L<OpenCloset::FilterColumn>
+
+=back
+
+=cut
+
+__PACKAGE__->load_components("+OpenCloset::FilterColumn");
+
 =head1 TABLE: C<clothes>
 
 =cut
@@ -430,8 +442,8 @@ __PACKAGE__->many_to_many( "tags", "clothes_tags", "tag" );
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-04-29 16:04:15
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2B1wmXZKMeyTHXU4FVYaBQ
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-05-14 05:11:38
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Lmum/R7sOdjKtBr63tErzg
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
@@ -514,26 +526,6 @@ sub rent_ratio {
 
     return $self->rented_duration() / $rentable;
 }
-
-__PACKAGE__->filter_column(
-    cuff => {
-        filter_to_storage   => 'to_cm',
-        filter_from_storage => 'from_cm',
-    }
-);
-
-=method to_cm
-
-cm to inch
-
-=method from_cm
-
-inch to cm
-
-=cut
-
-sub to_cm   { $_[1] ? sprintf( '%.2f', $_[1] * 2.54 )      : undef }
-sub from_cm { $_[1] ? sprintf( '%.2f', $_[1] * 100 / 254 ) : undef }
 
 =method top
 
