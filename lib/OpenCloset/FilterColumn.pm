@@ -116,7 +116,7 @@ sub _column_to_storage {
     return defined $unfilter ? $self->$unfilter($value) : $value;
 }
 
-=head2 _column_to_storage
+=head2 get_filtered_column
 
 =cut
 
@@ -177,7 +177,7 @@ sub store_column {
     $self->next::method(@_);
 }
 
-=head2 has_colum_loaded
+=head2 has_column_loaded
 
 =cut
 
