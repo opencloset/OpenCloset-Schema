@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.032     2016-05-13 15:08:51+09:00 Asia/Seoul
    - Fixed set_on_create error (#68)
    - Add test for set_on_create (#67)
 
