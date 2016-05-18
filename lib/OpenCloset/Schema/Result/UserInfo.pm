@@ -218,6 +218,20 @@ male/female
   is_nullable: 1
   size: 32
 
+=head2 email_notify
+
+  data_type: 'integer'
+  is_nullable: 1
+
+null and 0 is false, otherwise true
+
+=head2 sms_notify
+
+  data_type: 'integer'
+  is_nullable: 1
+
+null and 0 is false, otherwise true
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -300,6 +314,10 @@ __PACKAGE__->add_columns(
     { data_type => "varchar", is_nullable => 1, size => 128 },
     "pre_color",
     { data_type => "varchar", is_nullable => 1, size => 32 },
+    "email_notify",
+    { data_type => "integer", is_nullable => 1 },
+    "sms_notify",
+    { data_type => "integer", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -360,8 +378,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-02-24 17:15:08
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:34q3LjgsbV/ukzW+5q1oNw
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-05-18 14:41:21
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5neiA6WZPMb+haR2hDomNQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
