@@ -117,7 +117,7 @@ __PACKAGE__->many_to_many( "clothes", "clothes_tags", "clothes" );
 
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.034';
+our $VERSION = '0.035';
 
 1;
 
