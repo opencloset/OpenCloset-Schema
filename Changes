@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+   - Add table: discard_clothes (#65)
 
 0.033     2016-05-14 05:44:33+09:00 Asia/Seoul
     - Use alternative DBIx::Class::FilterColumn for clothes.cuff (#70)
