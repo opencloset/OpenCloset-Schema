@@ -294,6 +294,21 @@ __PACKAGE__->has_many(
     { cascade_copy           => 0, cascade_delete => 0 },
 );
 
+=head2 discard_clothes
+
+Type: might_have
+
+Related object: L<OpenCloset::Schema::Result::DiscardClothes>
+
+=cut
+
+__PACKAGE__->might_have(
+    "discard_clothes",
+    "OpenCloset::Schema::Result::DiscardClothes",
+    { "foreign.clothes_code" => "self.code" },
+    { cascade_copy           => 0, cascade_delete => 0 },
+);
+
 =head2 donation
 
 Type: belongs_to
@@ -442,8 +457,8 @@ __PACKAGE__->many_to_many( "tags", "clothes_tags", "tag" );
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-05-14 05:11:38
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Lmum/R7sOdjKtBr63tErzg
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-05-18 10:49:39
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gX435LnPn5X8MYxCP4oAeA
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
