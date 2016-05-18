@@ -20,13 +20,15 @@ my $CONF = OpenCloset::Config::load;
         dump_directory            => 'lib',
         naming                    => { ALL => 'v8' },
         moniker_map               => {
-            clothes        => 'Clothes',
-            order_clothes  => 'OrderClothes',
-            repair_clothes => 'RepairClothes',
-            sms            => 'SMS',
+            clothes         => 'Clothes',
+            order_clothes   => 'OrderClothes',
+            discard_clothes => 'DiscardClothes',
+            repair_clothes  => 'RepairClothes',
+            sms             => 'SMS',
         },
         rel_name_map => {
-            repair_clothe => 'repair_clothes',
+            repair_clothe  => 'repair_clothes',
+            discard_clothe => 'discard_clothes',
         },
         inflect_singular          => {
             clothes => 'clothes',
