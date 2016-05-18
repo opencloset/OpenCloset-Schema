@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.034     2016-05-18 13:55:35+09:00 Asia/Seoul
    - Add table: discard_clothes (#65)
 
 0.033     2016-05-14 05:44:33+09:00 Asia/Seoul
