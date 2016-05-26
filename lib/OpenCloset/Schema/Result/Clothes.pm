@@ -478,7 +478,10 @@ __PACKAGE__->many_to_many( "orders", "order_details", "order" );
 
 =method rentable_duration
 
-의류가 기증된 이후 오늘까지의 대여가능일을 돌려줍니다.만약 의류가 재고관리 시스템이 도입된시점(2014년 12월 17일)이전에 기증된 옷이라도 대여가능일은 2014년 12월 17일로 돌려줍니다.
+의류의 입고일로부터 오늘까지의 날 수를 반환합니다. 2014년 12월 17일 재고관리
+시스템 도입시점 이전에 입고된 의류의 경우 이전 대여자료가 존재하지 않기때문에
+입고일을 시스템 도입시점으로 합니다. 만약 입고일이 오늘보다 앞설경우 음수를
+반환합니다.
 
 =cut
 
@@ -487,11 +490,17 @@ sub rentable_duration {
 
     my $start_dt =
         DateTime->new( year => 2014, month => 12, day => 17, time_zone => 'Asia/Seoul' );
-    my $create_dt = $self->donation->create_date;
+    my $create_dt = $self->donation->create_date->truncate( to => 'day' );
     my $entry_dt  = $create_dt < $start_dt ? $start_dt : $create_dt;
-    my $now       = DateTime->now();
+    my $now       = DateTime->now()->truncate( to => 'day' );
 
-    return $entry_dt->delta_days($now)->in_units('days');
+    my $delta = $entry_dt->delta_days($now)->in_units('days');
+
+    if( $entry_dt > $now ) {
+        $delta = $delta * -1;
+    }
+
+    return $delta;
 }
 
 =method rented_duration
