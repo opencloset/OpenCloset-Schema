@@ -270,6 +270,13 @@ a flag represent get pass or not. null or 0 is false, otherwise true
   default_value: 0
   is_nullable: 1
 
+=head2 ignore
+
+  data_type: 'integer'
+  is_nullable: 1
+
+null and 0 are false, otherwise true
+
 =head2 create_date
 
   data_type: 'datetime'
@@ -444,6 +451,8 @@ __PACKAGE__->add_columns(
     { data_type => "integer", is_nullable => 1 },
     "bestfit",
     { data_type => "tinyint", default_value => 0, is_nullable => 1 },
+    "ignore",
+    { data_type => "integer", is_nullable => 1 },
     "create_date",
     {
         data_type                 => "datetime",
@@ -638,8 +647,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-03-11 17:32:56
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:kG0Io53L/Bk6P6R5ewBU3w
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-05-26 18:03:24
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CJadmdP/qAtrc3ibOvjtyw
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
