@@ -517,10 +517,14 @@ sub rented_duration {
 
     my $sum = 0;
     for my $order_detail (@order_details) {
-        my $rental_date = $order_detail->order->rental_date->clone->truncate( to => 'day' );
-        my $return_date = $order_detail->order->return_date->clone->truncate( to => 'day' );
+        my $rental_date = $order_detail->order->rental_date;
+        my $return_date = $order_detail->order->return_date;
 
+        # 반납일이 대여일보다 이른 주문서는 누적하지 않음
         next unless $rental_date <= $return_date;
+
+        $rental_date->clone->truncate( to => 'day' );
+        $return_date->clone->truncate( to => 'day' );
 
         my $delta = $return_date->delta_days($rental_date)->in_units('days');
 
