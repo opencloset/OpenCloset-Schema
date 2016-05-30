@@ -516,7 +516,7 @@ sub rented_duration {
     );
 
     my $sum = 0;
-    foreach my $order_detail (@order_details) {
+    for my $order_detail (@order_details) {
         my $rental_date = $order_detail->order->rental_date->truncate( to => 'day' );
         my $return_date = $order_detail->order->return_date->truncate( to => 'day' );
 
