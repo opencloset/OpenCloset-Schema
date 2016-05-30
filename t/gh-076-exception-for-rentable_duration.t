@@ -34,6 +34,13 @@ fixtures_ok(
     "Installed fixtures",
 );
 
+my $system_start_date = {
+    year      => 2014,
+    month     => 12,
+    day       => 17,
+    time_zone => 'Asia/Seoul',
+};
+
 ## Your testing code below ##
 
 subtest "clothes.warehousing_date(): after system start date", sub {
@@ -41,7 +48,7 @@ subtest "clothes.warehousing_date(): after system start date", sub {
     my $ymd  = "2015-03-15";
     ok my $clothes = Clothes->find( { code => $code } ) => "find clothes";
     is $clothes->code, $code => "clothes.code";
-    my $warehousing_date = $clothes->warehousing_date;
+    my $warehousing_date = $clothes->warehousing_date($system_start_date);
     is $warehousing_date->ymd, $ymd => "clothes.warehousing_date";
 };
 
@@ -50,7 +57,7 @@ subtest "clothes.warehousing_date(): before system start date", sub {
     my $ymd  = "2014-12-17";
     ok my $clothes = Clothes->find( { code => $code } ) => "find clothes";
     is $clothes->code, $code => "clothes.code";
-    my $warehousing_date = $clothes->warehousing_date;
+    my $warehousing_date = $clothes->warehousing_date($system_start_date);
     is $warehousing_date->ymd, $ymd => "clothes.warehousing_date";
 };
 
@@ -58,16 +65,18 @@ subtest "clothes.rentable_duration(): 1 month earlier than today", sub {
     my $code = "0J0H3";
     my $days = 30;
     ok my $clothes = Clothes->find( { code => $code } ) => "find clothes";
-    is $clothes->code,              $code => "clothes.code";
-    is $clothes->rentable_duration, $days => "clothes.rentable_duration";
+    is $clothes->code, $code => "clothes.code";
+    is $clothes->rentable_duration( $system_start_date, 'Asia/Seoul' ),
+        $days => "clothes.rentable_duration";
 };
 
 subtest "clothes.rentable_duration(): warehousing date is earlier than today", sub {
     my $code = "0J0H4";
     my $days = -8;
     ok my $clothes = Clothes->find( { code => $code } ) => "find clothes";
-    is $clothes->code,              $code => "clothes.code";
-    is $clothes->rentable_duration, $days => "clothes.rentable_duration";
+    is $clothes->code, $code => "clothes.code";
+    is $clothes->rentable_duration( $system_start_date, 'Asia/Seoul' ),
+        $days => "clothes.rentable_duration";
 };
 
 ## Your testing code above ##

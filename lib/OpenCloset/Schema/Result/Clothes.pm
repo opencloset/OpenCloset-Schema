@@ -478,13 +478,13 @@ __PACKAGE__->many_to_many( "orders", "order_details", "order" );
 
 =method warehousing_date
 
-의류의 입고일을 반환합니다. 2014년 12월 17일 재고관리 시스템 도입시점 이전에
-입고된 의류의 경우 재고관리 시스템 도입시점을 입고일로 반환합니다.
+의류의 입고일을 반환합니다.인자로 받은 기준시점 이전에 입고된 의류의 경우
+기준시점을 입고일로 반환합니다.
 
 =cut
 
 sub warehousing_date {
-    my $self = shift;
+    my ( $self, $since ) = @_;
 
     #
     # 입고일: 기증 행위가 생성된 날짜
@@ -493,20 +493,15 @@ sub warehousing_date {
     $warehousing_dt->set_time_zone("Asia/Seoul");
 
     #
-    # 시스템 도입 시점: 2014년 12월 17일
+    # 기준 시점: 인자로 받은 시점
     #
-    my $system_start_dt = DateTime->new(
-        year      => 2014,
-        month     => 12,
-        day       => 17,
-        time_zone => "Asia/Seoul",
-    );
+    my $base_dt = DateTime->new(%$since);
 
     #
-    # 재고관리 시스템 도입시점 이전에 입고된 의류의 경우
-    # 입고일을 시스템 도입시점으로 함
+    # 기존 시점 이전에 입고된 의류의 경우
+    # 입고일을 기준 시점으로 함
     #
-    $warehousing_dt = $system_start_dt if $warehousing_dt < $system_start_dt;
+    $warehousing_dt = $base_dt if $warehousing_dt < $base_dt;
 
     return $warehousing_dt;
 }
@@ -514,19 +509,22 @@ sub warehousing_date {
 =method rentable_duration
 
 의류의 입고일로부터 오늘까지의 날 수를 반환합니다.
+첫번째 인자는 기준시점입니다.
+두번째 인자는 현재를 계산할때 적용할 타임존입니다.
+의류의 입고시점이 기준시점보다 이전인경우 기준시점으로 계산합니다.
 입고일이 오늘보다 앞설경우 음수를 반환합니다.
 
 =cut
 
 sub rentable_duration {
-    my $self = shift;
+    my ( $self, $since, $tz ) = @_;
 
-    my $base_dt = $self->warehousing_date;
+    my $base_dt = $self->warehousing_date($since);
     return unless $base_dt;
 
-    my $now_dt = DateTime->now( time_zone => "Asia/Seoul" );
-
+    my $now_dt = DateTime->now( time_zone => $tz );
     my $delta = $base_dt->delta_days($now_dt)->in_units("days");
+
     #
     # 입고일이 오늘보다 앞설경우 음수를 반환합니다.
     #
@@ -582,16 +580,18 @@ sub rented_duration {
 =method rent_ratio
 
 대여가능일과 대여일의 비율을 돌려숩니다.
+첫번째 인자는 기준시점입니다.
+두번째 인자는 현재를 계산할때 적용할 타임존입니다.
 
 =cut
 
 sub rent_ratio {
-    my $self = shift;
+    my ( $self, $since, $timezone ) = @_;
 
-    my $rentable = $self->rentable_duration();
+    my $rentable = $self->rentable_duration($since, $timezone);
     return 0 unless $rentable;
 
-    return $self->rented_duration() / $rentable;
+    return $self->rented_duration / $rentable;
 }
 
 =method top
