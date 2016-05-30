@@ -36,16 +36,16 @@ fixtures_ok [
 
 {
     ok my $clothes =
-        Clothes->find( { code => '0J0H4' } ) => 'find regular ordered clothes';
+        Clothes->find( { code => '0J0H3' } ) => 'find irregular ordered clohtes';
     is $clothes->rented_duration,
-        2 => 'RENT: 2015-10-27 / RETURN: 2015-10-29 / rented duration: 2';
+        0 => 'RENT: 2015-10-22 / RETURN: 2015-10-20 / rented duration: 0';
 }
 
 {
     ok my $clothes =
-        Clothes->find( { code => '0J0H3' } ) => 'find irregular ordered clohtes';
+        Clothes->find( { code => '0J0H4' } ) => 'find regular ordered clothes';
     is $clothes->rented_duration,
-        0 => 'RENT: 2015-10-22 / RETURN: 2015-10-20 / rented duration: 0';
+        2 => 'RENT: 2015-10-27 / RETURN: 2015-10-29 / rented duration: 2';
 }
 
 ## Your testing code above ##
