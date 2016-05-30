@@ -34,19 +34,29 @@ fixtures_ok [
 
 ## Your testing code below ##
 
-{
-    ok my $clothes =
-        Clothes->find( { code => '0J0H3' } ) => 'find irregular ordered clohtes';
+subtest "return_date is earlier than rental_date", sub {
+    ok my $order = Order->find( { id => 14975 } ) => "order: 14975";
+    ok my $order_detail =
+        $order->order_details->search( { clothes_code => "0J0H3" } )->first =>
+        "order_detail";
+    is $order_detail->id, 86524 => "order_detail.id";
+    ok my $clothes = $order_detail->clothes => "clothes";
+    is $clothes->code, "0J0H3" => "clothes.code";
     is $clothes->rented_duration,
-        0 => 'RENT: 2015-10-22 / RETURN: 2015-10-20 / rented duration: 0';
-}
+        0 => "RENT: 2015-10-22 / RETURN: 2015-10-20 / rented duration: 0";
+};
 
-{
-    ok my $clothes =
-        Clothes->find( { code => '0J0H4' } ) => 'find regular ordered clothes';
+subtest "return_date is later than rental_date (normal case)", sub {
+    ok my $order = Order->find( { id => 14976 } ) => "order: 14976";
+    ok my $order_detail =
+        $order->order_details->search( { clothes_code => "0J0H4" } )->first =>
+        "order_detail";
+    is $order_detail->id, 86525 => "order_detail.id";
+    ok my $clothes = $order_detail->clothes => "clothes";
+    is $clothes->code, "0J0H4" => "clothes.code";
     is $clothes->rented_duration,
-        2 => 'RENT: 2015-10-27 / RETURN: 2015-10-29 / rented duration: 2';
-}
+        2 => "RENT: 2015-10-27 / RETURN: 2015-10-29 / rented duration: 2";
+};
 
 ## Your testing code above ##
 
