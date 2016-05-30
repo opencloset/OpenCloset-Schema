@@ -512,7 +512,7 @@ sub rented_duration {
         {
             select   => [ 'order.rental_date', 'order.return_date' ],
             prefetch => 'order'
-        }
+        },
     );
 
     my $sum = 0;
