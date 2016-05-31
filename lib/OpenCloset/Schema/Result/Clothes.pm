@@ -528,16 +528,11 @@ sub rented_duration {
         # 반납 시점이 대여 시점보다 이른 주문서는 누적하지 않음
         next unless $rental_date <= $return_date;
 
-        $rental_date->truncate( to => 'day' );
-        $return_date->truncate( to => 'day' );
-
-        my $delta = $return_date->delta_days($rental_date)->in_units('days');
-
         # 당일 빌려서 당일 반납할 경우 대여된 날 수는 1일입니다.
         # 당일 빌려서 다음날 반납할 경우 대여된 날 수는 2일입니다.
         # 즉 0박 1일일 경우 1일, 1박 2일일 경우 2일인 것입니다.
         # 따라서 delta_days()값에 1을 더해야 열린옷장이 원하는 대여된 날 수 입니다.
-        $sum += $delta + 1;
+        $sum = $return_date->delta_days($rental_date)->in_units('days') + 1;
     }
 
     return $sum;
