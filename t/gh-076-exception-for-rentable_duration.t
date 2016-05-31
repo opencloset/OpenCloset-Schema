@@ -19,15 +19,16 @@ fixtures_ok [
         [qw/id user_id create_date/],
         [ 1, 1, '2016-04-29 03:51:50' ],
         [ 2, 1, '2011-07-04 00:00:00' ],
-        [ 3, 1, $now->clone->add( days => 8 )->ymd ]
+        [ 3, 1, $now->clone->add( days => 8 )->ymd ],
     ],
     Clothes => [
         [qw/id code donation_id category/],
-        [6343, '0J0H3', 1, 'jacket' ],
-        [6344, '0J0H4', 2, 'jacket' ],
-        [6345, '0J0H5', 3, 'jacket' ]
+        [ 6343, '0J0H3', 1, 'jacket' ],
+        [ 6344, '0J0H4', 2, 'jacket' ],
+        [ 6345, '0J0H5', 3, 'jacket' ],
     ],
-], 'Installed fixtures';
+    ],
+    'Installed fixtures';
 
 ## Your testing code below ##
 
