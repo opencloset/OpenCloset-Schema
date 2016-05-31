@@ -496,14 +496,15 @@ sub rentable_duration {
 
 =method rented_duration
 
-의류가 기증된 이후 총 대여된 날수를 돌려줍니다. 반납이 완료된 주문서만을 대상으로 합니다.
+의류가 입고된 이후 대여된 날 수를 반환합니다. 현재시점에서 반납이 완료된 의류만을
+대상으로하며, 반납 시점이 대여 시점보다 이른 주문서는 계산에 포함시키지 않습니다.
 
 =cut
 
 sub rented_duration {
-    my $self = shift;
+    my ( $self, $time_zone ) = @_;
 
-    my @order_detail = $self->order_details(
+    my @order_details = $self->order_details(
         {
             'order.rental_date' => { '!=' => undef },
             'order.return_date' => { '!=' => undef }
@@ -511,17 +512,27 @@ sub rented_duration {
         {
             select   => [ 'order.rental_date', 'order.return_date' ],
             prefetch => 'order'
-        }
+        },
     );
 
     my $sum = 0;
-    foreach my $order_detail (@order_detail) {
-        my $rental_date = $order_detail->order->rental_date;
-        my $return_date = $order_detail->order->return_date;
+    for my $order_detail (@order_details) {
+        my $rental_date = $order_detail->order->rental_date->clone;
+        my $return_date = $order_detail->order->return_date->clone;
 
-        my $delta = $return_date->delta_days($rental_date)->in_units('days');
+        if ($time_zone) {
+            $rental_date->set_time_zone($time_zone);
+            $return_date->set_time_zone($time_zone);
+        }
 
-        $sum += $delta;
+        # 반납 시점이 대여 시점보다 이른 주문서는 누적하지 않음
+        next unless $rental_date <= $return_date;
+
+        # 당일 빌려서 당일 반납할 경우 대여된 날 수는 1일입니다.
+        # 당일 빌려서 다음날 반납할 경우 대여된 날 수는 2일입니다.
+        # 즉 0박 1일일 경우 1일, 1박 2일일 경우 2일인 것입니다.
+        # 따라서 delta_days()값에 1을 더해야 열린옷장이 원하는 대여된 날 수 입니다.
+        $sum = $return_date->delta_days($rental_date)->in_units('days') + 1;
     }
 
     return $sum;
