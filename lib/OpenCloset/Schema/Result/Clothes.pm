@@ -502,7 +502,7 @@ sub rentable_duration {
 =cut
 
 sub rented_duration {
-    my $self = shift;
+    my ( $self, $time_zone ) = @_;
 
     my @order_details = $self->order_details(
         {
@@ -519,6 +519,11 @@ sub rented_duration {
     for my $order_detail (@order_details) {
         my $rental_date = $order_detail->order->rental_date->clone;
         my $return_date = $order_detail->order->return_date->clone;
+
+        if ($time_zone) {
+            $rental_date->set_time_zone($time_zone);
+            $return_date->set_time_zone($time_zone);
+        }
 
         # 반납 시점이 대여 시점보다 이른 주문서는 누적하지 않음
         next unless $rental_date <= $return_date;
