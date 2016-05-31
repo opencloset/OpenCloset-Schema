@@ -495,10 +495,7 @@ sub rentable_duration {
     my $now       = DateTime->now()->truncate( to => 'day' );
 
     my $delta = $entry_dt->delta_days($now)->in_units('days');
-
-    if( $entry_dt > $now ) {
-        $delta = $delta * -1;
-    }
+    $delta = $delta * -1 if $entry_dt > $now;
 
     return $delta;
 }
