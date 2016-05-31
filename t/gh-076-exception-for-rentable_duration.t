@@ -32,31 +32,37 @@ fixtures_ok [
 
 ## Your testing code below ##
 
-{
-    my $dt = DateTime->new( year => 2016, month => 4, day => 29 );
-    my $delta = $dt->delta_days($now)->in_units('days');
+subtest "entry_date is earlier than today (normal case)", sub {
+    ok my $clothes = Clothes->find( { code => '0J0H3' } ) => "find clothes.code";
+    ok my $entry_date = $clothes->donation->create_date => "get entry_date";
+    ok my $delta = $entry_date->delta_days($now)->in_units('days') => "get delta from now";
 
-    my $clothes = Clothes->find({code=>'0J0H3'});
-    is $clothes->rentable_duration(), $delta => "ENTRY : $dt / RETURN: $now / rented duration: $delta";
-}
+    diag("entry_date : ", $entry_date);
+    diag("       now : ", $now);
+    is $clothes->rentable_duration, $delta => "calcurated rentable_duration : " . $clothes->rentable_duration;
+};
 
-{
-    my $dt      = DateTime->new( year => 2011, month => 7, day => 4 );
-    my $base_dt = DateTime->new( year => 2014, month => 12, day => 17 );
-    my $delta = $base_dt->delta_days($now)->in_units('days');
+subtest "entry_date is earlier than today and system start date (normal case)", sub {
+    ok my $clothes = Clothes->find( { code => '0J0H4' } ) => "find clothes.code";
+    ok my $entry_date = $clothes->donation->create_date => "get entry_date";
+    ok my $base_dt = DateTime->new( year => 2014, month => 12, day => 17 ) => "system start date : 2014-12-17";
+    ok my $delta = $base_dt->delta_days($now)->in_units('days') => 'get delta from $base_dt';
 
-    my $clothes = Clothes->find( { code => '0J0H4' } );
-    is $clothes->rentable_duration(),
-        $delta => "ENTRY : $dt / RETURN: $now / rented duration: $delta (baseline $base_dt)";
-}
+    diag("entry_date : ", $entry_date);
+    diag(" base_date : ", $base_dt);
+    diag("       now : ", $now);
+    is $clothes->rentable_duration, $delta => "calcurated rentable_duration : " . $clothes->rentable_duration;
+};
 
-{
-    my $dt = $now->clone->add( days => 8 );
-    my $delta = $dt->delta_days($now)->in_units('days');
+subtest "entry_date is earlier than now (abnormal case)", sub {
+    ok my $clothes = Clothes->find( { code => '0J0H5' } ) => "find clothes.code";
+    ok my $entry_date = $clothes->donation->create_date => "get entry_date";
+    ok my $delta = $entry_date->delta_days($now)->in_units('days') => "get delta from now";
 
-    my $clothes = Clothes->find( { code => '0J0H5' } );
-    is $clothes->rentable_duration(), -8 => "ENTRY : $dt / RETURN: $now / rented duration: -8";
-}
+    diag("entry_date : ", $entry_date);
+    diag("       now : ", $now);
+    is $clothes->rentable_duration, -8 => "calcurated rentable_duration : " . $clothes->rentable_duration;
+};
 
 ## Your testing code above ##
 
