@@ -496,8 +496,8 @@ sub rentable_duration {
 
 =method rented_duration
 
-의류가 입고된 이후 대여된 날 수를 반환합니다. 현재시점에서 반납이완료된 의류만을
-대상으로하며, 반납일이 대여일보다 이른 주문서는 계산에 포함시키지 않습니다.
+의류가 입고된 이후 대여된 날 수를 반환합니다. 현재시점에서 반납이 완료된 의류만을
+대상으로하며, 반납 시점이 대여 시점보다 이른 주문서는 계산에 포함시키지 않습니다.
 
 =cut
 
@@ -517,14 +517,14 @@ sub rented_duration {
 
     my $sum = 0;
     for my $order_detail (@order_details) {
-        my $rental_date = $order_detail->order->rental_date;
-        my $return_date = $order_detail->order->return_date;
+        my $rental_date = $order_detail->order->rental_date->clone;
+        my $return_date = $order_detail->order->return_date->clone;
 
-        # 반납일이 대여일보다 이른 주문서는 누적하지 않음
+        # 반납 시점이 대여 시점보다 이른 주문서는 누적하지 않음
         next unless $rental_date <= $return_date;
 
-        $rental_date->clone->truncate( to => 'day' );
-        $return_date->clone->truncate( to => 'day' );
+        $rental_date->truncate( to => 'day' );
+        $return_date->truncate( to => 'day' );
 
         my $delta = $return_date->delta_days($rental_date)->in_units('days');
 
