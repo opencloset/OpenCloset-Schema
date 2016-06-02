@@ -4,71 +4,70 @@ use strict;
 use warnings;
 use DateTime;
 
-my $now = DateTime->now()->truncate( to => 'day' );
+my $now = DateTime->now( time_zone => "Asia/Seoul" );
 
 use Test::DBIx::Class {
-    schema_class => 'OpenCloset::Schema',
-    connect_info => [ 'dbi:SQLite:dbname=:memory:', '', '' ],
+    schema_class => "OpenCloset::Schema",
+    connect_info => [ "dbi:SQLite:dbname=:memory:", "", "" ],
     connect_opts  => { quote_char => q{`}, },
-    fixture_class => '::Populate',
+    fixture_class => "::Populate",
     },
-    'Donation', 'Clothes';
+    "Donation", "Clothes";
 
-fixtures_ok [
-    Donation => [
-        [qw/id user_id create_date/],
-        [ 1, 1, '2016-04-29 03:51:50' ],
-        [ 2, 1, '2011-07-04 00:00:00' ],
-        [ 3, 1, $now->clone->add( days => 8 )->ymd ],
+fixtures_ok(
+    [
+        Donation => [
+            [qw/id user_id create_date/],
+            [ 1, 1, "2015-03-15 13:00:34" ],
+            [ 2, 1, "2014-11-15 23:12:34" ],
+            [ 3, 1, $now->clone->add( days => -30 )->ymd ],
+            [ 4, 1, $now->clone->add( days => 8 )->ymd ],
+        ],
+        Clothes => [
+            [qw/id code donation_id category/],
+            [ 6341, "0J0H1", 1, "jacket" ],
+            [ 6342, "0J0H2", 2, "jacket" ],
+            [ 6343, "0J0H3", 3, "jacket" ],
+            [ 6344, "0J0H4", 4, "jacket" ],
+        ],
     ],
-    Clothes => [
-        [qw/id code donation_id category/],
-        [ 6343, '0J0H3', 1, 'jacket' ],
-        [ 6344, '0J0H4', 2, 'jacket' ],
-        [ 6345, '0J0H5', 3, 'jacket' ],
-    ],
-    ],
-    'Installed fixtures';
+    "Installed fixtures",
+);
 
 ## Your testing code below ##
 
-subtest "entry_date is earlier than now (abnormal case)", sub {
-    ok my $clothes = Clothes->find( { code => '0J0H5' } ) => "find clothes.code";
-    ok my $entry_date = $clothes->donation->create_date => "get entry_date";
-    ok my $delta =
-        $entry_date->delta_days($now)->in_units('days') => "get delta from now";
-
-    diag( "entry_date : ", $entry_date );
-    diag( "       now : ", $now );
-    is $clothes->rentable_duration,
-        -8 => "calcurated rentable_duration : " . $clothes->rentable_duration;
+subtest "clothes.warehousing_date(): after system start date", sub {
+    my $code = "0J0H1";
+    my $ymd  = "2015-03-15";
+    ok my $clothes = Clothes->find( { code => $code } ) => "find clothes";
+    is $clothes->code, $code => "clothes.code";
+    my $warehousing_date = $clothes->warehousing_date;
+    is $warehousing_date->ymd, $ymd => "clothes.warehousing_date";
 };
 
-subtest "entry_date is earlier than today (normal case)", sub {
-    ok my $clothes = Clothes->find( { code => '0J0H3' } ) => "find clothes.code";
-    ok my $entry_date = $clothes->donation->create_date => "get entry_date";
-    ok my $delta =
-        $entry_date->delta_days($now)->in_units('days') => "get delta from now";
-
-    diag( "entry_date : ", $entry_date );
-    diag( "       now : ", $now );
-    is $clothes->rentable_duration,
-        $delta => "calcurated rentable_duration : " . $clothes->rentable_duration;
+subtest "clothes.warehousing_date(): before system start date", sub {
+    my $code = "0J0H2";
+    my $ymd  = "2014-12-17";
+    ok my $clothes = Clothes->find( { code => $code } ) => "find clothes";
+    is $clothes->code, $code => "clothes.code";
+    my $warehousing_date = $clothes->warehousing_date;
+    is $warehousing_date->ymd, $ymd => "clothes.warehousing_date";
 };
 
-subtest "entry_date is earlier than today and system start date (normal case)", sub {
-    ok my $clothes = Clothes->find( { code => '0J0H4' } ) => "find clothes.code";
-    ok my $entry_date = $clothes->donation->create_date => "get entry_date";
-    ok my $base_dt = DateTime->new( year => 2014, month => 12, day => 17 ) =>
-        "system start date : 2014-12-17";
-    ok my $delta =
-        $base_dt->delta_days($now)->in_units('days') => 'get delta from $base_dt';
+subtest "clothes.rentable_duration(): 1 month earlier than today", sub {
+    my $code = "0J0H3";
+    my $days = 30;
+    ok my $clothes = Clothes->find( { code => $code } ) => "find clothes";
+    is $clothes->code,              $code => "clothes.code";
+    is $clothes->rentable_duration, $days => "clothes.rentable_duration";
+};
 
-    diag( "entry_date : ", $entry_date );
-    diag( " base_date : ", $base_dt );
-    diag( "       now : ", $now );
-    is $clothes->rentable_duration,
-        $delta => "calcurated rentable_duration : " . $clothes->rentable_duration;
+subtest "clothes.rentable_duration(): warehousing date is earlier than today", sub {
+    my $code = "0J0H4";
+    my $days = -8;
+    ok my $clothes = Clothes->find( { code => $code } ) => "find clothes";
+    is $clothes->code,              $code => "clothes.code";
+    is $clothes->rentable_duration, $days => "clothes.rentable_duration";
 };
 
 ## Your testing code above ##
