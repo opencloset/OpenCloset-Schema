@@ -499,13 +499,18 @@ sub rentable_duration {
     $create_date->set_time_zone("Asia/Seoul");
     $create_date->truncate( to => 'day' );
 
-    my $entry_dt = $create_dt < $start_dt ? $start_dt : $create_dt;
+    my $base_dt = $create_dt;
+    #
+    # 재고관리 시스템 도입시점 이전에 입고된 의류의 경우
+    # 입고일을 시스템 도입시점으로 함
+    #
+    $base_dt = $start_dt if $create_dt < $start_dt;
 
     my $now_dt = DateTime->now( time_zone => "Asia/Seoul" );
     $now_dt->truncate( to => "day" );
 
-    my $delta = $entry_dt->delta_days($now_dt)->in_units('days');
-    $delta = $delta * -1 if $entry_dt > $now_dt;
+    my $delta = $base_dt->delta_days($now_dt)->in_units('days');
+    $delta = $delta * -1 if $base_dt > $now_dt;
 
     return $delta;
 }
