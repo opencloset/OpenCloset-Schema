@@ -488,8 +488,12 @@ __PACKAGE__->many_to_many( "orders", "order_details", "order" );
 sub rentable_duration {
     my $self = shift;
 
-    my $start_dt =
-        DateTime->new( year => 2014, month => 12, day => 17, time_zone => 'Asia/Seoul' );
+    my $start_dt = DateTime->new(
+        year      => 2014,
+        month     => 12,
+        day       => 17,
+        time_zone => 'Asia/Seoul',
+    );
     my $create_dt = $self->donation->create_date->clone->truncate( to => 'day' );
     my $entry_dt  = $create_dt < $start_dt ? $start_dt : $create_dt;
     my $now       = DateTime->now( time_zone => "Asia/Seoul" )->truncate( to => "day" );
