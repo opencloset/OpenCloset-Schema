@@ -501,11 +501,11 @@ sub rentable_duration {
 
     my $entry_dt = $create_dt < $start_dt ? $start_dt : $create_dt;
 
-    my $now = DateTime->now( time_zone => "Asia/Seoul" );
-    $now->truncate( to => "day" );
+    my $now_dt = DateTime->now( time_zone => "Asia/Seoul" );
+    $now_dt->truncate( to => "day" );
 
-    my $delta = $entry_dt->delta_days($now)->in_units('days');
-    $delta = $delta * -1 if $entry_dt > $now;
+    my $delta = $entry_dt->delta_days($now_dt)->in_units('days');
+    $delta = $delta * -1 if $entry_dt > $now_dt;
 
     return $delta;
 }
