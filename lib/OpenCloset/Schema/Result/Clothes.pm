@@ -491,7 +491,6 @@ sub warehousing_date {
     #
     my $warehousing_dt = $self->donation->create_date->clone;
     $warehousing_dt->set_time_zone("Asia/Seoul");
-    $warehousing_dt->truncate( to => "day" );
 
     #
     # 시스템 도입 시점: 2014년 12월 17일
