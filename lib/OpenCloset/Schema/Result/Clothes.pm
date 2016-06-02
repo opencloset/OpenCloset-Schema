@@ -526,7 +526,6 @@ sub rentable_duration {
     return unless $base_dt;
 
     my $now_dt = DateTime->now( time_zone => "Asia/Seoul" );
-    $now_dt->truncate( to => "day" );
 
     my $delta = $base_dt->delta_days($now_dt)->in_units("days");
     #
