@@ -494,9 +494,14 @@ sub rentable_duration {
         day       => 17,
         time_zone => 'Asia/Seoul',
     );
-    my $create_dt = $self->donation->create_date->clone->truncate( to => 'day' );
-    my $entry_dt  = $create_dt < $start_dt ? $start_dt : $create_dt;
-    my $now       = DateTime->now( time_zone => "Asia/Seoul" )->truncate( to => "day" );
+
+    my $create_dt = $self->donation->create_date->clone;
+    $create_date->set_time_zone("Asia/Seoul");
+    $create_date->truncate( to => 'day' );
+
+    my $entry_dt = $create_dt < $start_dt ? $start_dt : $create_dt;
+
+    my $now = DateTime->now( time_zone => "Asia/Seoul" )->truncate( to => "day" );
 
     my $delta = $entry_dt->delta_days($now)->in_units('days');
     $delta = $delta * -1 if $entry_dt > $now;
