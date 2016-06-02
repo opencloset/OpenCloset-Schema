@@ -496,8 +496,8 @@ sub rentable_duration {
     );
 
     my $create_dt = $self->donation->create_date->clone;
-    $create_date->set_time_zone("Asia/Seoul");
-    $create_date->truncate( to => "day" );
+    $create_dt->set_time_zone("Asia/Seoul");
+    $create_dt->truncate( to => "day" );
 
     my $base_dt = $create_dt;
     #
