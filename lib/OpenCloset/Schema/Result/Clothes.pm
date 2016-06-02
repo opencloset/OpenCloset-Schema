@@ -476,22 +476,63 @@ Composing rels: L</order_details> -> order
 
 __PACKAGE__->many_to_many( "orders", "order_details", "order" );
 
+=method warehousing_date
+
+의류의 입고일을 반환합니다. 2014년 12월 17일 재고관리 시스템 도입시점 이전에
+입고된 의류의 경우 재고관리 시스템 도입시점을 입고일로 반환합니다.
+
+=cut
+
+sub warehousing_date {
+    my $self = shift;
+
+    #
+    # 입고일: 기증 행위가 생성된 날짜
+    #
+    my $warehousing_dt = $self->donation->create_date->clone;
+    $warehousing_dt->set_time_zone("Asia/Seoul");
+
+    #
+    # 시스템 도입 시점: 2014년 12월 17일
+    #
+    my $system_start_dt = DateTime->new(
+        year      => 2014,
+        month     => 12,
+        day       => 17,
+        time_zone => "Asia/Seoul",
+    );
+
+    #
+    # 재고관리 시스템 도입시점 이전에 입고된 의류의 경우
+    # 입고일을 시스템 도입시점으로 함
+    #
+    $warehousing_dt = $system_start_dt if $warehousing_dt < $system_start_dt;
+
+    return $warehousing_dt;
+}
+
 =method rentable_duration
 
-의류가 기증된 이후 오늘까지의 대여가능일을 돌려줍니다.만약 의류가 재고관리 시스템이 도입된시점(2014년 12월 17일)이전에 기증된 옷이라도 대여가능일은 2014년 12월 17일로 돌려줍니다.
+의류의 입고일로부터 오늘까지의 날 수를 반환합니다.
+입고일이 오늘보다 앞설경우 음수를 반환합니다.
 
 =cut
 
 sub rentable_duration {
     my $self = shift;
 
-    my $start_dt =
-        DateTime->new( year => 2014, month => 12, day => 17, time_zone => 'Asia/Seoul' );
-    my $create_dt = $self->donation->create_date;
-    my $entry_dt  = $create_dt < $start_dt ? $start_dt : $create_dt;
-    my $now       = DateTime->now();
+    my $base_dt = $self->warehousing_date;
+    return unless $base_dt;
 
-    return $entry_dt->delta_days($now)->in_units('days');
+    my $now_dt = DateTime->now( time_zone => "Asia/Seoul" );
+
+    my $delta = $base_dt->delta_days($now_dt)->in_units("days");
+    #
+    # 입고일이 오늘보다 앞설경우 음수를 반환합니다.
+    #
+    $delta = $delta * -1 if $base_dt > $now_dt;
+
+    return $delta;
 }
 
 =method rented_duration
