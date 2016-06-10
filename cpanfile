@@ -16,6 +16,7 @@ requires "utf8" => "0";
 requires "warnings" => "0";
 
 on 'test' => sub {
+  requires "DateTime" => "0";
   requires "ExtUtils::MakeMaker" => "0";
   requires "File::Spec" => "0";
   requires "Test::DBIx::Class" => "0";
