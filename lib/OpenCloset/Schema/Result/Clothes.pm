@@ -484,7 +484,7 @@ __PACKAGE__->many_to_many( "orders", "order_details", "order" );
 =cut
 
 sub warehousing_date {
-    my ( $self, $time_zone, $base_dt ) = @_;
+    my ( $self, $time_zone, $fixed_warehousing_dt ) = @_;
 
     #
     # 입고일: 기증 행위가 생성된 날짜
@@ -495,8 +495,8 @@ sub warehousing_date {
     # 기존 시점 이전에 입고된 의류의 경우
     # 입고일을 기준 시점으로 함
     #
-    if ($base_dt) {
-        $warehousing_dt = $base_dt if $warehousing_dt < $base_dt;
+    if ($fixed_warehousing_dt) {
+        $warehousing_dt = $fixed_warehousing_dt if $warehousing_dt < $fixed_warehousing_dt;
     }
 
     $warehousing_dt->set_time_zone($time_zone) if $time_zone;
