@@ -478,8 +478,8 @@ __PACKAGE__->many_to_many( "orders", "order_details", "order" );
 
 =method warehousing_date
 
-의류의 입고일을 반환합니다.인자로 받은 기준시점 이전에 입고된 의류의 경우
-기준시점을 입고일로 반환합니다.
+의류의 입고일을 반환합니다. 인자로 받은 기준 시점 이전에 입고된 의류의 경우
+기준 시점을 입고일로 반환합니다.
 
 =cut
 
