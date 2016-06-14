@@ -581,16 +581,16 @@ sub rented_duration {
 
 =method rent_ratio
 
-대여가능일과 대여일의 비율을 돌려숩니다.
-첫번째 인자는 기준시점입니다.
-두번째 인자는 현재를 계산할때 적용할 타임존입니다.
+의류의 입고일로부터 기준 날짜까지의 날을 기준으로 대여가능일과 대여일의 비율을 돌려줍니다.
+첫 번째 인자는 시간 계산시 기준 날짜 DateTime 객체입니다.
+두 번째 인자는 최소 의류 입고일입니다.
 
 =cut
 
 sub rent_ratio {
-    my ( $self, $since, $timezone ) = @_;
+    my ( $self, $dest_dt, $min_warehousing_dt ) = @_;
 
-    my $rentable = $self->rentable_duration($since, $timezone);
+    my $rentable = $self->rentable_duration( $dest_dt, $min_warehousing_dt );
     return 0 unless $rentable;
 
     return $self->rented_duration / $rentable;
