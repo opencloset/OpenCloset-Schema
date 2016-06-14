@@ -520,7 +520,9 @@ sub rentable_duration {
     my $warehousing_dt = $self->warehousing_date( $time_zone, $fixed_warehousing_dt );
     return unless $warehousing_dt;
 
-    my $now_dt = DateTime->now( time_zone => $time_zone );
+    my $now_dt = DateTime->now;
+    $not_dt->set_time_zone($time_zone) if $time_zone;
+
     my $delta = $warehousing_dt->delta_days($now_dt)->in_units("days");
 
     #
