@@ -5,6 +5,7 @@ Revision history for {{ $dist->name }}
         - clothes.rented_duration()
         - clothes.rentable_duration()
         - clothes.rent_ratio()
+    - Add column: volunteer_work.org_username (#83)
 
 0.035     2016-05-26 18:05:37+09:00 Asia/Seoul
     - Add column: order.ignore (#78)
