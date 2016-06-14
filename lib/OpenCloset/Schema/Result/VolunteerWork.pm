@@ -127,6 +127,14 @@ reported | approved | done | canceled
   is_nullable: 1
   size: 32
 
+=head2 org_username
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 128
+
+volunteer organization(1365) username
+
 =head2 create_date
 
   data_type: 'datetime'
@@ -195,6 +203,8 @@ __PACKAGE__->add_columns(
     { data_type => "text", is_nullable => 1 },
     "event_id",
     { data_type => "varchar", is_nullable => 1, size => 32 },
+    "org_username",
+    { data_type => "varchar", is_nullable => 1, size => 128 },
     "create_date",
     {
         data_type                 => "datetime",
@@ -252,8 +262,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-10-15 19:08:08
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:IkA6rktvExrRCcYIY+4FyA
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-06-10 16:54:26
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Momp9pondQmwMcdHvqLaMA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

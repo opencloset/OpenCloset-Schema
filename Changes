@@ -1,6 +1,11 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - 의류 대여 가능일 계산이 정확하지 않음 (#74)
+        - clothes.rented_duration()
+        - clothes.rentable_duration()
+        - clothes.rent_ratio()
+    - Add column: volunteer_work.org_username (#83)
 
 0.035     2016-05-26 18:05:37+09:00 Asia/Seoul
     - Add column: order.ignore (#78)
@@ -49,10 +54,10 @@ Revision history for {{ $dist->name }}
     - Add column: order.return_memo (#50)
 
 0.022     2016-02-26 16:03:52+09:00 Asia/Seoul
-    - Add functions to Clothes object
-    - rentable_duration
-    - rented_duration
-    - rent_ratio
+    - Add functions to Clothes object (#48)
+        - rentable_duration
+        - rented_duration
+        - rent_ratio
 
 0.021     2016-02-24 18:42:59+09:00 Asia/Seoul
     - Add column: order.skirt, user_info.skirt (#46)

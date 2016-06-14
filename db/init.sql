@@ -541,6 +541,7 @@ CREATE TABLE `volunteer_work` (
   `done_1365`          INT          DEFAULT 0,
   `talent`             TEXT         DEFAULT NULL,
   `event_id`           VARCHAR(32)  DEFAULT NULL,
+  `org_username`       VARCHAR(128) DEFAULT NULL COMMENT 'volunteer organization(1365) username',
 
   `create_date`        DATETIME     DEFAULT NULL,
 

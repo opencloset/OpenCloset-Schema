@@ -476,34 +476,76 @@ Composing rels: L</order_details> -> order
 
 __PACKAGE__->many_to_many( "orders", "order_details", "order" );
 
+=method warehousing_date
+
+의류의 입고일을 반환합니다. 인자로 받은 최소 의류 입고일 이전에
+입고된 의류의 경우 최소 의류 입고일을 반환합니다.
+
+=cut
+
+sub warehousing_date {
+    my ( $self, $time_zone, $min_warehousing_dt ) = @_;
+
+    #
+    # 입고일: 기증 행위가 생성된 날짜
+    #
+    my $warehousing_dt = $self->donation->create_date->clone;
+
+    #
+    # 기존 시점 이전에 입고된 의류의 경우
+    # 입고일을 기준 시점으로 함
+    #
+    if ($min_warehousing_dt) {
+        $warehousing_dt = $min_warehousing_dt if $warehousing_dt < $min_warehousing_dt;
+    }
+
+    $warehousing_dt->set_time_zone($time_zone) if $time_zone;
+
+    return $warehousing_dt;
+}
+
 =method rentable_duration
 
-의류가 기증된 이후 오늘까지의 대여가능일을 돌려줍니다.만약 의류가 재고관리 시스템이 도입된시점(2014년 12월 17일)이전에 기증된 옷이라도 대여가능일은 2014년 12월 17일로 돌려줍니다.
+의류의 입고일로부터 기준 날짜까지의 날 수를 반환합니다.
+첫 번째 인자는 시간 계산시 기준 날짜 DateTime 객체입니다.
+두 번째 인자는 최소 의류 입고일입니다.
+의류의 입고 시점이 최소 의류 입고일보다 이전인 경우 최소 의류 입고일을
+의류 입고일로 간주합니다. 입고일이 기준 날짜보다 이를 경우 음수를 반환합니다.
 
 =cut
 
 sub rentable_duration {
-    my $self = shift;
+    my ( $self, $dest_dt, $min_warehousing_dt ) = @_;
 
-    my $start_dt =
-        DateTime->new( year => 2014, month => 12, day => 17, time_zone => 'Asia/Seoul' );
-    my $create_dt = $self->donation->create_date;
-    my $entry_dt  = $create_dt < $start_dt ? $start_dt : $create_dt;
-    my $now       = DateTime->now();
+    my $time_zone;
+    if ( $dest_dt && $dest_dt->time_zone && $dest_dt->time_zone->name ) {
+        $time_zone = $dest_dt->time_zone->name;
+    }
 
-    return $entry_dt->delta_days($now)->in_units('days');
+    my $warehousing_dt = $self->warehousing_date( $time_zone, $min_warehousing_dt );
+    return unless $warehousing_dt;
+
+    my $delta = $warehousing_dt->delta_days($dest_dt)->in_units("days");
+
+    #
+    # 입고일이 오늘보다 앞설경우 음수를 반환합니다.
+    #
+    $delta = $delta * -1 if $warehousing_dt > $dest_dt;
+
+    return $delta;
 }
 
 =method rented_duration
 
-의류가 기증된 이후 총 대여된 날수를 돌려줍니다. 반납이 완료된 주문서만을 대상으로 합니다.
+의류가 입고된 이후 대여된 날 수를 반환합니다. 현재시점에서 반납이 완료된 의류만을
+대상으로하며, 반납 시점이 대여 시점보다 이른 주문서는 계산에 포함시키지 않습니다.
 
 =cut
 
 sub rented_duration {
-    my $self = shift;
+    my ( $self, $time_zone ) = @_;
 
-    my @order_detail = $self->order_details(
+    my @order_details = $self->order_details(
         {
             'order.rental_date' => { '!=' => undef },
             'order.return_date' => { '!=' => undef }
@@ -511,17 +553,27 @@ sub rented_duration {
         {
             select   => [ 'order.rental_date', 'order.return_date' ],
             prefetch => 'order'
-        }
+        },
     );
 
     my $sum = 0;
-    foreach my $order_detail (@order_detail) {
-        my $rental_date = $order_detail->order->rental_date;
-        my $return_date = $order_detail->order->return_date;
+    for my $order_detail (@order_details) {
+        my $rental_date = $order_detail->order->rental_date->clone;
+        my $return_date = $order_detail->order->return_date->clone;
 
-        my $delta = $return_date->delta_days($rental_date)->in_units('days');
+        if ($time_zone) {
+            $rental_date->set_time_zone($time_zone);
+            $return_date->set_time_zone($time_zone);
+        }
 
-        $sum += $delta;
+        # 반납 시점이 대여 시점보다 이른 주문서는 누적하지 않음
+        next unless $rental_date <= $return_date;
+
+        # 당일 빌려서 당일 반납할 경우 대여된 날 수는 1일입니다.
+        # 당일 빌려서 다음날 반납할 경우 대여된 날 수는 2일입니다.
+        # 즉 0박 1일일 경우 1일, 1박 2일일 경우 2일인 것입니다.
+        # 따라서 delta_days()값에 1을 더해야 열린옷장이 원하는 대여된 날 수 입니다.
+        $sum = $return_date->delta_days($rental_date)->in_units('days') + 1;
     }
 
     return $sum;
@@ -529,17 +581,19 @@ sub rented_duration {
 
 =method rent_ratio
 
-대여가능일과 대여일의 비율을 돌려숩니다.
+의류의 입고일로부터 기준 날짜까지의 날을 기준으로 대여가능일과 대여일의 비율을 돌려줍니다.
+첫 번째 인자는 시간 계산시 기준 날짜 DateTime 객체입니다.
+두 번째 인자는 최소 의류 입고일입니다.
 
 =cut
 
 sub rent_ratio {
-    my $self = shift;
+    my ( $self, $dest_dt, $min_warehousing_dt ) = @_;
 
-    my $rentable = $self->rentable_duration();
+    my $rentable = $self->rentable_duration( $dest_dt, $min_warehousing_dt );
     return 0 unless $rentable;
 
-    return $self->rented_duration() / $rentable;
+    return $self->rented_duration / $rentable;
 }
 
 =method top
