@@ -478,59 +478,59 @@ __PACKAGE__->many_to_many( "orders", "order_details", "order" );
 
 =method warehousing_date
 
-의류의 입고일을 반환합니다. 2014년 12월 17일 재고관리 시스템 도입시점 이전에
-입고된 의류의 경우 재고관리 시스템 도입시점을 입고일로 반환합니다.
+의류의 입고일을 반환합니다. 인자로 받은 최소 의류 입고일 이전에
+입고된 의류의 경우 최소 의류 입고일을 반환합니다.
 
 =cut
 
 sub warehousing_date {
-    my $self = shift;
+    my ( $self, $time_zone, $min_warehousing_dt ) = @_;
 
     #
     # 입고일: 기증 행위가 생성된 날짜
     #
     my $warehousing_dt = $self->donation->create_date->clone;
-    $warehousing_dt->set_time_zone("Asia/Seoul");
 
     #
-    # 시스템 도입 시점: 2014년 12월 17일
+    # 기존 시점 이전에 입고된 의류의 경우
+    # 입고일을 기준 시점으로 함
     #
-    my $system_start_dt = DateTime->new(
-        year      => 2014,
-        month     => 12,
-        day       => 17,
-        time_zone => "Asia/Seoul",
-    );
+    if ($min_warehousing_dt) {
+        $warehousing_dt = $min_warehousing_dt if $warehousing_dt < $min_warehousing_dt;
+    }
 
-    #
-    # 재고관리 시스템 도입시점 이전에 입고된 의류의 경우
-    # 입고일을 시스템 도입시점으로 함
-    #
-    $warehousing_dt = $system_start_dt if $warehousing_dt < $system_start_dt;
+    $warehousing_dt->set_time_zone($time_zone) if $time_zone;
 
     return $warehousing_dt;
 }
 
 =method rentable_duration
 
-의류의 입고일로부터 오늘까지의 날 수를 반환합니다.
-입고일이 오늘보다 앞설경우 음수를 반환합니다.
+의류의 입고일로부터 기준 날짜까지의 날 수를 반환합니다.
+첫 번째 인자는 시간 계산시 기준 날짜 DateTime 객체입니다.
+두 번째 인자는 최소 의류 입고일입니다.
+의류의 입고 시점이 최소 의류 입고일보다 이전인 경우 최소 의류 입고일을
+의류 입고일로 간주합니다. 입고일이 기준 날짜보다 이를 경우 음수를 반환합니다.
 
 =cut
 
 sub rentable_duration {
-    my $self = shift;
+    my ( $self, $dest_dt, $min_warehousing_dt ) = @_;
 
-    my $base_dt = $self->warehousing_date;
-    return unless $base_dt;
+    my $time_zone;
+    if ( $dest_dt && $dest_dt->time_zone && $dest_dt->time_zone->name ) {
+        $time_zone = $dest_dt->time_zone->name;
+    }
 
-    my $now_dt = DateTime->now( time_zone => "Asia/Seoul" );
+    my $warehousing_dt = $self->warehousing_date( $time_zone, $min_warehousing_dt );
+    return unless $warehousing_dt;
 
-    my $delta = $base_dt->delta_days($now_dt)->in_units("days");
+    my $delta = $warehousing_dt->delta_days($dest_dt)->in_units("days");
+
     #
     # 입고일이 오늘보다 앞설경우 음수를 반환합니다.
     #
-    $delta = $delta * -1 if $base_dt > $now_dt;
+    $delta = $delta * -1 if $warehousing_dt > $dest_dt;
 
     return $delta;
 }
@@ -581,17 +581,19 @@ sub rented_duration {
 
 =method rent_ratio
 
-대여가능일과 대여일의 비율을 돌려숩니다.
+의류의 입고일로부터 기준 날짜까지의 날을 기준으로 대여가능일과 대여일의 비율을 돌려줍니다.
+첫 번째 인자는 시간 계산시 기준 날짜 DateTime 객체입니다.
+두 번째 인자는 최소 의류 입고일입니다.
 
 =cut
 
 sub rent_ratio {
-    my $self = shift;
+    my ( $self, $dest_dt, $min_warehousing_dt ) = @_;
 
-    my $rentable = $self->rentable_duration();
+    my $rentable = $self->rentable_duration( $dest_dt, $min_warehousing_dt );
     return 0 unless $rentable;
 
-    return $self->rented_duration() / $rentable;
+    return $self->rented_duration / $rentable;
 }
 
 =method top
