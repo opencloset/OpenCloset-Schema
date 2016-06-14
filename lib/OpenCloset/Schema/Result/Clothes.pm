@@ -478,13 +478,13 @@ __PACKAGE__->many_to_many( "orders", "order_details", "order" );
 
 =method warehousing_date
 
-의류의 입고일을 반환합니다. 인자로 받은 기준 시점 이전에 입고된 의류의 경우
-기준 시점을 입고일로 반환합니다.
+의류의 입고일을 반환합니다. 인자로 받은 최소 의류 입고일 이전에
+입고된 의류의 경우 최소 의류 입고일을 반환합니다.
 
 =cut
 
 sub warehousing_date {
-    my ( $self, $time_zone, $fixed_warehousing_dt ) = @_;
+    my ( $self, $time_zone, $min_warehousing_dt ) = @_;
 
     #
     # 입고일: 기증 행위가 생성된 날짜
@@ -495,8 +495,8 @@ sub warehousing_date {
     # 기존 시점 이전에 입고된 의류의 경우
     # 입고일을 기준 시점으로 함
     #
-    if ($fixed_warehousing_dt) {
-        $warehousing_dt = $fixed_warehousing_dt if $warehousing_dt < $fixed_warehousing_dt;
+    if ($min_warehousing_dt) {
+        $warehousing_dt = $min_warehousing_dt if $warehousing_dt < $min_warehousing_dt;
     }
 
     $warehousing_dt->set_time_zone($time_zone) if $time_zone;
@@ -506,29 +506,31 @@ sub warehousing_date {
 
 =method rentable_duration
 
-의류의 입고일로부터 오늘까지의 날 수를 반환합니다.
-첫 번째 인자는 시간 계산시 기준으로 삼을 시간대입니다.
+의류의 입고일로부터 기준 날짜까지의 날 수를 반환합니다.
+첫 번째 인자는 시간 계산시 기준 날짜 DateTime 객체입니다.
 두 번째 인자는 최소 의류 입고일입니다.
 의류의 입고 시점이 최소 의류 입고일보다 이전인 경우 최소 의류 입고일을
-의류 입고일로 간주합니다. 입고일이 오늘보다 이를 경우 음수를 반환합니다.
+의류 입고일로 간주합니다. 입고일이 기준 날짜보다 이를 경우 음수를 반환합니다.
 
 =cut
 
 sub rentable_duration {
-    my ( $self, $time_zone, $fixed_warehousing_dt ) = @_;
+    my ( $self, $dest_dt, $min_warehousing_dt ) = @_;
 
-    my $warehousing_dt = $self->warehousing_date( $time_zone, $fixed_warehousing_dt );
+    my $time_zone;
+    if ( $dest_dt && $dest_dt->time_zone && $dest_dt->time_zone->name ) {
+        $time_zone = $dest_dt->time_zone->name;
+    }
+
+    my $warehousing_dt = $self->warehousing_date( $time_zone, $min_warehousing_dt );
     return unless $warehousing_dt;
 
-    my $now_dt = DateTime->now;
-    $not_dt->set_time_zone($time_zone) if $time_zone;
-
-    my $delta = $warehousing_dt->delta_days($now_dt)->in_units("days");
+    my $delta = $warehousing_dt->delta_days($dest_dt)->in_units("days");
 
     #
     # 입고일이 오늘보다 앞설경우 음수를 반환합니다.
     #
-    $delta = $delta * -1 if $warehousing_dt > $now_dt;
+    $delta = $delta * -1 if $warehousing_dt > $dest_dt;
 
     return $delta;
 }
