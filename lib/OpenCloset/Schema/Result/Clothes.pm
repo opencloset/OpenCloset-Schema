@@ -515,12 +515,12 @@ sub warehousing_date {
 =cut
 
 sub rentable_duration {
-    my ( $self, $since, $tz ) = @_;
+    my ( $self, $since, $time_zone ) = @_;
 
     my $base_dt = $self->warehousing_date($since);
     return unless $base_dt;
 
-    my $now_dt = DateTime->now( time_zone => $tz );
+    my $now_dt = DateTime->now( time_zone => $time_zone );
     my $delta = $base_dt->delta_days($now_dt)->in_units("days");
 
     #
