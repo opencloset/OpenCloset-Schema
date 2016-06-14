@@ -515,18 +515,18 @@ sub warehousing_date {
 =cut
 
 sub rentable_duration {
-    my ( $self, $since, $time_zone ) = @_;
+    my ( $self, $fixed_warehousing_dt, $time_zone ) = @_;
 
-    my $base_dt = $self->warehousing_date($since);
-    return unless $base_dt;
+    my $warehousing_dt = $self->warehousing_date( $time_zone, $fixed_warehousing_dt );
+    return unless $warehousing_dt;
 
     my $now_dt = DateTime->now( time_zone => $time_zone );
-    my $delta = $base_dt->delta_days($now_dt)->in_units("days");
+    my $delta = $warehousing_dt->delta_days($now_dt)->in_units("days");
 
     #
     # 입고일이 오늘보다 앞설경우 음수를 반환합니다.
     #
-    $delta = $delta * -1 if $base_dt > $now_dt;
+    $delta = $delta * -1 if $warehousing_dt > $now_dt;
 
     return $delta;
 }
