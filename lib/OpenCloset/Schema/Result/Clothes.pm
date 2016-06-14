@@ -484,18 +484,13 @@ __PACKAGE__->many_to_many( "orders", "order_details", "order" );
 =cut
 
 sub warehousing_date {
-    my ( $self, $since ) = @_;
+    my ( $self, $base_dt ) = @_;
 
     #
     # 입고일: 기증 행위가 생성된 날짜
     #
     my $warehousing_dt = $self->donation->create_date->clone;
     $warehousing_dt->set_time_zone("Asia/Seoul");
-
-    #
-    # 기준 시점: 인자로 받은 시점
-    #
-    my $base_dt = DateTime->new(%$since);
 
     #
     # 기존 시점 이전에 입고된 의류의 경우
