@@ -507,15 +507,15 @@ sub warehousing_date {
 =method rentable_duration
 
 의류의 입고일로부터 오늘까지의 날 수를 반환합니다.
-첫번째 인자는 기준시점입니다.
-두번째 인자는 현재를 계산할때 적용할 타임존입니다.
-의류의 입고시점이 기준시점보다 이전인경우 기준시점으로 계산합니다.
-입고일이 오늘보다 앞설경우 음수를 반환합니다.
+첫 번째 인자는 시간 계산시 기준으로 삼을 시간대입니다.
+두 번째 인자는 최소 의류 입고일입니다.
+의류의 입고 시점이 최소 의류 입고일보다 이전인 경우 최소 의류 입고일을
+의류 입고일로 간주합니다. 입고일이 오늘보다 이를 경우 음수를 반환합니다.
 
 =cut
 
 sub rentable_duration {
-    my ( $self, $fixed_warehousing_dt, $time_zone ) = @_;
+    my ( $self, $time_zone, $fixed_warehousing_dt ) = @_;
 
     my $warehousing_dt = $self->warehousing_date( $time_zone, $fixed_warehousing_dt );
     return unless $warehousing_dt;
