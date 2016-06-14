@@ -4,7 +4,14 @@ use strict;
 use warnings;
 use DateTime;
 
-my $now = DateTime->now( time_zone => "Asia/Seoul" );
+my $time_zone       = "Asia/Seoul";
+my $now_dt          = DateTime->now( time_zone => $time_zone );
+my $system_start_dt = DateTime->new(
+    year      => 2014,
+    month     => 12,
+    day       => 17,
+    time_zone => $time_zone,
+);
 
 use Test::DBIx::Class {
     schema_class => "OpenCloset::Schema",
@@ -17,10 +24,10 @@ use Test::DBIx::Class {
 fixtures_ok [
     Donation => [
         [qw/id user_id create_date/],
-        [ 1, 1, $now->clone->add( days => -30 )->ymd ],
-        [ 2, 1, $now->clone->add( days => -30 )->ymd ],
-        [ 3, 1, $now->clone->add( days => -30 )->ymd ],
-        [ 4, 1, $now->clone->add( days => 8 )->ymd ],
+        [ 1, 1, $now_dt->clone->add( days => -30 )->ymd ],
+        [ 2, 1, $now_dt->clone->add( days => -30 )->ymd ],
+        [ 3, 1, $now_dt->clone->add( days => -30 )->ymd ],
+        [ 4, 1, $now_dt->clone->add( days => 8 )->ymd ],
     ],
     Order => [
         [qw/id user_id rental_date return_date/],
@@ -30,7 +37,6 @@ fixtures_ok [
         , # 정상적인 경우(2일후 반납)
         [ 14977, 22623, '2015-10-27 15:12:00', '2015-10-27 19:00:00' ]
         , # 정상적인 경우(당일 반납)
-
         [ 14978, 22622, '2015-10-27 09:45:00', '2015-10-29 12:03:29' ]
         , # 정상적인 경우(2일후 반납)
     ],
@@ -51,13 +57,6 @@ fixtures_ok [
     ],
     'Installed fixtures';
 
-my $system_start_date = {
-    year      => 2014,
-    month     => 12,
-    day       => 17,
-    time_zone => 'Asia/Seoul',
-};
-
 ## Your testing code below ##
 
 subtest "clothes.rent_ratio(): normal donation, earlier return than rent(abnormal)",
@@ -67,7 +66,7 @@ subtest "clothes.rent_ratio(): normal donation, earlier return than rent(abnorma
     my $tz         = "Asia/Seoul";
     ok my $clothes = Clothes->find( { code => $code } ) => "find clothes";
     is $clothes->code, $code => "clothes.code";
-    my $ratio = $clothes->rent_ratio( $system_start_date, $tz );
+    my $ratio = $clothes->rent_ratio( $now_dt, $system_start_dt );
 
     is $ratio, $rent_ratio => "clothes.rent_ratio";
     };
@@ -80,10 +79,10 @@ subtest "clothes.rent_ratio(): normal donation, two days after return", sub {
     my $rent_ratio        = 0.1;
     ok my $clothes = Clothes->find( { code => $code } ) => "find clothes";
     is $clothes->code, $code => "clothes.code";
-    is $clothes->rentable_duration( $system_start_date, $tz ),
+    is $clothes->rentable_duration( $now_dt, $system_start_dt ),
         $rentable_duration => "clothes.rentable_duration";
     is $clothes->rented_duration, $rented_duration => "clothes.rented_duration";
-    is $clothes->rent_ratio( $system_start_date, $tz ),
+    is $clothes->rent_ratio( $now_dt, $system_start_dt ),
         $rent_ratio => "clothes.rent_ratio";
 };
 
@@ -95,10 +94,10 @@ subtest "clothes.rent_ratio(): normal donation, immediately return", sub {
     my $rent_ratio        = 0.0333333333333333;
     ok my $clothes = Clothes->find( { code => $code } ) => "find clothes";
     is $clothes->code, $code => "clothes.code";
-    is $clothes->rentable_duration( $system_start_date, $tz ),
+    is $clothes->rentable_duration( $now_dt, $system_start_dt ),
         $rentable_duration => "clothes.rentable_duration";
     is $clothes->rented_duration, $rented_duration => "clothes.rented_duration";
-    is $clothes->rent_ratio( $system_start_date, $tz ),
+    is $clothes->rent_ratio( $now_dt, $system_start_dt ),
         $rent_ratio => "clothes.rent_ratio";
 };
 
@@ -110,10 +109,10 @@ subtest "clothes.rent_ratio(): abnormal donation, normal return", sub {
     my $rent_ratio        = -0.375;
     ok my $clothes = Clothes->find( { code => $code } ) => "find clothes";
     is $clothes->code, $code => "clothes.code";
-    is $clothes->rentable_duration( $system_start_date, $tz ),
+    is $clothes->rentable_duration( $now_dt, $system_start_dt ),
         $rentable_duration => "clothes.rentable_duration";
     is $clothes->rented_duration, $rented_duration => "clothes.rented_duration";
-    is $clothes->rent_ratio( $system_start_date, $tz ),
+    is $clothes->rent_ratio( $now_dt, $system_start_dt ),
         $rent_ratio => "clothes.rent_ratio";
 };
 
