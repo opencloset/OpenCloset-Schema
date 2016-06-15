@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.036     2016-06-14 19:27:21+09:00 Asia/Seoul
     - 의류 대여 가능일 계산이 정확하지 않음 (#74)
         - clothes.rented_duration()
         - clothes.rentable_duration()
