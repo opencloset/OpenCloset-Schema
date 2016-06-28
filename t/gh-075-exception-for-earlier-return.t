@@ -20,18 +20,24 @@ fixtures_ok [
         , # 정상적인 경우(2일후 반납)
         [ 14977, 22623, '2015-10-27 15:12:00', '2015-10-27 19:00:00' ]
         , # 정상적인 경우(당일 반납)
+        [ 14978, 22623, '2015-10-27 15:12:00', '2015-10-27 19:00:00' ],
+        [ 14979, 22623, '2015-10-28 15:12:00', '2015-10-28 19:00:00' ]
+        , # 정상적인 경우(당일 반납) 2회
     ],
     OrderDetail => [
         [qw/id name order_id clothes_code/],
         [ 86524, '자켓', 14975, '0J0H3' ],
         [ 86525, '자켓', 14976, '0J0H4' ],
         [ 86526, '자켓', 14977, '0J0H5' ],
+        [ 86527, '자켓', 14978, '0J0H6' ],
+        [ 86528, '자켓', 14979, '0J0H6' ],
     ],
     Clothes => [
         [qw/id code category/],
         [ 6343, '0J0H3', 'jacket' ],
         [ 6344, '0J0H4', 'jacket' ],
         [ 6345, '0J0H5', 'jacket' ],
+        [ 6346, '0J0H6', 'jacket' ],
     ],
     ],
     'Installed fixtures';
@@ -71,6 +77,16 @@ subtest "return_date is with in the rental_date (normal case)", sub {
     is $clothes->rented_duration, 1       => "clothes.rented duration";
 };
 
+subtest "return_date is with in the rental_date twice (normal case)", sub {
+    ok my $order = Order->find( { id => 14978 } ) => "order: 14978";
+    ok my $order_detail =
+        $order->order_details->search( { clothes_code => "0J0H6" } )->first =>
+        "order_detail";
+    is $order_detail->id, 86527 => "order_detail.id";
+    ok my $clothes = $order_detail->clothes => "clothes";
+    is $clothes->code,            "0J0H6" => "clothes.code";
+    is $clothes->rented_duration, 2       => "clothes.rented duration";
+};
 ## Your testing code above ##
 
 done_testing;
