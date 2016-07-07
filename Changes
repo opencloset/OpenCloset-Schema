@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.037     2016-07-07 20:14:46+09:00 Asia/Seoul
     - 의류의 대여일 계산 오류 (#84)
 
 0.036     2016-06-14 19:27:21+09:00 Asia/Seoul
