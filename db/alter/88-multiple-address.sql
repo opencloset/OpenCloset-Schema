@@ -13,3 +13,6 @@ CREATE TABLE `user_address` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_user_address1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `order` ADD COLUMN `user_address_id` INT UNSIGNED DEFAULT NULL AFTER coupon_id;
+ALTER TABLE `order` ADD CONSTRAINT `fk_order7` FOREIGN KEY (`user_address_id`) REFERENCES `user_address` (`id`) ON DELETE CASCADE;

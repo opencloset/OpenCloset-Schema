@@ -150,6 +150,21 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
+=head2 orders
+
+Type: has_many
+
+Related object: L<OpenCloset::Schema::Result::Order>
+
+=cut
+
+__PACKAGE__->has_many(
+    "orders",
+    "OpenCloset::Schema::Result::Order",
+    { "foreign.user_address_id" => "self.id" },
+    { cascade_copy              => 0, cascade_delete => 0 },
+);
+
 =head2 user
 
 Type: belongs_to
@@ -168,8 +183,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-08-17 17:27:41
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:FRft+KFTgNIatgspGIrs2Q
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-08-23 09:45:23
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:XsvRvH75WH6LUtNC5E4zIg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

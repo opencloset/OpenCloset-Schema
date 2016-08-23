@@ -405,12 +405,13 @@ CREATE TABLE `order` (
   `does_wear`             INT DEFAULT NULL COMMENT 'null and 0 are false, otherwise true',
 
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_order1` FOREIGN KEY (`user_id`)    REFERENCES `user`    (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_order2` FOREIGN KEY (`status_id`)  REFERENCES `status`  (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_order3` FOREIGN KEY (`staff_id`)   REFERENCES `user`    (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_order4` FOREIGN KEY (`parent_id`)  REFERENCES `order`   (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_order5` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_order6` FOREIGN KEY (`coupon_id`)  REFERENCES `coupon`  (`id`) ON DELETE CASCADE
+  CONSTRAINT `fk_order1` FOREIGN KEY (`user_id`)         REFERENCES `user`         (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_order2` FOREIGN KEY (`status_id`)       REFERENCES `status`       (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_order3` FOREIGN KEY (`staff_id`)        REFERENCES `user`         (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_order4` FOREIGN KEY (`parent_id`)       REFERENCES `order`        (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_order5` FOREIGN KEY (`booking_id`)      REFERENCES `booking`      (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_order6` FOREIGN KEY (`coupon_id`)       REFERENCES `coupon`       (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_order7` FOREIGN KEY (`user_address_id`) REFERENCES `user_address` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
