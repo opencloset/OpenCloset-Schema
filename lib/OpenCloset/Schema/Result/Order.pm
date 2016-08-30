@@ -78,6 +78,13 @@ __PACKAGE__->table("order");
   is_foreign_key: 1
   is_nullable: 1
 
+=head2 user_address_id
+
+  data_type: 'integer'
+  extra: {unsigned => 1}
+  is_foreign_key: 1
+  is_nullable: 1
+
 =head2 additional_day
 
   data_type: 'integer'
@@ -347,6 +354,13 @@ __PACKAGE__->add_columns(
         is_nullable    => 1,
     },
     "coupon_id",
+    {
+        data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
+    "user_address_id",
     {
         data_type      => "integer",
         extra          => { unsigned => 1 },
@@ -644,11 +658,31 @@ __PACKAGE__->belongs_to(
     { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
 );
 
+=head2 user_address
+
+Type: belongs_to
+
+Related object: L<OpenCloset::Schema::Result::UserAddress>
+
+=cut
+
+__PACKAGE__->belongs_to(
+    "user_address",
+    "OpenCloset::Schema::Result::UserAddress",
+    { id => "user_address_id" },
+    {
+        is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "CASCADE",
+        on_update     => "RESTRICT",
+    },
+);
+
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-05-26 18:03:24
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CJadmdP/qAtrc3ibOvjtyw
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-08-23 09:45:20
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:GJRKU3v15EV3LlIXVr/hDg
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
