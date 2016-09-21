@@ -85,6 +85,14 @@ __PACKAGE__->table("order");
   is_foreign_key: 1
   is_nullable: 1
 
+=head2 online
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
+0 is offline, otherwise online
+
 =head2 additional_day
 
   data_type: 'integer'
@@ -367,6 +375,8 @@ __PACKAGE__->add_columns(
         is_foreign_key => 1,
         is_nullable    => 1,
     },
+    "online",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
     "additional_day",
     {
         data_type     => "integer",
@@ -694,8 +704,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-08-30 16:27:02
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZoGslFrCnmv8eQEmQyCyAQ
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-09-21 15:06:47
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/jXo/aKJzcM2H2yuB1bJpg
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
