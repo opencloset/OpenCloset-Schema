@@ -812,6 +812,23 @@ sub analyze_order_status_logs {
     return %result;
 }
 
+sub is_online {
+    my $self    = shift;
+    return undef unless $self->booking_id;
+
+    my $dt_base = DateTime->new(
+        year      => 2015,
+        month     => 5,
+        day       => 29,
+        time_zone => 'Asia/Seoul',
+    );
+
+    my $booking_date = $self->booking->date;
+    my $online_order_time = $booking_date < $dt_base ? 19 : 22;
+
+    return $booking_date->hour == $online_order_time ? 1 : 0;
+}
+
 1;
 
 # COPYRIGHT
