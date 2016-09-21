@@ -3,6 +3,7 @@ Revision history for {{ $dist->name }}
 {{ $NEXT }}
     - 여러개의 사용자 배송주소를 위한 테이블 추가 (#88)
     - Add column: order.user_address_id (#88)
+    - Add table: order_parcel (#91)
 
 0.037     2016-07-07 20:14:46+09:00 Asia/Seoul
     - 의류의 대여일 계산 오류 (#84)
