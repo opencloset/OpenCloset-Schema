@@ -761,6 +761,7 @@ DROP TABLE IF EXISTS `order_parcel` ;
 CREATE TABLE `order_parcel` (
   `id`             INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `order_id`       INT UNSIGNED NOT NULL,
+  `status_id`      INT UNSIGNED NOT NULL,
   `parcel_service` VARCHAR(32)  DEFAULT NULL,
   `waybill`        VARCHAR(128) DEFAULT NULL,
   `return_waybill` VARCHAR(128) DEFAULT NULL,
@@ -776,5 +777,6 @@ CREATE TABLE `order_parcel` (
 
   PRIMARY KEY (`id`),
   UNIQUE KEY (`order_id`),
-  CONSTRAINT `fk_order_parcel1` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE
+  CONSTRAINT `fk_order_parcel1` FOREIGN KEY (`order_id`)  REFERENCES `order`  (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_order_parcel2` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
