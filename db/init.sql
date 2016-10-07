@@ -368,6 +368,9 @@ CREATE TABLE `order` (
   `staff_id`              INT UNSIGNED DEFAULT NULL,
   `parent_id`             INT UNSIGNED DEFAULT NULL,
   `booking_id`            INT UNSIGNED DEFAULT NULL,
+  `coupon_id`             INT UNSIGNED DEFAULT NULL,
+  `user_address_id`       INT UNSIGNED DEFAULT NULL,
+  `online`                INT DEFAULT 0 COMMENT '0 is offline, otherwise online',
 
   `additional_day`        INT UNSIGNED DEFAULT 0,
   `rental_date`           DATETIME DEFAULT NULL,
