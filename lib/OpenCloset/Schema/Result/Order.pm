@@ -78,6 +78,21 @@ __PACKAGE__->table("order");
   is_foreign_key: 1
   is_nullable: 1
 
+=head2 user_address_id
+
+  data_type: 'integer'
+  extra: {unsigned => 1}
+  is_foreign_key: 1
+  is_nullable: 1
+
+=head2 online
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
+0 is offline, otherwise online
+
 =head2 additional_day
 
   data_type: 'integer'
@@ -277,6 +292,13 @@ a flag represent get pass or not. null or 0 is false, otherwise true
 
 null and 0 are false, otherwise true
 
+=head2 ignore_sms
+
+  data_type: 'integer'
+  is_nullable: 1
+
+null and 0 are false, otherwise true
+
 =head2 create_date
 
   data_type: 'datetime'
@@ -353,6 +375,15 @@ __PACKAGE__->add_columns(
         is_foreign_key => 1,
         is_nullable    => 1,
     },
+    "user_address_id",
+    {
+        data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
+    "online",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
     "additional_day",
     {
         data_type     => "integer",
@@ -453,6 +484,8 @@ __PACKAGE__->add_columns(
     { data_type => "tinyint", default_value => 0, is_nullable => 1 },
     "ignore",
     { data_type => "integer", is_nullable => 1 },
+    "ignore_sms",
+    { data_type => "integer", is_nullable => 1 },
     "create_date",
     {
         data_type                 => "datetime",
@@ -538,6 +571,19 @@ Related object: L<OpenCloset::Schema::Result::OrderDetail>
 
 __PACKAGE__->has_many(
     "order_details", "OpenCloset::Schema::Result::OrderDetail",
+    { "foreign.order_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 order_parcel
+
+Type: might_have
+
+Related object: L<OpenCloset::Schema::Result::OrderParcel>
+
+=cut
+
+__PACKAGE__->might_have(
+    "order_parcel", "OpenCloset::Schema::Result::OrderParcel",
     { "foreign.order_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
 );
 
@@ -644,11 +690,31 @@ __PACKAGE__->belongs_to(
     { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
 );
 
+=head2 user_address
+
+Type: belongs_to
+
+Related object: L<OpenCloset::Schema::Result::UserAddress>
+
+=cut
+
+__PACKAGE__->belongs_to(
+    "user_address",
+    "OpenCloset::Schema::Result::UserAddress",
+    { id => "user_address_id" },
+    {
+        is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "CASCADE",
+        on_update     => "RESTRICT",
+    },
+);
+
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-05-26 18:03:24
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CJadmdP/qAtrc3ibOvjtyw
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-10-07 15:00:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:EmLlulbZY663R1CfQMFYEw
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

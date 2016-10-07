@@ -112,6 +112,19 @@ __PACKAGE__->has_many(
     { "foreign.status_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 order_parcels
+
+Type: has_many
+
+Related object: L<OpenCloset::Schema::Result::OrderParcel>
+
+=cut
+
+__PACKAGE__->has_many(
+    "order_parcels", "OpenCloset::Schema::Result::OrderParcel",
+    { "foreign.status_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 order_status_logs
 
 Type: has_many
@@ -143,8 +156,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:43:00
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gWxqCtwQ8AFWl7zNUCWX+Q
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-09-21 14:13:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:VmcgB6iM0moeS3ymuHgFeQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

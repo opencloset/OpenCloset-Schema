@@ -166,7 +166,15 @@ INSERT INTO `status` (`id`, `name`)
     (44, '포장완료')
     (45, '재활용(옷캔)'),
     (46, '재활용(비백)'),
-    (47, '사용못함')
+    (47, '사용못함'),
+    (48, '의류선택'),
+    (49, '주소선택'),
+    (50, '결제완료'),
+    (51, '입금확인'),
+    (52, '발송대기'),
+    (53, '배송중'),
+    (54, '배송완료'),
+    (55, '반송신청')
     ;
 
 --
@@ -360,6 +368,9 @@ CREATE TABLE `order` (
   `staff_id`              INT UNSIGNED DEFAULT NULL,
   `parent_id`             INT UNSIGNED DEFAULT NULL,
   `booking_id`            INT UNSIGNED DEFAULT NULL,
+  `coupon_id`             INT UNSIGNED DEFAULT NULL,
+  `user_address_id`       INT UNSIGNED DEFAULT NULL,
+  `online`                INT DEFAULT 0 COMMENT '0 is offline, otherwise online',
 
   `additional_day`        INT UNSIGNED DEFAULT 0,
   `rental_date`           DATETIME DEFAULT NULL,
@@ -398,6 +409,7 @@ CREATE TABLE `order` (
   `skirt`                 INT DEFAULT NULL, -- 스커트 둘레(cm)
   `bestfit`               BOOLEAN DEFAULT 0,
   `ignore`                INT DEFAULT NULL COMMENT 'null and 0 are false, otherwise true',
+  `ignore_sms`            INT DEFAULT NULL COMMENT 'null and 0 are false, otherwise true',
 
   `create_date`           DATETIME DEFAULT NULL,
   `update_date`           DATETIME DEFAULT NULL,
@@ -405,12 +417,13 @@ CREATE TABLE `order` (
   `does_wear`             INT DEFAULT NULL COMMENT 'null and 0 are false, otherwise true',
 
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_order1` FOREIGN KEY (`user_id`)    REFERENCES `user`    (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_order2` FOREIGN KEY (`status_id`)  REFERENCES `status`  (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_order3` FOREIGN KEY (`staff_id`)   REFERENCES `user`    (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_order4` FOREIGN KEY (`parent_id`)  REFERENCES `order`   (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_order5` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_order6` FOREIGN KEY (`coupon_id`)  REFERENCES `coupon`  (`id`) ON DELETE CASCADE
+  CONSTRAINT `fk_order1` FOREIGN KEY (`user_id`)         REFERENCES `user`         (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_order2` FOREIGN KEY (`status_id`)       REFERENCES `status`       (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_order3` FOREIGN KEY (`staff_id`)        REFERENCES `user`         (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_order4` FOREIGN KEY (`parent_id`)       REFERENCES `order`        (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_order5` FOREIGN KEY (`booking_id`)      REFERENCES `booking`      (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_order6` FOREIGN KEY (`coupon_id`)       REFERENCES `coupon`       (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_order7` FOREIGN KEY (`user_address_id`) REFERENCES `user_address` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -738,4 +751,44 @@ CREATE TABLE `discard_clothes` (
   PRIMARY KEY (`id`),
   UNIQUE KEY (`clothes_code`),
   CONSTRAINT `fk_discard_clothes1` FOREIGN KEY (`clothes_code`) REFERENCES `clothes` (`code`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `user_address`;
+CREATE TABLE `user_address` (
+  `id`       INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id`  INT UNSIGNED NOT NULL,
+  `address1` VARCHAR(32)  DEFAULT NULL COMMENT 'dbid',
+  `address2` VARCHAR(256) DEFAULT NULL COMMENT '도로명주소',
+  `address3` VARCHAR(256) DEFAULT NULL COMMENT '지번주소',
+  `address4` VARCHAR(256) DEFAULT NULL COMMENT '상세주소',
+
+  `create_date` DATETIME DEFAULT NULL,
+  `update_date` DATETIME DEFAULT NULL,
+
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_user_address1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `order_parcel` ;
+CREATE TABLE `order_parcel` (
+  `id`             INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `order_id`       INT UNSIGNED NOT NULL,
+  `status_id`      INT UNSIGNED NOT NULL,
+  `parcel_service` VARCHAR(32)  DEFAULT NULL,
+  `waybill`        VARCHAR(128) DEFAULT NULL,
+  `return_waybill` VARCHAR(128) DEFAULT NULL,
+  `sms_bitmask`    INT          DEFAULT 0 COMMENT 'flag to show each sms sent or not',
+  `comment`        TEXT         DEFAULT NULL,
+
+  `create_date`         DATETIME DEFAULT NULL,
+  `update_date`         DATETIME DEFAULT NULL,
+  `sent_date`           DATETIME DEFAULT NULL COMMENT '택배보낸날짜',
+  `arrival_date`        DATETIME DEFAULT NULL COMMENT '택배받은날짜',
+  `return_sent_date`    DATETIME DEFAULT NULL COMMENT '반송보낸날짜',
+  `return_arrival_date` DATETIME DEFAULT NULL COMMENT '반송받은날짜',
+
+  PRIMARY KEY (`id`),
+  UNIQUE KEY (`order_id`),
+  CONSTRAINT `fk_order_parcel1` FOREIGN KEY (`order_id`)  REFERENCES `order`  (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_order_parcel2` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

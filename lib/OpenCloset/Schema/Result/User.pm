@@ -225,6 +225,19 @@ __PACKAGE__->has_many(
     { "foreign.user_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 user_addresses
+
+Type: has_many
+
+Related object: L<OpenCloset::Schema::Result::UserAddress>
+
+=cut
+
+__PACKAGE__->has_many(
+    "user_addresses", "OpenCloset::Schema::Result::UserAddress",
+    { "foreign.user_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 user_info
 
 Type: might_have
@@ -243,8 +256,8 @@ __PACKAGE__->might_have(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-05-14 03:11:18
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NEAQkGvAg7PAQaRalz6UPQ
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-08-17 17:27:41
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QQgMIkbfkpjKJZPwwGRaog
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
