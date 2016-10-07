@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.038     2016-10-07 18:21:47+09:00 Asia/Seoul
     - 여러개의 사용자 배송주소를 위한 테이블 추가 (#88)
     - Add column: order.user_address_id (#88)
     - Add table: order_parcel (#91)
