@@ -292,6 +292,13 @@ a flag represent get pass or not. null or 0 is false, otherwise true
 
 null and 0 are false, otherwise true
 
+=head2 ignore_sms
+
+  data_type: 'integer'
+  is_nullable: 1
+
+null and 0 are false, otherwise true
+
 =head2 create_date
 
   data_type: 'datetime'
@@ -476,6 +483,8 @@ __PACKAGE__->add_columns(
     "bestfit",
     { data_type => "tinyint", default_value => 0, is_nullable => 1 },
     "ignore",
+    { data_type => "integer", is_nullable => 1 },
+    "ignore_sms",
     { data_type => "integer", is_nullable => 1 },
     "create_date",
     {
@@ -704,8 +713,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-09-21 15:06:47
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/jXo/aKJzcM2H2yuB1bJpg
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-10-07 15:00:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:EmLlulbZY663R1CfQMFYEw
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

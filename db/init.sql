@@ -409,6 +409,7 @@ CREATE TABLE `order` (
   `skirt`                 INT DEFAULT NULL, -- 스커트 둘레(cm)
   `bestfit`               BOOLEAN DEFAULT 0,
   `ignore`                INT DEFAULT NULL COMMENT 'null and 0 are false, otherwise true',
+  `ignore_sms`            INT DEFAULT NULL COMMENT 'null and 0 are false, otherwise true',
 
   `create_date`           DATETIME DEFAULT NULL,
   `update_date`           DATETIME DEFAULT NULL,
