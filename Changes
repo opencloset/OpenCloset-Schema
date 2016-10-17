@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.039     2016-10-17 17:55:09+09:00 Asia/Seoul
     - 주문서에 할인 정보를 기록함 (#97)
 
 0.038     2016-10-07 18:21:47+09:00 Asia/Seoul
