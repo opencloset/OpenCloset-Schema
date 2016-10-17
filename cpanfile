@@ -38,7 +38,7 @@ on 'configure' => sub {
 };
 
 on 'develop' => sub {
-  requires "Dist::Zilla" => "5";
+  requires "Dist::Zilla" => "6";
   requires "Dist::Zilla::Plugin::Prereqs" => "0";
   requires "Dist::Zilla::PluginBundle::DAGOLDEN" => "0";
   requires "English" => "0";
@@ -46,7 +46,7 @@ on 'develop' => sub {
   requires "File::Temp" => "0";
   requires "IO::Handle" => "0";
   requires "IPC::Open3" => "0";
-  requires "OpenCloset::Config" => "0.001";
+  requires "OpenCloset::Config" => "0.005";
   requires "Pod::Coverage::TrustPod" => "0";
   requires "Pod::Wordlist" => "0";
   requires "Software::License::Perl_5" => "0";

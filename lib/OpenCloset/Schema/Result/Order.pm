@@ -587,6 +587,19 @@ __PACKAGE__->might_have(
     { "foreign.order_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 order_sales
+
+Type: has_many
+
+Related object: L<OpenCloset::Schema::Result::OrderSale>
+
+=cut
+
+__PACKAGE__->has_many(
+    "order_sales", "OpenCloset::Schema::Result::OrderSale",
+    { "foreign.order_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 order_status_logs
 
 Type: has_many
@@ -713,8 +726,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-10-07 15:00:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:EmLlulbZY663R1CfQMFYEw
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2016-10-17 16:59:40
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:YGeqBOUqG+r5kJumbU+nIw
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
