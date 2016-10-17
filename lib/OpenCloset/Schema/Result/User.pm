@@ -263,7 +263,7 @@ __PACKAGE__->might_have(
 
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.039';
+our $VERSION = '0.040';
 
 1;
 
