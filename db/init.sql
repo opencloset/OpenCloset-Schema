@@ -825,3 +825,21 @@ CREATE TABLE `order_sale` (
   CONSTRAINT `fk_order_sale1` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_order_sale2` FOREIGN KEY (`sale_id`)  REFERENCES `sale`  (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- sms_macro
+--
+
+DROP TABLE IF EXISTS `sms_macro`;
+
+CREATE TABLE `sms_macro` (
+  `id`          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name`        VARCHAR(32)  NOT NULL,
+  `from`        VARCHAR(12)  NOT NULL,
+  `text`        TEXT         DEFAULT NULL,
+  `enabled`     INT          DEFAULT 1 COMMENT '0 is disabled',
+  `create_date` DATETIME     DEFAULT NULL,
+  `update_date` DATETIME     DEFAULT NULL,
+
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

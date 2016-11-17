@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add table: sms_macro (#100)
 
 0.039     2016-10-17 17:55:09+09:00 Asia/Seoul
     - 주문서에 할인 정보를 기록함 (#97)
