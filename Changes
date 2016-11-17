@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.040     2016-11-17 15:48:55+09:00 Asia/Seoul
     - Add table: sms_macro (#100)
 
 0.039     2016-10-17 17:55:09+09:00 Asia/Seoul
