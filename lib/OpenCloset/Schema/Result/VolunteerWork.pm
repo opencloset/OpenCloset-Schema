@@ -135,6 +135,12 @@ reported | approved | done | canceled
 
 volunteer organization(1365) username
 
+=head2 org_region
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 128
+
 =head2 create_date
 
   data_type: 'datetime'
@@ -205,6 +211,8 @@ __PACKAGE__->add_columns(
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "org_username",
     { data_type => "varchar", is_nullable => 1, size => 128 },
+    "org_region",
+    { data_type => "varchar", is_nullable => 1, size => 128 },
     "create_date",
     {
         data_type                 => "datetime",
@@ -262,8 +270,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-06-10 16:54:26
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Momp9pondQmwMcdHvqLaMA
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-11-25 11:48:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:De05FjTb6nY3tzZZKNIE9w
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
