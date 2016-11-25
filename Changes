@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add column: volunteer_work.org_region (#101)
 
 0.040     2016-11-17 15:48:55+09:00 Asia/Seoul
     - Add table: sms_macro (#100)
