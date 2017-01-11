@@ -42,6 +42,11 @@ __PACKAGE__->table("tag");
   is_nullable: 0
   size: 128
 
+=head2 desc
+
+  data_type: 'text'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -54,6 +59,8 @@ __PACKAGE__->add_columns(
     },
     "name",
     { data_type => "char", is_nullable => 0, size => 128 },
+    "desc",
+    { data_type => "text", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -110,8 +117,8 @@ __PACKAGE__->many_to_many( "clothes", "clothes_tags", "clothes" );
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:43:00
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8aH6xWBAnoEdmgtOL1l/wg
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-01-11 11:01:35
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Y+anpeRitcnpmw4NUlJcFQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

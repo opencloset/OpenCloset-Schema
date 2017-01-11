@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add column: tag.desc (#104)
 
 0.041     2016-11-25 11:51:21+09:00 Asia/Seoul
     - Add column: volunteer_work.org_region (#101)
