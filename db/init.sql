@@ -259,6 +259,7 @@ CREATE TABLE `clothes` (
 CREATE TABLE `tag` (
   `id`   INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` CHAR(128)    NOT NULL,
+  `desc` TEXT         DEFAULT NULL,
 
   PRIMARY KEY (`id`),
   UNIQUE KEY (`name`)
