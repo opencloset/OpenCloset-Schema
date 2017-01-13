@@ -72,6 +72,12 @@ __PACKAGE__->table("user");
 
 first 40 length for digest, after 10 length for salt(random)
 
+=head2 authcode
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
 =head2 expires
 
   data_type: 'integer'
@@ -118,6 +124,8 @@ __PACKAGE__->add_columns(
         is_nullable         => 1,
         size                => 50,
     },
+    "authcode",
+    { data_type => "varchar", is_nullable => 1, size => 32 },
     "expires",
     { data_type => "integer", is_nullable => 1 },
     "create_date",
@@ -256,8 +264,8 @@ __PACKAGE__->might_have(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-08-17 17:27:41
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QQgMIkbfkpjKJZPwwGRaog
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-01-12 18:42:25
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Qi+mahJehcjxZ/zpWRTdvA
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

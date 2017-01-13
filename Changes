@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add column: user.authcode (#106)
 
 0.042     2017-01-11 11:05:18+09:00 Asia/Seoul
     - Add column: tag.desc (#104)
