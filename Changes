@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add table: payment_history (#108)
 
 0.043     2017-01-13 10:31:36+09:00 Asia/Seoul
     - Add column: user.authcode (#106)
