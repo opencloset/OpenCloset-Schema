@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add notify flag columns in user_info and discard_clothes (#72)
 
 0.043     2017-01-13 10:31:36+09:00 Asia/Seoul
     - Add column: user.authcode (#106)

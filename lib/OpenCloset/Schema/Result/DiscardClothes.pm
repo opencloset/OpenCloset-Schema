@@ -54,6 +54,13 @@ __PACKAGE__->table("discard_clothes");
   data_type: 'text'
   is_nullable: 1
 
+=head2 notify_sent
+
+  data_type: 'integer'
+  is_nullable: 1
+
+null and 0 is false, otherwise true
+
 =head2 create_date
 
   data_type: 'datetime'
@@ -87,6 +94,8 @@ __PACKAGE__->add_columns(
     { data_type => "varchar", is_nullable => 1, size => 128 },
     "comment",
     { data_type => "text", is_nullable => 1 },
+    "notify_sent",
+    { data_type => "integer", is_nullable => 1 },
     "create_date",
     {
         data_type                 => "datetime",
@@ -152,8 +161,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-05-18 10:49:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NE3WEhQBw++RSFP5sZdvSw
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-05-18 14:41:17
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5E4qfCxIU3gT/ecmyisrWQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -86,6 +86,9 @@ CREATE TABLE `user_info` (
   `pre_category` VARCHAR(128) DEFAULT NULL,
   `pre_color`    VARCHAR(32)  DEFAULT NULL,
 
+  `email_notify` INT DEFAULT NULL COMMENT 'null and 0 is false, otherwise true',
+  `sms_notify`   INT DEFAULT NULL COMMENT 'null and 0 is false, otherwise true',
+
   PRIMARY KEY (`id`),
   UNIQUE KEY (`user_id`),
   UNIQUE KEY (`phone`),
@@ -747,6 +750,7 @@ CREATE TABLE `discard_clothes` (
 
   `discard_to`    VARCHAR(128) DEFAULT NULL,
   `comment`       TEXT DEFAULT NULL,
+  `notify_sent`   INT DEFAULT NULL COMMENT 'null and 0 is false, otherwise true',
 
   `create_date`   DATETIME DEFAULT NULL,
   `update_date`   DATETIME DEFAULT NULL,
