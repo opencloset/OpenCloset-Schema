@@ -16,3 +16,5 @@ CREATE TABLE `payment_history` (
   INDEX (`sid`),
   INDEX (`cid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `status` (`id`, `name`) VALUES (56, '입금대기');
