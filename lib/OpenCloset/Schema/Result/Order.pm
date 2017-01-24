@@ -648,17 +648,19 @@ __PACKAGE__->belongs_to(
     },
 );
 
-=head2 payment_histories
+=head2 payments
 
 Type: has_many
 
-Related object: L<OpenCloset::Schema::Result::PaymentHistory>
+Related object: L<OpenCloset::Schema::Result::Payment>
 
 =cut
 
 __PACKAGE__->has_many(
-    "payment_histories", "OpenCloset::Schema::Result::PaymentHistory",
-    { "foreign.order_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
+    "payments",
+    "OpenCloset::Schema::Result::Payment",
+    { "foreign.order_id" => "self.id" },
+    { cascade_copy       => 0, cascade_delete => 0 },
 );
 
 =head2 staff
@@ -739,8 +741,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-01-19 06:47:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qt/Mvjb2wzISoo07YzD3OQ
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-01-24 15:36:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:f56neEHIJWgNNrV59fyjxA
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

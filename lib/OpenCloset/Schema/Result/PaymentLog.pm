@@ -1,14 +1,14 @@
 #<<<
 use utf8;
 
-package OpenCloset::Schema::Result::PaymentHistory;
+package OpenCloset::Schema::Result::PaymentLog;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-OpenCloset::Schema::Result::PaymentHistory
+OpenCloset::Schema::Result::PaymentLog
 
 =cut
 
@@ -21,11 +21,11 @@ use warnings;
 
 use base 'OpenCloset::Schema::Base';
 
-=head1 TABLE: C<payment_history>
+=head1 TABLE: C<payment_log>
 
 =cut
 
-__PACKAGE__->table("payment_history");
+__PACKAGE__->table("payment_log");
 
 =head1 ACCESSORS
 
@@ -36,34 +36,12 @@ __PACKAGE__->table("payment_history");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 order_id
+=head2 payment_id
 
   data_type: 'integer'
   extra: {unsigned => 1}
   is_foreign_key: 1
   is_nullable: 0
-
-=head2 sid
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 32
-
-imp_uid
-
-=head2 cid
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 32
-
-merchant_uid
-
-=head2 amount
-
-  data_type: 'integer'
-  default_value: 0
-  is_nullable: 1
 
 =head2 status
 
@@ -73,19 +51,7 @@ merchant_uid
 
 paid|ready|cancelled|failed
 
-=head2 vendor
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 32
-
-=head2 pay_method
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 32
-
-=head2 dump
+=head2 detail
 
   data_type: 'text'
   is_nullable: 1
@@ -108,26 +74,16 @@ __PACKAGE__->add_columns(
         is_auto_increment => 1,
         is_nullable       => 0,
     },
-    "order_id",
+    "payment_id",
     {
         data_type      => "integer",
         extra          => { unsigned => 1 },
         is_foreign_key => 1,
         is_nullable    => 0,
     },
-    "sid",
-    { data_type => "varchar", is_nullable => 1, size => 32 },
-    "cid",
-    { data_type => "varchar", is_nullable => 1, size => 32 },
-    "amount",
-    { data_type => "integer", default_value => 0, is_nullable => 1 },
     "status",
     { data_type => "varchar", is_nullable => 1, size => 32 },
-    "vendor",
-    { data_type => "varchar", is_nullable => 1, size => 32 },
-    "pay_method",
-    { data_type => "varchar", is_nullable => 1, size => 32 },
-    "dump",
+    "detail",
     { data_type => "text", is_nullable => 1 },
     "create_date",
     {
@@ -153,36 +109,27 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
-=head2 order
+=head2 payment
 
 Type: belongs_to
 
-Related object: L<OpenCloset::Schema::Result::Order>
+Related object: L<OpenCloset::Schema::Result::Payment>
 
 =cut
 
 __PACKAGE__->belongs_to(
-    "order",
-    "OpenCloset::Schema::Result::Order",
-    { id            => "order_id" },
+    "payment",
+    "OpenCloset::Schema::Result::Payment",
+    { id            => "payment_id" },
     { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
 );
 
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-01-19 06:47:07
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bKG0UgWOTSHMJIzefgD30Q
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-01-24 15:36:58
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+KswfElkGZ+7TBdMm10TTQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
-
-# ABSTRACT: OpenCloset Database Schema Class
-
-our $VERSION = '0.044';
-
 1;
-
-# COPYRIGHT
-
-__END__
