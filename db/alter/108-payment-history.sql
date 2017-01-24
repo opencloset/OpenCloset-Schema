@@ -11,6 +11,7 @@ CREATE TABLE `payment` (
   `vendor`      VARCHAR(32)  DEFAULT NULL,
   `pay_method`  VARCHAR(32)  DEFAULT NULL,
   `create_date` DATETIME     DEFAULT NULL,
+  `update_date` DATETIME     DEFAULT NULL,
 
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_payment1` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE,
