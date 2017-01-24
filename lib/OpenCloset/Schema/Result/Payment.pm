@@ -134,6 +134,32 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
+=head1 UNIQUE CONSTRAINTS
+
+=head2 C<cid>
+
+=over 4
+
+=item * L</cid>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint( "cid", ["cid"] );
+
+=head2 C<sid>
+
+=over 4
+
+=item * L</sid>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint( "sid", ["sid"] );
+
 =head1 RELATIONS
 
 =head2 order
@@ -167,8 +193,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-01-24 15:36:58
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7w0N8YFAP3tcUJln4yK9mQ
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-01-24 16:44:07
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:B0/KnRG/r83zblMI0ARyAw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

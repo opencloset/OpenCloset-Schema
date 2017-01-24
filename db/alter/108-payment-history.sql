@@ -1,4 +1,7 @@
+DROP TABLE IF EXISTS `payment_log` ;
 DROP TABLE IF EXISTS `payment` ;
+DELETE FROM `status` WHERE id=56 AND name='입금대기';
+
 CREATE TABLE `payment` (
   `id`          INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `order_id`    INT UNSIGNED NOT NULL,
@@ -11,11 +14,10 @@ CREATE TABLE `payment` (
 
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_payment1` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE,
-  INDEX (`sid`),
-  INDEX (`cid`)
+  UNIQUE (`sid`),
+  UNIQUE (`cid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `payment_log` ;
 CREATE TABLE `payment_log` (
   `id`          INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `payment_id`  INT UNSIGNED NOT NULL,

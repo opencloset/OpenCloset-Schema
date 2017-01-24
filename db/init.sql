@@ -849,9 +849,10 @@ CREATE TABLE `sms_macro` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- payment
+-- payment & payment_log
 --
 
+DROP TABLE IF EXISTS `payment_log` ;
 DROP TABLE IF EXISTS `payment` ;
 
 CREATE TABLE `payment` (
@@ -866,15 +867,9 @@ CREATE TABLE `payment` (
 
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_payment1` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE,
-  INDEX (`sid`),
-  INDEX (`cid`)
+  UNIQUE (`sid`),
+  UNIQUE (`cid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- payment_history
---
-
-DROP TABLE IF EXISTS `payment_log` ;
 
 CREATE TABLE `payment_log` (
   `id`          INT UNSIGNED NOT NULL AUTO_INCREMENT,
