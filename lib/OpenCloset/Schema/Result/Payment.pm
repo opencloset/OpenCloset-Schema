@@ -55,7 +55,7 @@ server id: imp_uid
 
   data_type: 'varchar'
   is_nullable: 1
-  size: 32
+  size: 128
 
 client id: merchant_uid
 
@@ -114,7 +114,7 @@ __PACKAGE__->add_columns(
     "sid",
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "cid",
-    { data_type => "varchar", is_nullable => 1, size => 32 },
+    { data_type => "varchar", is_nullable => 1, size => 128 },
     "amount",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "vendor",
@@ -211,8 +211,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-01-24 17:21:46
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:tNQUr4TWDnlNBbToTMKFTA
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-01-25 17:43:09
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JoGCYlKhcwxep3S4nAFqpw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

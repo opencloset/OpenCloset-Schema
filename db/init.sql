@@ -859,7 +859,7 @@ CREATE TABLE `payment` (
   `id`          INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `order_id`    INT UNSIGNED NOT NULL,
   `sid`         VARCHAR(32)  DEFAULT NULL COMMENT 'server id: imp_uid',
-  `cid`         VARCHAR(32)  DEFAULT NULL COMMENT 'client id: merchant_uid',
+  `cid`         VARCHAR(128) DEFAULT NULL COMMENT 'client id: merchant_uid',
   `amount`      INT          DEFAULT 0,
   `vendor`      VARCHAR(32)  DEFAULT NULL,
   `pay_method`  VARCHAR(32)  DEFAULT NULL,
