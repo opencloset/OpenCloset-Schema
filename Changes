@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.044     2017-01-25 18:36:25+09:00 Asia/Seoul
     - Add table: payment, payment_log (#108)
     - Add status: waiting_deposit - 입금대기
 
