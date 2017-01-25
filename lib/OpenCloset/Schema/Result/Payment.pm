@@ -216,4 +216,13 @@ __PACKAGE__->has_many(
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
+
+# ABSTRACT: OpenCloset Database Schema Class
+
+our $VERSION = '0.044';
+
 1;
+
+# COPYRIGHT
+
+__END__
