@@ -43,6 +43,18 @@ __PACKAGE__->table("user_address");
   is_foreign_key: 1
   is_nullable: 0
 
+=head2 name
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 32
+
+=head2 phone
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 16
+
 =head2 address1
 
   data_type: 'varchar'
@@ -109,6 +121,10 @@ __PACKAGE__->add_columns(
         is_foreign_key => 1,
         is_nullable    => 0,
     },
+    "name",
+    { data_type => "varchar", is_nullable => 0, size => 32 },
+    "phone",
+    { data_type => "varchar", is_nullable => 0, size => 16 },
     "address1",
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "address2",
@@ -183,8 +199,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-08-23 09:45:23
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:XsvRvH75WH6LUtNC5E4zIg
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-02-06 14:31:48
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QfsvUERGSPESd/SkurR8xQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

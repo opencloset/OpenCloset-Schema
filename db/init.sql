@@ -761,6 +761,8 @@ DROP TABLE IF EXISTS `user_address`;
 CREATE TABLE `user_address` (
   `id`       INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id`  INT UNSIGNED NOT NULL,
+  `name`     VARCHAR(32)  NOT NULL,
+  `phone`    VARCHAR(16)  NOT NULL,
   `address1` VARCHAR(32)  DEFAULT NULL COMMENT 'dbid',
   `address2` VARCHAR(256) DEFAULT NULL COMMENT '도로명주소',
   `address3` VARCHAR(256) DEFAULT NULL COMMENT '지번주소',
