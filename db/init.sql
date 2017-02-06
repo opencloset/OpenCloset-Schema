@@ -389,6 +389,8 @@ CREATE TABLE `order` (
   `pass`                  INT         DEFAULT NULL COMMENT 'a flag represent get pass or not. null or 0 is false, otherwise true',
   `desc`                  TEXT DEFAULT NULL,
   `message`               TEXT DEFAULT NULL,
+  `misc`                  TEXT DEFAULT NULL,
+  `shipping_misc`         TEXT DEFAULT NULL,
 
   -- guest info
   `purpose`               VARCHAR(128) DEFAULT NULL,
