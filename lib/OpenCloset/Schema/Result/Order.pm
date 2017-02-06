@@ -762,7 +762,7 @@ __PACKAGE__->belongs_to(
 
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.045';
+our $VERSION = '0.046';
 
 =head2 clothes
 

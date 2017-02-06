@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.045     2017-02-06 18:34:14+09:00 Asia/Seoul
     - Add column: user_address.name (#111)
     - Add column: user_address.phone (#111)
     - Add column: order.misc (#110)
