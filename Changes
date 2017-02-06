@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add column: user_address.name (#111)
+    - Add column: user_address.phone (#111)
 
 0.044     2017-01-25 18:36:25+09:00 Asia/Seoul
     - Add table: payment, payment_log (#108)
