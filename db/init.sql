@@ -389,6 +389,8 @@ CREATE TABLE `order` (
   `pass`                  INT         DEFAULT NULL COMMENT 'a flag represent get pass or not. null or 0 is false, otherwise true',
   `desc`                  TEXT DEFAULT NULL,
   `message`               TEXT DEFAULT NULL,
+  `misc`                  TEXT DEFAULT NULL,
+  `shipping_misc`         TEXT DEFAULT NULL,
 
   -- guest info
   `purpose`               VARCHAR(128) DEFAULT NULL,
@@ -761,6 +763,8 @@ DROP TABLE IF EXISTS `user_address`;
 CREATE TABLE `user_address` (
   `id`       INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id`  INT UNSIGNED NOT NULL,
+  `name`     VARCHAR(32)  NOT NULL,
+  `phone`    VARCHAR(16)  NOT NULL,
   `address1` VARCHAR(32)  DEFAULT NULL COMMENT 'dbid',
   `address2` VARCHAR(256) DEFAULT NULL COMMENT '도로명주소',
   `address3` VARCHAR(256) DEFAULT NULL COMMENT '지번주소',
