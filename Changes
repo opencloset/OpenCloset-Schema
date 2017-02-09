@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add column: user_info.top_size (#114)
+    - Add column: user_info.bottom_size (#114)
 
 0.045     2017-02-06 18:34:14+09:00 Asia/Seoul
     - Add column: user_address.name (#111)
