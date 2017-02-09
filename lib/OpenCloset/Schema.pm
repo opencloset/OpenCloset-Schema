@@ -23,7 +23,7 @@ __PACKAGE__->load_namespaces;
 
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.046';
+our $VERSION = '0.047';
 
 1;
 
