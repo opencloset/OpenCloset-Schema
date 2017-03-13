@@ -204,8 +204,8 @@ male/female
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
   is_nullable: 1
+  timezone: 'Asia/Seoul'
 
 =head2 purpose
 
@@ -305,8 +305,8 @@ __PACKAGE__->add_columns(
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
         is_nullable               => 1,
+        timezone                  => "Asia/Seoul",
     },
     "purpose",
     { data_type => "varchar", is_nullable => 1, size => 128 },
@@ -376,8 +376,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-02-09 09:00:50
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:aYREv9PuX0Cl2nQHjhB8Fw
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-03-13 15:48:39
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:J1MxMoZDEfBQljEf3vTlfQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

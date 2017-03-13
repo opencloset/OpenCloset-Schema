@@ -74,25 +74,25 @@ provided|used|discarded
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
+  dynamic_default_on_create: 'get_kst_timestamp'
   is_nullable: 1
-  set_on_create: 1
+  timezone: 'Asia/Seoul'
 
 =head2 update_date
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
+  dynamic_default_on_create: 'get_kst_timestamp'
+  dynamic_default_on_update: 'get_kst_timestamp'
   is_nullable: 1
-  set_on_create: 1
-  set_on_update: 1
+  timezone: 'Asia/Seoul'
 
 =head2 expires_date
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
   is_nullable: 1
+  timezone: 'Asia/Seoul'
 
 =cut
 
@@ -123,25 +123,25 @@ __PACKAGE__->add_columns(
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
+        dynamic_default_on_create => "get_kst_timestamp",
         is_nullable               => 1,
-        set_on_create             => 1,
+        timezone                  => "Asia/Seoul",
     },
     "update_date",
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
+        dynamic_default_on_create => "get_kst_timestamp",
+        dynamic_default_on_update => "get_kst_timestamp",
         is_nullable               => 1,
-        set_on_create             => 1,
-        set_on_update             => 1,
+        timezone                  => "Asia/Seoul",
     },
     "expires_date",
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
         is_nullable               => 1,
+        timezone                  => "Asia/Seoul",
     },
 );
 
@@ -191,8 +191,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-03-11 17:32:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OMsO7mCFqrioC+Alg5RlpQ
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-03-13 15:48:34
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:SyxgfJ1RBhzDzeWMM3cKsQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
