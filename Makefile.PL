@@ -24,6 +24,7 @@ my %WriteMakefileArgs = (
     "DBIx::Class::Schema" => 0,
     "DBIx::Class::Schema::Loader" => 0,
     "DBIx::Class::TimeStamp" => 0,
+    "DateTime" => 0,
     "SQL::Abstract" => 0,
     "base" => 0,
     "experimental" => 0,
@@ -33,7 +34,6 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
-    "DateTime" => 0,
     "ExtUtils::MakeMaker" => 0,
     "File::Spec" => 0,
     "Test::DBIx::Class" => 0,

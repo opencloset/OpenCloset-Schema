@@ -52,8 +52,8 @@ __PACKAGE__->table("order_size_log");
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
   is_nullable: 0
+  timezone: 'Asia/Seoul'
 
 =head2 category
 
@@ -155,8 +155,8 @@ __PACKAGE__->add_columns(
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
         is_nullable               => 0,
+        timezone                  => "Asia/Seoul",
     },
     "category",
     { data_type => "varchar", is_nullable => 0, size => 32 },
@@ -196,8 +196,8 @@ __PACKAGE__->add_columns(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-04-21 14:05:42
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:LRAYo8epKaXHnj4i5OiNFw
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-03-13 15:48:36
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5kmnxPMCEhG8+2RAFLr2cA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

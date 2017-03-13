@@ -47,15 +47,15 @@ __PACKAGE__->table("volunteer_work");
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
   is_nullable: 0
+  timezone: 'Asia/Seoul'
 
 =head2 activity_to_date
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
   is_nullable: 0
+  timezone: 'Asia/Seoul'
 
 =head2 period
 
@@ -145,9 +145,9 @@ volunteer organization(1365) username
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
+  dynamic_default_on_create: 'get_kst_timestamp'
   is_nullable: 1
-  set_on_create: 1
+  timezone: 'Asia/Seoul'
 
 =cut
 
@@ -170,15 +170,15 @@ __PACKAGE__->add_columns(
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
         is_nullable               => 0,
+        timezone                  => "Asia/Seoul",
     },
     "activity_to_date",
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
         is_nullable               => 0,
+        timezone                  => "Asia/Seoul",
     },
     "period",
     { data_type => "varchar", is_nullable => 1, size => 32 },
@@ -217,9 +217,9 @@ __PACKAGE__->add_columns(
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
+        dynamic_default_on_create => "get_kst_timestamp",
         is_nullable               => 1,
-        set_on_create             => 1,
+        timezone                  => "Asia/Seoul",
     },
 );
 
@@ -270,8 +270,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-11-25 11:48:08
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:De05FjTb6nY3tzZZKNIE9w
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-03-13 15:48:40
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qKVWEB8hSotSSsGE3XnVlQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
