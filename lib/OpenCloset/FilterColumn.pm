@@ -4,7 +4,7 @@ package OpenCloset::FilterColumn;
 use strict;
 use warnings;
 
-our $VERSION = '0.047';
+our $VERSION = '0.048';
 
 use base qw(DBIx::Class);
 use SQL::Abstract 'is_literal_value';

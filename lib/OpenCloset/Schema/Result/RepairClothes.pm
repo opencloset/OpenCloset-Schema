@@ -207,7 +207,7 @@ __PACKAGE__->belongs_to(
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
-our $VERSION = '0.047';
+our $VERSION = '0.048';
 
 1;
 
