@@ -72,9 +72,9 @@ __PACKAGE__->table("satisfaction");
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
+  dynamic_default_on_create: 'get_kst_timestamp'
   is_nullable: 1
-  set_on_create: 1
+  timezone: 'Asia/Seoul'
 
 =cut
 
@@ -102,9 +102,9 @@ __PACKAGE__->add_columns(
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
+        dynamic_default_on_create => "get_kst_timestamp",
         is_nullable               => 1,
-        set_on_create             => 1,
+        timezone                  => "Asia/Seoul",
     },
 );
 
@@ -157,8 +157,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-08-13 18:42:59
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+7i6ey+0MHPq0fs36M0BWA
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-03-13 15:48:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:eK/bguDSpNcG+jpN3k5ZgA
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Use `get_kst_timestamp` to get local timestamp (#117)
+    - Use 'Asia/Seoul' timezone at all datetime columns (#117)
 
 0.046     2017-02-09 09:06:25+09:00 Asia/Seoul
     - Add column: user_info.top_size (#114)

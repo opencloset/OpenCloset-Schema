@@ -67,8 +67,8 @@ __PACKAGE__->table("donation_form");
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
   is_nullable: 1
+  timezone: 'Asia/Seoul'
 
 =head2 gender
 
@@ -186,25 +186,25 @@ flag to show each sms sent or not
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
+  dynamic_default_on_create: 'get_kst_timestamp'
   is_nullable: 1
-  set_on_create: 1
+  timezone: 'Asia/Seoul'
 
 =head2 return_date
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
   is_nullable: 1
+  timezone: 'Asia/Seoul'
 
 =head2 update_date
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
+  dynamic_default_on_create: 'get_kst_timestamp'
+  dynamic_default_on_update: 'get_kst_timestamp'
   is_nullable: 1
-  set_on_create: 1
-  set_on_update: 1
+  timezone: 'Asia/Seoul'
 
 =cut
 
@@ -233,8 +233,8 @@ __PACKAGE__->add_columns(
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
         is_nullable               => 1,
+        timezone                  => "Asia/Seoul",
     },
     "gender",
     { data_type => "integer", is_nullable => 1 },
@@ -274,25 +274,25 @@ __PACKAGE__->add_columns(
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
+        dynamic_default_on_create => "get_kst_timestamp",
         is_nullable               => 1,
-        set_on_create             => 1,
+        timezone                  => "Asia/Seoul",
     },
     "return_date",
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
         is_nullable               => 1,
+        timezone                  => "Asia/Seoul",
     },
     "update_date",
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
+        dynamic_default_on_create => "get_kst_timestamp",
+        dynamic_default_on_update => "get_kst_timestamp",
         is_nullable               => 1,
-        set_on_create             => 1,
-        set_on_update             => 1,
+        timezone                  => "Asia/Seoul",
     },
 );
 
@@ -333,8 +333,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2016-04-01 15:13:12
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:nQ2tB09xZTWrOe5bTzjt3Q
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-03-13 15:48:34
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+eKO8UidXzbQMlUYRyH6dw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -3,6 +3,7 @@ package OpenCloset::Schema::Base;
 
 use strict;
 use warnings;
+use DateTime;
 
 our $VERSION = '0.047';
 
@@ -33,6 +34,12 @@ use overload '""' => sub {
 
     return "$out$line";
 };
+
+=head2 get_kst_timestamp
+
+=cut
+
+sub get_kst_timestamp { DateTime->now( time_zone => 'Asia/Seoul' ) }
 
 1;
 

@@ -87,18 +87,18 @@ first 40 length for digest, after 10 length for salt(random)
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
+  dynamic_default_on_create: 'get_kst_timestamp'
   is_nullable: 1
-  set_on_create: 1
+  timezone: 'Asia/Seoul'
 
 =head2 update_date
 
   data_type: 'datetime'
   datetime_undef_if_invalid: 1
-  inflate_datetime: 1
+  dynamic_default_on_create: 'get_kst_timestamp'
+  dynamic_default_on_update: 'get_kst_timestamp'
   is_nullable: 1
-  set_on_create: 1
-  set_on_update: 1
+  timezone: 'Asia/Seoul'
 
 =cut
 
@@ -132,18 +132,18 @@ __PACKAGE__->add_columns(
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
+        dynamic_default_on_create => "get_kst_timestamp",
         is_nullable               => 1,
-        set_on_create             => 1,
+        timezone                  => "Asia/Seoul",
     },
     "update_date",
     {
         data_type                 => "datetime",
         datetime_undef_if_invalid => 1,
-        inflate_datetime          => 1,
+        dynamic_default_on_create => "get_kst_timestamp",
+        dynamic_default_on_update => "get_kst_timestamp",
         is_nullable               => 1,
-        set_on_create             => 1,
-        set_on_update             => 1,
+        timezone                  => "Asia/Seoul",
     },
 );
 
@@ -264,8 +264,8 @@ __PACKAGE__->might_have(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-01-12 18:42:25
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Qi+mahJehcjxZ/zpWRTdvA
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-03-13 15:48:39
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Q56UzKcNRX2kBOI0OZg+bg
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
