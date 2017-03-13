@@ -73,28 +73,28 @@ my $CONF = OpenCloset::Config::load;
                 when ('create_date') {
                     return +{
                         %$col_info,
-                        set_on_create    => 1,
-                        inflate_datetime => 1,
+                        dynamic_default_on_create => 'get_kst_timestamp',
+                        timezone => $CONF->{timezone},
                     };
                 }
                 when ('update_date') {
                     return +{
                         %$col_info,
-                        set_on_create    => 1,
-                        set_on_update    => 1,
-                        inflate_datetime => 1,
+                        dynamic_default_on_create => 'get_kst_timestamp',
+                        dynamic_default_on_update => 'get_kst_timestamp',
+                        timezone => $CONF->{timezone},
                     };
                 }
                 when (/_date$/) {
                     return +{
                         %$col_info,
-                        inflate_datetime => 1,
+                        timezone => $CONF->{timezone},
                     };
                 }
                 when ('date') {
                     return +{
                         %$col_info,
-                        inflate_datetime => 1,
+                        timezone => $CONF->{timezone},
                     };
                 }
                 when ('password') {
@@ -109,7 +109,7 @@ my $CONF = OpenCloset::Config::load;
                 when ('timestamp') {
                     return +{
                         %$col_info,
-                        inflate_datetime => 1,
+                        timezone => $CONF->{timezone},
                     };
                 }
             }
