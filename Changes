@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add column: tag.label (#116)
 
 0.047     2017-03-13 17:04:19+09:00 Asia/Seoul
     - Use `get_kst_timestamp` to get local timestamp (#117)
