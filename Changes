@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.048     2017-03-21 15:21:12+09:00 Asia/Seoul
     - Add column: tag.label (#116)
 
 0.047     2017-03-13 17:04:19+09:00 Asia/Seoul
