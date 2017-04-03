@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.049     2017-04-04 00:28:07+09:00 Asia/Seoul
     - Add table: visitor (#120)
 
 0.048     2017-03-21 15:21:12+09:00 Asia/Seoul
