@@ -38,7 +38,7 @@ __PACKAGE__->table("visitor");
 
 =head2 date
 
-  data_type: 'datetime'
+  data_type: 'date'
   datetime_undef_if_invalid: 1
   is_nullable: 0
   timezone: 'Asia/Seoul'
@@ -79,6 +79,24 @@ __PACKAGE__->table("visitor");
   default_value: 0
   is_nullable: 1
 
+=head2 visited_age_10
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
+=head2 visited_age_20
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
+=head2 visited_age_30
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
 =head2 unvisited
 
   data_type: 'integer'
@@ -92,6 +110,24 @@ __PACKAGE__->table("visitor");
   is_nullable: 1
 
 =head2 unvisited_female
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
+=head2 unvisited_age_10
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
+=head2 unvisited_age_20
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
+=head2 unvisited_age_30
 
   data_type: 'integer'
   default_value: 0
@@ -150,7 +186,7 @@ __PACKAGE__->add_columns(
     },
     "date",
     {
-        data_type                 => "datetime",
+        data_type                 => "date",
         datetime_undef_if_invalid => 1,
         is_nullable               => 0,
         timezone                  => "Asia/Seoul",
@@ -167,11 +203,23 @@ __PACKAGE__->add_columns(
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "visited_female",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "visited_age_10",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "visited_age_20",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "visited_age_30",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
     "unvisited",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "unvisited_male",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "unvisited_female",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "unvisited_age_10",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "unvisited_age_20",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "unvisited_age_30",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "rented",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
@@ -212,25 +260,11 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
-=head1 UNIQUE CONSTRAINTS
-
-=head2 C<date>
-
-=over 4
-
-=item * L</date>
-
-=back
-
-=cut
-
-__PACKAGE__->add_unique_constraint( "date", ["date"] );
-
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07043 @ 2017-04-02 12:27:52
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6yusMnslMJ85yFIMSUod6A
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-04-03 12:01:53
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:69Ym27YYI+qaN8D4FR2qhw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
