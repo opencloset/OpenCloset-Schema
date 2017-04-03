@@ -896,7 +896,7 @@ DROP TABLE IF EXISTS `visitor`;
 
 CREATE TABLE `visitor` (
   `id`               INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `date`             DATETIME NOT NULL,
+  `date`             DATE NOT NULL,
   `reserved`         INT DEFAULT 0,
   `reserved_male`    INT DEFAULT 0,
   `reserved_female`  INT DEFAULT 0,
@@ -915,6 +915,5 @@ CREATE TABLE `visitor` (
   `create_date`      DATETIME DEFAULT NULL,
   `update_date`      DATETIME DEFAULT NULL,
 
-  PRIMARY KEY (`id`),
-  UNIQUE  KEY (`date`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
