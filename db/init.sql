@@ -919,6 +919,10 @@ CREATE TABLE `visitor` (
   `rented_male`      INT DEFAULT 0,
   `rented_female`    INT DEFAULT 0,
 
+  `bestfit`          INT DEFAULT 0,
+  `bestfit_male`     INT DEFAULT 0,
+  `bestfit_female`   INT DEFAULT 0,
+
   `event`            VARCHAR(32) DEFAULT NULL,
 
   `create_date`      DATETIME DEFAULT NULL,

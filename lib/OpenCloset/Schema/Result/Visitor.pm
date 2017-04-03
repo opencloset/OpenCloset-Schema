@@ -151,6 +151,24 @@ __PACKAGE__->table("visitor");
   default_value: 0
   is_nullable: 1
 
+=head2 bestfit
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
+=head2 bestfit_male
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
+=head2 bestfit_female
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
 =head2 event
 
   data_type: 'varchar'
@@ -227,6 +245,12 @@ __PACKAGE__->add_columns(
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "rented_female",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "bestfit",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "bestfit_male",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "bestfit_female",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
     "event",
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "create_date",
@@ -263,8 +287,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-04-03 12:01:53
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:69Ym27YYI+qaN8D4FR2qhw
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-04-03 12:21:13
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:EUcQl3AJFvx+Ly2LHdnVaA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

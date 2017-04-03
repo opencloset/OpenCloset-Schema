@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS `visitor`;
 CREATE TABLE `visitor` (
   `id`               INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `date`             DATE NOT NULL,
+
   `reserved`         INT DEFAULT 0,
   `reserved_male`    INT DEFAULT 0,
   `reserved_female`  INT DEFAULT 0,
@@ -28,6 +29,10 @@ CREATE TABLE `visitor` (
   `rented`           INT DEFAULT 0,
   `rented_male`      INT DEFAULT 0,
   `rented_female`    INT DEFAULT 0,
+
+  `bestfit`          INT DEFAULT 0,
+  `bestfit_male`     INT DEFAULT 0,
+  `bestfit_female`   INT DEFAULT 0,
 
   `event`            VARCHAR(32) DEFAULT NULL,
 
