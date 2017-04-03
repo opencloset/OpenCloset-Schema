@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add table: visitor (#120)
 
 0.048     2017-03-21 15:21:12+09:00 Asia/Seoul
     - Add column: tag.label (#116)
