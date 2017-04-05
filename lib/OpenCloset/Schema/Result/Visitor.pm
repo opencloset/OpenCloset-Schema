@@ -43,6 +43,14 @@ __PACKAGE__->table("visitor");
   is_nullable: 0
   timezone: 'Asia/Seoul'
 
+=head2 online
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
+null and 0 are false, otherwise true
+
 =head2 reserved
 
   data_type: 'integer'
@@ -209,6 +217,8 @@ __PACKAGE__->add_columns(
         is_nullable               => 0,
         timezone                  => "Asia/Seoul",
     },
+    "online",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
     "reserved",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "reserved_male",
@@ -287,8 +297,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-04-03 12:21:13
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:EUcQl3AJFvx+Ly2LHdnVaA
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-04-05 13:03:09
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hprEaZ7wTTwvtyvhD0HtZQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
