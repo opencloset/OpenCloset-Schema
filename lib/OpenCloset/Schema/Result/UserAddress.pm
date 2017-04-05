@@ -207,7 +207,7 @@ __PACKAGE__->belongs_to(
 
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.050';
+our $VERSION = '0.051';
 
 1;
 

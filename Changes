@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.050     2017-04-05 13:11:05+09:00 Asia/Seoul
     - Add column: visitor.online (#122)
 
 0.049     2017-04-04 00:28:07+09:00 Asia/Seoul
