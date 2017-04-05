@@ -51,6 +51,7 @@ on 'develop' => sub {
   requires "Pod::Wordlist" => "0";
   requires "Software::License::Perl_5" => "0";
   requires "Test::CPAN::Meta" => "0";
+  requires "Test::MinimumVersion" => "0";
   requires "Test::More" => "0";
   requires "Test::Pod" => "1.41";
   requires "Test::Pod::Coverage" => "1.08";
