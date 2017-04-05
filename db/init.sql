@@ -897,6 +897,8 @@ DROP TABLE IF EXISTS `visitor`;
 CREATE TABLE `visitor` (
   `id`               INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `date`             DATE NOT NULL,
+  `online`           INT DEFAULT 0 COMMENT 'null and 0 are false, otherwise true',
+
   `reserved`         INT DEFAULT 0,
   `reserved_male`    INT DEFAULT 0,
   `reserved_female`  INT DEFAULT 0,
