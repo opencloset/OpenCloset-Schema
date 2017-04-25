@@ -1,0 +1,1 @@
+ALTER TABLE `coupon` ADD COLUMN `extra` TEXT DEFAULT NULL AFTER `desc`;
