@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.051     2017-04-25 17:15:06+09:00 Asia/Seoul
     - rate coupon type 에 대한 comment 추가
     - Add column: coupon.extra (#124)
 
