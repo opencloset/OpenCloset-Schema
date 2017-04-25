@@ -352,6 +352,7 @@ CREATE TABLE `coupon` (
       -- discarded: 폐기됨
 
   `desc`            TEXT         DEFAULT NULL,
+  `extra`           TEXT         DEFAULT NULL,
   `price`           INT          DEFAULT 0,
 
   `create_date`     DATETIME     DEFAULT NULL,
