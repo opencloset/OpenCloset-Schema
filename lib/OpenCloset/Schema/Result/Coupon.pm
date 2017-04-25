@@ -64,6 +64,11 @@ provided|used|discarded
   data_type: 'text'
   is_nullable: 1
 
+=head2 extra
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 price
 
   data_type: 'integer'
@@ -116,6 +121,8 @@ __PACKAGE__->add_columns(
     "status",
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "desc",
+    { data_type => "text", is_nullable => 1 },
+    "extra",
     { data_type => "text", is_nullable => 1 },
     "price",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
@@ -191,8 +198,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-03-13 15:48:34
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:SyxgfJ1RBhzDzeWMM3cKsQ
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-04-25 17:09:40
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:cwyuE5Vr5V/FY5ELQxIIEg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
