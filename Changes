@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - rate coupon type 에 대한 comment 추가
 
 0.050     2017-04-05 13:11:05+09:00 Asia/Seoul
     - Add column: visitor.online (#122)

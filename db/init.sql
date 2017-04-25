@@ -341,9 +341,10 @@ CREATE TABLE `coupon` (
   `id`              INT UNSIGNED NOT NULL AUTO_INCREMENT,
 
   `code`            VARCHAR(32)  NOT NULL,
-  `type`            VARCHAR(32)  DEFAULT 'default' COMMENT 'default|suit',
+  `type`            VARCHAR(32)  DEFAULT 'default' COMMENT 'default|suit|rate',
       -- default: `price` 가격으로 제공되는 쿠폰
       -- suit:    suit 한벌을 빌릴 수 있는 쿠폰
+      -- rate:    대여비의 `price`% 를 할인
 
   `status`          VARCHAR(32)  DEFAULT NULL COMMENT 'provided|used|discarded',
       -- provided:  지급됨
