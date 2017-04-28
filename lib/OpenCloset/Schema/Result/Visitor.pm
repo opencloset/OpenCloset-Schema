@@ -105,6 +105,24 @@ null and 0 are false, otherwise true
   default_value: 0
   is_nullable: 1
 
+=head2 visited_rate_30
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
+=head2 visited_rate_30_sum
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
+=head2 visited_rate_30_discount
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
 =head2 unvisited
 
   data_type: 'integer'
@@ -237,6 +255,12 @@ __PACKAGE__->add_columns(
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "visited_age_30",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "visited_rate_30",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "visited_rate_30_sum",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "visited_rate_30_discount",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
     "unvisited",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "unvisited_male",
@@ -297,8 +321,8 @@ __PACKAGE__->set_primary_key("id");
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-04-05 13:03:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hprEaZ7wTTwvtyvhD0HtZQ
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-04-27 17:10:30
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:zXzxe1FkbmzvKi5iDrsiwA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
