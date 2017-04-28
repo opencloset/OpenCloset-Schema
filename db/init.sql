@@ -912,6 +912,10 @@ CREATE TABLE `visitor` (
   `visited_age_20`   INT DEFAULT 0,
   `visited_age_30`   INT DEFAULT 0,
 
+  `visited_rate_30`          INT DEFAULT 0,
+  `visited_rate_30_sum`      INT DEFAULT 0,
+  `visited_rate_30_discount` INT DEFAULT 0,
+
   `unvisited`        INT DEFAULT 0,
   `unvisited_male`   INT DEFAULT 0,
   `unvisited_female` INT DEFAULT 0,

@@ -1,6 +1,9 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add column: visitor.visited_rate_30 (#126)
+    - Add column: visitor.visited_rate_30_sum (#126)
+    - Add column: visitor.visited_rate_30_discount (#126)
 
 0.051     2017-04-25 17:15:06+09:00 Asia/Seoul
     - rate coupon type 에 대한 comment 추가
