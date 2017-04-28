@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.052     2017-04-28 16:54:30+09:00 Asia/Seoul
     - Add column: visitor.visited_rate_30 (#126)
     - Add column: visitor.visited_rate_30_sum (#126)
     - Add column: visitor.visited_rate_30_discount (#126)
