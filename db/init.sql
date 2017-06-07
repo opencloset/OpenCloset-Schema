@@ -532,6 +532,7 @@ CREATE TABLE `volunteer` (
   `email`              VARCHAR(128) DEFAULT NULL,
   `phone`              VARCHAR(16)  DEFAULT NULL COMMENT 'regex: 01\d{8,9}',
   `address`            TEXT         DEFAULT NULL,
+  `comment`            TEXT         DEFAULT NULL,
   `birth_date`         DATETIME     DEFAULT NULL,
   `create_date`        DATETIME     DEFAULT NULL,
 

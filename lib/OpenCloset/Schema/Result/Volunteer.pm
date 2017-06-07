@@ -67,6 +67,11 @@ regex: 01d{8,9}
   data_type: 'text'
   is_nullable: 1
 
+=head2 comment
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 birth_date
 
   data_type: 'datetime'
@@ -101,6 +106,8 @@ __PACKAGE__->add_columns(
     "phone",
     { data_type => "varchar", is_nullable => 1, size => 16 },
     "address",
+    { data_type => "text", is_nullable => 1 },
+    "comment",
     { data_type => "text", is_nullable => 1 },
     "birth_date",
     {
@@ -177,8 +184,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-03-13 15:48:39
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gr+24eZh1kKCQYLanP4lUA
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-06-08 03:33:33
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:X+xK6hbeWs66iH2WGeuwFA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
