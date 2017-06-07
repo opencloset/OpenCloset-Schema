@@ -138,7 +138,7 @@ __PACKAGE__->set_primary_key("id");
 
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.053';
+our $VERSION = '0.054';
 
 1;
 
