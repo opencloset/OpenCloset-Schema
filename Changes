@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.053     2017-06-08 03:38:01+09:00 Asia/Seoul
     - Add column: volunteer.comment (#129)
     - Add row to status table: "재활용(비전)" (#128)
 
