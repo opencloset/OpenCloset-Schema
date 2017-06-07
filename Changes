@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add column: volunteer.comment (#129)
+    - Add row to status table: "재활용(비전)" (#128)
 
 0.052     2017-04-28 16:54:30+09:00 Asia/Seoul
     - Add column: visitor.visited_rate_30 (#126)

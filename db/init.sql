@@ -177,6 +177,7 @@ INSERT INTO `status` (`id`, `name`)
     (54, '배송완료'),
     (55, '반송신청'),
     (56, '입금대기')
+    (57, '재활용(비전)')
     ;
 
 --
@@ -531,6 +532,7 @@ CREATE TABLE `volunteer` (
   `email`              VARCHAR(128) DEFAULT NULL,
   `phone`              VARCHAR(16)  DEFAULT NULL COMMENT 'regex: 01\d{8,9}',
   `address`            TEXT         DEFAULT NULL,
+  `comment`            TEXT         DEFAULT NULL,
   `birth_date`         DATETIME     DEFAULT NULL,
   `create_date`        DATETIME     DEFAULT NULL,
 
