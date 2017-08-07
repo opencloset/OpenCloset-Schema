@@ -8,6 +8,8 @@ CREATE TABLE `order_agent` (
   `label`         VARCHAR(128) DEFAULT NULL,
   `gender`        VARCHAR(6)   DEFAULT NULL COMMENT 'male/female',
 
+  `pre_category`  VARCHAR(128) DEFAULT NULL,
+
   `height`        INT DEFAULT NULL,
   `weight`        INT DEFAULT NULL,
   `neck`          INT DEFAULT NULL,

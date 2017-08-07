@@ -57,6 +57,12 @@ __PACKAGE__->table("order_agent");
 
 male/female
 
+=head2 pre_category
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 128
+
 =head2 height
 
   data_type: 'integer'
@@ -153,6 +159,8 @@ __PACKAGE__->add_columns(
     { data_type => "varchar", is_nullable => 1, size => 128 },
     "gender",
     { data_type => "varchar", is_nullable => 1, size => 6 },
+    "pre_category",
+    { data_type => "varchar", is_nullable => 1, size => 128 },
     "height",
     { data_type => "integer", is_nullable => 1 },
     "weight",
@@ -217,8 +225,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-08-02 23:08:07
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bvoCwAlJRf/bxqhuc84pEw
+# Created by DBIx::Class::Schema::Loader v0.07043 @ 2017-08-07 14:56:42
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:tZseomQCSPvoyjVxa5tToQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
