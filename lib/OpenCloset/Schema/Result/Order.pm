@@ -333,6 +333,13 @@ null and 0 are false, otherwise true
 
 null and 0 is false, otherwise true
 
+=head2 agent
+
+  data_type: 'integer'
+  is_nullable: 1
+
+null and 0 are false, otherwise true
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -519,6 +526,8 @@ __PACKAGE__->add_columns(
     },
     "does_wear",
     { data_type => "integer", is_nullable => 1 },
+    "agent",
+    { data_type => "integer", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -573,6 +582,19 @@ __PACKAGE__->belongs_to(
         on_delete     => "CASCADE",
         on_update     => "RESTRICT",
     },
+);
+
+=head2 order_agents
+
+Type: has_many
+
+Related object: L<OpenCloset::Schema::Result::OrderAgent>
+
+=cut
+
+__PACKAGE__->has_many(
+    "order_agents", "OpenCloset::Schema::Result::OrderAgent",
+    { "foreign.order_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
 );
 
 =head2 order_details
@@ -755,8 +777,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-03-13 15:48:35
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:HufQghNbeA9fMwX3JO9K8Q
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-08-02 23:08:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:u4/grRN5l1SduZuxfLcc+A
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

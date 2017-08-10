@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add column: order.agent (#131)
+    - Add table: order_agent (#131)
 
 0.053     2017-06-08 03:38:01+09:00 Asia/Seoul
     - Add column: volunteer.comment (#129)
