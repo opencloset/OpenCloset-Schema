@@ -329,6 +329,7 @@ CREATE TABLE `booking` (
   `date`        DATETIME     NOT NULL,
   `gender`      VARCHAR(6)   NOT NULL COMMENT 'male/female',
   `slot`        INT UNSIGNED NOT NULL,
+  `desc`        TEXT         DEFAULT NULL,
 
   PRIMARY KEY (`id`),
   UNIQUE  KEY ( `date`, `gender` )

@@ -1,0 +1,1 @@
+ALTER TABLE `booking` ADD COLUMN `desc` TEXT DEFAULT NULL AFTER `slot`;
