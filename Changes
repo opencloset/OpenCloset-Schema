@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.055     2017-11-17 16:07:47+09:00 Asia/Seoul
     - Add column: booking.desc (#134)
 
 0.054     2017-08-10 17:07:24+09:00 Asia/Seoul

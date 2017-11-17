@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use DateTime;
 
-our $VERSION = '0.055';
+our $VERSION = '0.056';
 
 use base 'DBIx::Class::Core';
 
