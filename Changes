@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add column: booking.desc (#134)
 
 0.054     2017-08-10 17:07:24+09:00 Asia/Seoul
     - Add column: order.agent (#131)
