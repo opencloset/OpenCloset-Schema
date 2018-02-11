@@ -135,7 +135,7 @@ __PACKAGE__->add_unique_constraint( "cid", ["cid"] );
 
 # ABSTRACT: OpenCloset Database Schema Class
 
-our $VERSION = '0.056';
+our $VERSION = '0.057';
 
 1;
 
