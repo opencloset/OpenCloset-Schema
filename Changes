@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add table: coupon.limit (#136)
 
 0.055     2017-11-17 16:07:47+09:00 Asia/Seoul
     - Add column: booking.desc (#134)
