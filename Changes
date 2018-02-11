@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.056     2018-02-11 16:23:24+09:00 Asia/Seoul
     - Add table: coupon.limit (#136)
 
 0.055     2017-11-17 16:07:47+09:00 Asia/Seoul
