@@ -366,6 +366,23 @@ CREATE TABLE `coupon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- coupon_limit
+--
+
+CREATE TABLE `coupon_limit` (
+  `id`              INT UNSIGNED NOT NULL AUTO_INCREMENT,
+
+  `cid`             VARCHAR(64)  NOT NULL,
+  `limit`           INT          DEFAULT -1,
+
+  `create_date`     DATETIME     DEFAULT NULL,
+  `update_date`     DATETIME     DEFAULT NULL,
+
+  PRIMARY KEY (`id`),
+  UNIQUE KEY  (`cid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
 -- order
 --
 
