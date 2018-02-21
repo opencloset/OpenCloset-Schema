@@ -356,6 +356,7 @@ CREATE TABLE `coupon` (
   `desc`            TEXT         DEFAULT NULL,
   `extra`           TEXT         DEFAULT NULL,
   `price`           INT          DEFAULT 0,
+  `free_shipping`   INT          DEFAULT 0 COMMENT 'null and 0 are false, otherwise true',
 
   `create_date`     DATETIME     DEFAULT NULL,
   `update_date`     DATETIME     DEFAULT NULL,
