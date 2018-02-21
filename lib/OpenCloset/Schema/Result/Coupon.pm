@@ -75,6 +75,14 @@ provided|used|discarded
   default_value: 0
   is_nullable: 1
 
+=head2 free_shipping
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 1
+
+null and 0 are false, otherwise true
+
 =head2 create_date
 
   data_type: 'datetime'
@@ -125,6 +133,8 @@ __PACKAGE__->add_columns(
     "extra",
     { data_type => "text", is_nullable => 1 },
     "price",
+    { data_type => "integer", default_value => 0, is_nullable => 1 },
+    "free_shipping",
     { data_type => "integer", default_value => 0, is_nullable => 1 },
     "create_date",
     {
@@ -198,8 +208,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07047 @ 2017-11-17 12:51:16
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UtqmV1Gj3Vt3wOmueJjMVQ
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2018-02-21 16:20:15
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:GPHzIhEiGQgFqifLbkWINw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
