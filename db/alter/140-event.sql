@@ -14,3 +14,8 @@ CREATE TABLE `event` (
 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- TODO: 쓰레기 값을 NULL 로 변경하는 쿼리
+
+ALTER TABLE `donation_form`
+  ADD CONSTRAINT `fk_donation_form2` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`) ON DELETE CASCADE;
