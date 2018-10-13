@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add table: event (#140)
 
 0.057     2018-02-21 16:27:37+09:00 Asia/Seoul
     - Add column: coupon.free_shipping (#138)
