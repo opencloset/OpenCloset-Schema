@@ -15,7 +15,19 @@ CREATE TABLE `event` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- TODO: 쓰레기 값을 NULL 로 변경하는 쿼리
+-- 쓰레기 값을 NULL 로 변경하는 쿼리
+-- CAST 해주어야 동작함: https://stackoverflow.com/a/37780259
+-- 2018-10-20 06:00 데이터 기준 예외는 이거 두개
+
+UPDATE donation_form SET birth_date = NULL WHERE CAST(birth_date AS CHAR(20)) = '0000-00-00 00:00:00';
+UPDATE donation_form SET birth_date = NULL WHERE CAST(birth_date AS CHAR(20)) = '1991-00-00 00:00:00';
 
 ALTER TABLE `donation_form`
-  ADD CONSTRAINT `fk_donation_form2` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`) ON DELETE CASCADE;
+  ADD COLUMN `event_id` INT UNSIGNED
+  DEFAULT NULL AFTER `donation_id`;
+
+ALTER TABLE `donation_form`
+  ADD CONSTRAINT `fk_donation_form2`
+  FOREIGN KEY (`event_id`)
+  REFERENCES `event` (`id`)
+  ON DELETE CASCADE;
