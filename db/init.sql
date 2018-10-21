@@ -631,12 +631,32 @@ CREATE TABLE `suit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- event
+--
+DROP TABLE IF EXISTS `event`;
+CREATE TABLE `event` (
+  `id`           INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name`         VARCHAR(32) NOT NULL,
+  `desc`         TEXT DEFAULT NULL,
+  `sponsor`      VARCHAR(128) DEFAULT NULL,
+  `year`         INT(11) DEFAULT 0 COMMENT '연도; 애매하면 0',
+  `nth`          INT(11) DEFAULT 1 COMMENT '회차; 회차와 연도로 그룹화; 2018년 2회차; 2019년 1회차',
+  `start_date`   DATETIME DEFAULT NULL,
+  `end_date`     DATETIME DEFAULT NULL,
+  `create_date`  DATETIME DEFAULT NULL,
+  `update_date`  DATETIME DEFAULT NULL,
+
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
 -- donation_form
 --
 
 CREATE TABLE `donation_form` (
   `id`              INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `donation_id`     INT UNSIGNED DEFAULT NULL,
+  `event_id`        INT UNSIGNED DEFAULT NULL,
   `name`            VARCHAR(32)  DEFAULT NULL,
   `ever_donate`     INT(11)      DEFAULT NULL COMMENT '0 is false, otherwise true',
   `ever_use`        INT(11)      DEFAULT NULL COMMENT '0 is false, otherwise true',
@@ -664,7 +684,8 @@ CREATE TABLE `donation_form` (
   `update_date`     DATETIME     DEFAULT NULL,
 
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_donation_form1` FOREIGN KEY (`donation_id`) REFERENCES `donation` (`id`) ON DELETE CASCADE
+  CONSTRAINT `fk_donation_form1` FOREIGN KEY (`donation_id`) REFERENCES `donation` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_donation_form2` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
