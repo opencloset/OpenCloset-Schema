@@ -43,6 +43,13 @@ __PACKAGE__->table("donation_form");
   is_foreign_key: 1
   is_nullable: 1
 
+=head2 event_id
+
+  data_type: 'integer'
+  extra: {unsigned => 1}
+  is_foreign_key: 1
+  is_nullable: 1
+
 =head2 name
 
   data_type: 'varchar'
@@ -223,6 +230,13 @@ __PACKAGE__->add_columns(
         is_foreign_key => 1,
         is_nullable    => 1,
     },
+    "event_id",
+    {
+        data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
     "name",
     { data_type => "varchar", is_nullable => 1, size => 32 },
     "ever_donate",
@@ -330,11 +344,31 @@ __PACKAGE__->belongs_to(
     },
 );
 
+=head2 event
+
+Type: belongs_to
+
+Related object: L<OpenCloset::Schema::Result::Event>
+
+=cut
+
+__PACKAGE__->belongs_to(
+    "event",
+    "OpenCloset::Schema::Result::Event",
+    { id => "event_id" },
+    {
+        is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "CASCADE",
+        on_update     => "RESTRICT",
+    },
+);
+
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07047 @ 2017-11-17 12:51:17
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:VJMA77Duw+pcCChqt45ykg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2018-10-13 15:37:45
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CfglbSL85HsRcDl4LSov5w
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
