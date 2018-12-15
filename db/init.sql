@@ -341,6 +341,7 @@ CREATE TABLE `booking` (
 
 CREATE TABLE `coupon` (
   `id`              INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `event_id`        INT UNSIGNED DEFAULT NULL,
 
   `code`            VARCHAR(32)  NOT NULL,
   `type`            VARCHAR(32)  DEFAULT 'default' COMMENT 'default|suit|rate',
@@ -363,7 +364,8 @@ CREATE TABLE `coupon` (
   `expires_date`    DATETIME     DEFAULT NULL,
 
   PRIMARY KEY (`id`),
-  UNIQUE KEY  (`code`)
+  UNIQUE KEY  (`code`),
+  CONSTRAINT `fk_coupon1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

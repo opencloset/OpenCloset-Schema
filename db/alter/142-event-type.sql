@@ -31,3 +31,13 @@ ALTER TABLE `event`
   FOREIGN KEY (`event_type_id`)
   REFERENCES `event_type` (`id`)
   ON DELETE CASCADE;
+
+ALTER TABLE `coupon`
+  ADD COLUMN `event_id` INT UNSIGNED
+  DEFAULT NULL AFTER `id`;
+
+ALTER TABLE `coupon`
+  ADD CONSTRAINT `fk_coupon1`
+  FOREIGN KEY (`event_id`)
+  REFERENCES `event` (`id`)
+  ON DELETE CASCADE;

@@ -188,6 +188,21 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
+=head2 coupons
+
+Type: has_many
+
+Related object: L<OpenCloset::Schema::Result::Coupon>
+
+=cut
+
+__PACKAGE__->has_many(
+    "coupons",
+    "OpenCloset::Schema::Result::Coupon",
+    { "foreign.event_id" => "self.id" },
+    { cascade_copy       => 0, cascade_delete => 0 },
+);
+
 =head2 donation_forms
 
 Type: has_many
@@ -224,8 +239,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2018-12-15 02:11:12
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:0u53Dv9veMlBAiOQTBFmzA
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2018-12-15 11:25:56
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ImwE+ASrJawoj/qf/F6NPw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

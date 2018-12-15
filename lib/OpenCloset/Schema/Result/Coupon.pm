@@ -36,6 +36,13 @@ __PACKAGE__->table("coupon");
   is_auto_increment: 1
   is_nullable: 0
 
+=head2 event_id
+
+  data_type: 'integer'
+  extra: {unsigned => 1}
+  is_foreign_key: 1
+  is_nullable: 1
+
 =head2 code
 
   data_type: 'varchar'
@@ -117,6 +124,13 @@ __PACKAGE__->add_columns(
         is_auto_increment => 1,
         is_nullable       => 0,
     },
+    "event_id",
+    {
+        data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
     "code",
     { data_type => "varchar", is_nullable => 0, size => 32 },
     "type",
@@ -190,6 +204,26 @@ __PACKAGE__->add_unique_constraint( "code", ["code"] );
 
 =head1 RELATIONS
 
+=head2 event
+
+Type: belongs_to
+
+Related object: L<OpenCloset::Schema::Result::Event>
+
+=cut
+
+__PACKAGE__->belongs_to(
+    "event",
+    "OpenCloset::Schema::Result::Event",
+    { id => "event_id" },
+    {
+        is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "CASCADE",
+        on_update     => "RESTRICT",
+    },
+);
+
 =head2 orders
 
 Type: has_many
@@ -208,8 +242,8 @@ __PACKAGE__->has_many(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2018-02-21 16:20:15
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:GPHzIhEiGQgFqifLbkWINw
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2018-12-15 11:25:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:518I+09jzv3Jfp6cySK+wg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
