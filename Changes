@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.059     2018-12-15 19:50:27+09:00 Asia/Seoul
     - Add table: event_type (#142)
     - Add column: event.event_type_id (#142)
     - Add column: event.free_shipping (#142)
