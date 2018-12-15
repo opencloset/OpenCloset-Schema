@@ -23,6 +23,10 @@ ALTER TABLE `event`
   DEFAULT NULL AFTER `id`;
 
 ALTER TABLE `event`
+  ADD COLUMN `title` VARCHAR(128)
+  NOT NULL AFTER `name`;
+
+ALTER TABLE `event`
   ADD COLUMN `free_shipping` INT
   DEFAULT 0 AFTER `nth`;
 

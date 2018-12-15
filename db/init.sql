@@ -655,6 +655,7 @@ CREATE TABLE `event` (
   `id`            INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `event_type_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name`          VARCHAR(32) NOT NULL,
+  `title`         VARCHAR(128) NOT NULL,
   `desc`          TEXT DEFAULT NULL,
   `sponsor`       VARCHAR(128) DEFAULT NULL,
   `year`          INT(11) DEFAULT 0 COMMENT '연도; 애매하면 0',

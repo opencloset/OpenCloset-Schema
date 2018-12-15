@@ -49,6 +49,12 @@ __PACKAGE__->table("event");
   is_nullable: 0
   size: 32
 
+=head2 title
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 128
+
 =head2 desc
 
   data_type: 'text'
@@ -131,6 +137,8 @@ __PACKAGE__->add_columns(
     },
     "name",
     { data_type => "varchar", is_nullable => 0, size => 32 },
+    "title",
+    { data_type => "varchar", is_nullable => 0, size => 128 },
     "desc",
     { data_type => "text", is_nullable => 1 },
     "sponsor",
@@ -239,8 +247,8 @@ __PACKAGE__->belongs_to(
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2018-12-15 11:25:56
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ImwE+ASrJawoj/qf/F6NPw
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2018-12-15 15:15:01
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4NfbK7VRPXjE7PRSTgssSw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
