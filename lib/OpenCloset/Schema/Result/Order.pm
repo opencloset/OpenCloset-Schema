@@ -191,6 +191,14 @@ a flag represent get pass or not. null or 0 is false, otherwise true
   data_type: 'text'
   is_nullable: 1
 
+=head2 shipping_method
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 64
+
+parcel|quick_service|post_office_parcel
+
 =head2 purpose
 
   data_type: 'varchar'
@@ -463,6 +471,8 @@ __PACKAGE__->add_columns(
     { data_type => "text", is_nullable => 1 },
     "shipping_misc",
     { data_type => "text", is_nullable => 1 },
+    "shipping_method",
+    { data_type => "varchar", is_nullable => 1, size => 64 },
     "purpose",
     { data_type => "varchar", is_nullable => 1, size => 128 },
     "purpose2",
@@ -802,8 +812,8 @@ __PACKAGE__->many_to_many( "tags", "order_tags", "tag" );
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-04-13 04:09:54
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:a3gq+kXxhiA/BSiSn/YO+g
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-04-25 18:31:04
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+v1U+fQJ52IDEMyfSpWYeQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
