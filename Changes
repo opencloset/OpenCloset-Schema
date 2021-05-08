@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.060     2021-05-08 17:06:18+09:00 Asia/Seoul
     - Add table: order_tag (#144)
     - add column: order.shipping_method (#148)
 
