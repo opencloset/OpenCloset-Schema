@@ -39,7 +39,7 @@ my %WriteMakefileArgs = (
     "Test::DBIx::Class" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "0.060",
+  "VERSION" => "0.061",
   "test" => {
     "TESTS" => "t/*.t"
   }
