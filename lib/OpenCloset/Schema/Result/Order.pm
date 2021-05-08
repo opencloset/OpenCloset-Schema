@@ -191,6 +191,14 @@ a flag represent get pass or not. null or 0 is false, otherwise true
   data_type: 'text'
   is_nullable: 1
 
+=head2 shipping_method
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 64
+
+parcel|quick_service|post_office_parcel
+
 =head2 purpose
 
   data_type: 'varchar'
@@ -463,6 +471,8 @@ __PACKAGE__->add_columns(
     { data_type => "text", is_nullable => 1 },
     "shipping_misc",
     { data_type => "text", is_nullable => 1 },
+    "shipping_method",
+    { data_type => "varchar", is_nullable => 1, size => 64 },
     "purpose",
     { data_type => "varchar", is_nullable => 1, size => 128 },
     "purpose2",
@@ -649,6 +659,21 @@ __PACKAGE__->has_many(
     { "foreign.order_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 order_tags
+
+Type: has_many
+
+Related object: L<OpenCloset::Schema::Result::OrderTag>
+
+=cut
+
+__PACKAGE__->has_many(
+    "order_tags",
+    "OpenCloset::Schema::Result::OrderTag",
+    { "foreign.order_id" => "self.id" },
+    { cascade_copy       => 0, cascade_delete => 0 },
+);
+
 =head2 orders
 
 Type: has_many
@@ -774,11 +799,21 @@ __PACKAGE__->belongs_to(
     },
 );
 
+=head2 tags
+
+Type: many_to_many
+
+Composing rels: L</order_tags> -> tag
+
+=cut
+
+__PACKAGE__->many_to_many( "tags", "order_tags", "tag" );
+
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07047 @ 2017-11-17 12:51:18
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:kqis8OlHTxM2Zk7FKlLGVg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-04-25 18:31:04
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+v1U+fQJ52IDEMyfSpWYeQ
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 

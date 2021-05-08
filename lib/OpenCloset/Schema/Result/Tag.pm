@@ -112,6 +112,21 @@ __PACKAGE__->has_many(
     { "foreign.tag_id" => "self.id" }, { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 order_tags
+
+Type: has_many
+
+Related object: L<OpenCloset::Schema::Result::OrderTag>
+
+=cut
+
+__PACKAGE__->has_many(
+    "order_tags",
+    "OpenCloset::Schema::Result::OrderTag",
+    { "foreign.tag_id" => "self.id" },
+    { cascade_copy     => 0, cascade_delete => 0 },
+);
+
 =head2 clothes
 
 Type: many_to_many
@@ -122,11 +137,21 @@ Composing rels: L</clothes_tags> -> clothes
 
 __PACKAGE__->many_to_many( "clothes", "clothes_tags", "clothes" );
 
+=head2 orders
+
+Type: many_to_many
+
+Composing rels: L</order_tags> -> order
+
+=cut
+
+__PACKAGE__->many_to_many( "orders", "order_tags", "order" );
+
 #>>>
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-03-21 14:28:25
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bmHG90Wf7v64iOzpTjob2Q
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-04-13 04:10:00
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JEsHCeiw3TbSQGqI814Qzg
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 
